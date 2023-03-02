@@ -1,5 +1,6 @@
 # UB CSE442 Group Project- RoomAid by PHP Haters
 Project Manager: Swati Suresh- swatisur@buffalo.edu.
+
 Developed by: Adam Cartwright- accartwr@buffalo.edu, Arpit Hirani- arpithir@buffalo.edu, Benson Cai- bensonca@buffalo.edu, Riad Mukhtarov- riadmukh@buffalo.edu, Yeshu Lokesh- venkatay@buffalo.edu.
 
 
