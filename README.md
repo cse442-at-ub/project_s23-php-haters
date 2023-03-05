@@ -1,11 +1,19 @@
-# UB CSE442 Group Project- RoomAid by PHP Haters
-Project Manager: Swati Suresh- swatisur@buffalo.edu.
+# Nav Bar for RoomAid
 
-Developed by: Adam Cartwright- accartwr@buffalo.edu, Arpit Hirani- arpithir@buffalo.edu, Benson Cai- bensonca@buffalo.edu, Riad Mukhtarov- riadmukh@buffalo.edu, Yeshu Lokesh- venkatay@buffalo.edu.
+- Zenhub task#34
+- file:  navbar.php
+
+-------------
+
+#   Usage:
+
+- Can use the PHPs include function to display navbar at top of page ` <?php include 'nav.php'; ?>  ` 
+- Or can insert the code to file
 
 
 
-Figma: https://www.figma.com/file/QSU5TMbd2mj5ETUUxtgkX9/Sketch-so-far?node-id=0%3A1&t=yRizdHN1bPZVDIzz-1
+
+
 
 
 
