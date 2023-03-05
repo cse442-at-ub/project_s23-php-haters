@@ -7,7 +7,7 @@
 
 #   Usage:
 
-- Can use the PHPs include function to display navbar at top of page ` <?php include 'nav.php'; ?>  ` 
+- Can use the PHPs include function to display navbar at top of page ` <?php include 'navbar.php'; ?>  ` 
 - Or can insert the code to file
 
 
