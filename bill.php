@@ -28,11 +28,15 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
-$sql = "INSERT INTO Bills_Test_Table VALUES ('$u_bill', '$u_date', '$u_owed1', '$u_owed2', '$u_owed3', '$u_owed4')";
+$totalAmt = $u_owed1 + $u_owed2 + $u_owed3 + $u_owed4;
+
+$sql = "INSERT INTO allExpenses VALUES ('aviato44','$u_bill', '$u_date', '$totalAmt', 
+                                'SampleUser1', '$u_owed1', 
+                                'SampleUser2','$u_owed2', 
+                                'SampleUser3','$u_owed3', 
+                                'SampleUser4','$u_owed4')";
 //print('entered');
 //print($sql);
 mysqli_query($mysqli, $sql);
-print("Record inserted successfully");
-
 
 $mysqli->close();
