@@ -28,13 +28,18 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
-$totalAmt = $u_owed1 + $u_owed2 + $u_owed3 + $u_owed4;
+$owed1 = ($u_owed1 == '') ? 0.00 : $u_owed1;
+$owed2 = ($u_owed2 == '') ? 0.00 : $u_owed2;
+$owed3 = ($u_owed3 == '') ? 0.00 : $u_owed3;
+$owed4 = ($u_owed4 == '') ? 0.00 : $u_owed4;
+
+$totalAmt = $owed4 + $owed3 + $owed2 + $owed1;
 
 $sql = "INSERT INTO allExpenses VALUES ('aviato44','$u_bill', '$u_date', '$totalAmt', 
-                                'SampleUser1', '$u_owed1', 
-                                'SampleUser2','$u_owed2', 
-                                'SampleUser3','$u_owed3', 
-                                'SampleUser4','$u_owed4')";
+                                'SampleUser1', '$owed1', 
+                                'SampleUser2','$owed2', 
+                                'SampleUser3','$owed3', 
+                                'SampleUser4','$owed4')";
 //print('entered');
 //print($sql);
 mysqli_query($mysqli, $sql);
