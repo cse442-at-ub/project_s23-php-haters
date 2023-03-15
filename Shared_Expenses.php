@@ -1,5 +1,23 @@
 <?php
-    include_once 'includes/dbh.php';
+// session_start();
+//$current_user = $_SESSION['username'];
+
+$host = "oceanus.cse.buffalo.edu";
+$user = "arpithir";
+$password = "50340819";
+$database = "cse442_2023_spring_team_ae_db";
+
+//make sure we found oceanus
+$conn = mysqli_connect($host, $user, $password, $database);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}?>
+
+<?php
+// $sql = "SELECT * FROM roomAidExpenses WHERE username = '$current_user'";
+//using 'hGilmore999' for testing purposes'
+    $sql = "SELECT * FROM allExpenses WHERE username = 'hGilmore909' ";
+    $graph = mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,13 +33,14 @@
         function drawChart() {
 
             var data = google.visualization.arrayToDataTable([
-                ['Task', 'Hours per Day'],
+                ['Expense Name', 'Total Amount'],
                 ['Work',     11],
-                ['Eat',      2],
-                ['Commute',  2],
-                ['Watch TV', 2],
-                ['Sleep',    7]
-            ]);
+                <?php
+            while ($chart = mysqli_fetch_assoc($graph)) {
+                echo "['".$chart['expenseName']."',".$chart['totalAmt']."],";
+            }
+                ?>
+        ]);
 
             var options = {
                 backgroundColor: '#CDB7E9',
@@ -79,11 +98,22 @@
 
 <div id="donutchart" style="width: 900px; height: 500px;"></div>
 
-<div id="bill_section"></div>
-
-<?php
-    $sql = ""
-?>
+<div class="bill_section">
+    <?php
+        $sql = "SELECT * FROM allExpenses;";
+        $result = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_assoc($result)) {
+            $expenseName = $row['expenseName'];
+            $dueDate = $row['dueDate'];
+            $amount = $row['totalAmt'];
+            echo '<div class="bill_box">
+    <span class="bill_Name">';$expenseName; '</span>
+    <span class="bill_Date">';$dueDate; '</span>
+    <span class="bill_Amount">'; $amount; '</span></div>';
+    echo '<style>.bill_box {
+        top: +20%; bottom: -20%;
+    }</style>';
+    }?>
+</div>
 
 </body>
-</html>
