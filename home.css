@@ -5,22 +5,25 @@ body {
 }
 
 .icon {
-    width: 110px;
-    height: 80px;
+    position: relative;
+    width: 10%;
+    height: 10vh;
 }
 
 .icon-pfp {
-    left: 95%;
+    /*position: relative;*/
+    /*width: 30%;*/
+    top: 0;
+    right: 0;
+    height: 10vh;
 }
 
 /* Nav Bar*/
 
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
+    width: 100%;
+    position: static;
+    height: 10vh;
     display: flex;
 }
 
@@ -30,7 +33,7 @@ header * {
 }
 
 header li {
-    margin: 22px;
+    margin-right: 1%;
     font-size: 15px;
     font-family: 'Inter', sans-serif;
     font-style: normal;
@@ -39,9 +42,10 @@ header li {
 .nav-button {
     box-sizing: border-box;
     background: #EEE3A4;
-    padding: 20px 70px;
+    padding: 3vh 8vh;
     border: 3px solid #000000;
     border-radius: 10px;
+    margin-right: 5vh;
 }
 
 /* Website Name*/
@@ -88,7 +92,7 @@ header li {
 
 .container {
     display: flex;
-    height: 300px;
+    height: auto;
     text-align: center;
 }
 
@@ -123,8 +127,8 @@ header li {
     border-radius: 5px;
     background: white;
     padding: 16px 16px;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 1%;
+    margin-right: 1%;
     border: none;
 }
 
