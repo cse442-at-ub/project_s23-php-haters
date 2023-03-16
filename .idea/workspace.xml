@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c4c1c97-f272-480c-ae53-002e5dcd0437" name="Changes" comment="Worked on the displaying of the dough-nut chart using Google Chart API #42" />
+    <list default="true" id="5c4c1c97-f272-480c-ae53-002e5dcd0437" name="Changes" comment="Edited the CSS of the Shared Expenses page and made it usable for variable screen size #42">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,19 +32,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "/Users/arpithirani/IdeaProjects/projects/project_s23-php-haters",
-    "nodejs_package_manager_path": "npm",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/arpithirani/IdeaProjects/projects/project_s23-php-haters&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -53,6 +55,7 @@
       <updated>1678892696776</updated>
       <workItem from="1678892699173" duration="1743000" />
       <workItem from="1678911745165" duration="2657000" />
+      <workItem from="1678934499076" duration="1049000" />
     </task>
     <task id="LOCAL-00001" summary="Worked on the displaying of the dough-nut chart using Google Chart API #42">
       <created>1678895169295</created>
@@ -61,7 +64,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678895169295</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Edited the CSS of the Shared Expenses page and made it usable for variable screen size #42">
+      <created>1678934621639</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1678934621639</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -78,7 +88,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/Spring2-Shared-Expenses-FE" />
+                        <option value="Sprint2-shared-expenses-fe" />
                       </list>
                     </value>
                   </entry>
@@ -94,6 +104,16 @@
         <entry key="Branch">
           <value>
             <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="fdb19b8" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="Spring2-Shared-Expenses-FE" />
+                </option>
+              </RecentGroup>
               <RecentGroup>
                 <option name="FILTER_VALUES">
                   <option value="origin/dev" />
@@ -112,6 +132,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Worked on the displaying of the dough-nut chart using Google Chart API #42" />
-    <option name="LAST_COMMIT_MESSAGE" value="Worked on the displaying of the dough-nut chart using Google Chart API #42" />
+    <MESSAGE value="Edited the CSS of the Shared Expenses page and made it usable for variable screen size #42" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edited the CSS of the Shared Expenses page and made it usable for variable screen size #42" />
   </component>
 </project>
