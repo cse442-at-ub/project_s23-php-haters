@@ -1,25 +1,18 @@
-body{
+body {
     background: #CDB7E9;
+}
+
+img[id='icon-pfp'] {
     position: fixed;
-}
-
-.icon {
-    width: 110px;
-    height: 80px;
-}
-
-.icon-pfp {
-    left: 95%;
+    width:5.5%;
+    top: 1%;
+    right: 2%;
 }
 
 /* Nav Bar*/
-
 header {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
+    height: 10%;
     display: flex;
 }
 
@@ -29,8 +22,8 @@ header * {
 }
 
 header li {
-    margin: 22px;
-    font-size: 15px;
+    margin: 6.5%;
+    font-size: 2vw; /* Use viewport width as font size */
     font-family: 'Inter', sans-serif;
     font-style: normal;
 }
@@ -38,102 +31,92 @@ header li {
 .nav-button {
     box-sizing: border-box;
     background: #EEE3A4;
-    padding: 20px 50px;
+    padding: 8% 16%; /* Use percentage for padding */
     border: 3px solid #000000;
     border-radius: 12px;
 }
+
 .h3 {
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 30px;
-    line-height: 36px;
+    font-size: 3vw;
+    line-height: 1.2;
     align-content: center;
 }
 
 /* Add Bill Button */
 button[class="add_bill"] {
-    position: absolute;
-    width: 231px;
-    height: 78px;
-    left: 38px;
-    top: 105px;
-    /*border: 5px;*/
+    margin-top: 7.5%;
+    padding: 1.5% 3%;
     background: #EEE3A4;
-    /*border: 3px solid #000000;*/
     border-radius: 12px;
+
+    font-size: 2vw; /* Use viewport width as font size */
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
 }
 
 /* Chart */
-
 div[id="donutchart"] {
     background: #CDB7E9;
     position: absolute;
-    width: 400px;
-    height: 180px;
-    left: 30px;
-    top: 230px;
+    width: 40%;
+    height: 20%;
+    left: 2%;
+    top: 30%;
 }
 
 /* Bill Section Background*/
-
 div[class="bill_section"] {
-    position: absolute;
-    width: 704px;
-    height: 655px;
-    left: 710px;
-    top: 105px;
+    position: fixed;
+    top: 15%;
+    right: 2%;
+    width: 50%;
+    height: 81%;
     overflow: auto;
-
     background: #FFFFFF;
     border-radius: 15px;
 }
 
 /* Bill Box */
-
 div[class="bill_box"] {
-    position: relative;
-    left: 4.4%;
-    right: 3.41%;
-    top: 4.85%;
-    bottom: 79.85%;
+    position: absolute;
+    left: 4%;
+    right: 4%;
+    top: 4%;
+    bottom: 80%;
     background: #EEE3A4;
     border-radius: 15px;
 }
 
 /* Bill Name */
-
 span[class="bill_Name"] {
     position: absolute;
-    left: 20.45%;
-    right: 63.49%;
-    top: 15%;
-    bottom: 87.75%;
-
+    left: 3%;
+    right: 30%;
+    top: 10%;
+    bottom: 90%;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 30px;
-    line-height: 36px;
-
+    font-size: 4vw;
+    line-height: 4.5vw;
     color: #000000;
 }
 
 /* Bill Date */
-
 span[class="bill_Date"] {
     position: absolute;
-    left: 20.45%;
-    right: 63.49%;
-    top: 50%;
-    bottom: 83.03%;
-
+    left: 3%;
+    right: 30%;
+    top: 40%;
+    bottom: 85%;
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 400;
-    font-size: 24px;
-    line-height: 29px;
-
+    font-size: 3vw;
+    line-height: 3.5vw;
     color: #000000;
 }
 

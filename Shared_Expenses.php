@@ -34,7 +34,6 @@ if (!$conn) {
 
             var data = google.visualization.arrayToDataTable([
                 ['Expense Name', 'Total Amount'],
-                ['Work',     11],
                 <?php
             while ($chart = mysqli_fetch_assoc($graph)) {
                 echo "['".$chart['expenseName']."',".$chart['totalAmt']."],";
@@ -60,7 +59,7 @@ if (!$conn) {
 <header>
     <div>
         <img class='icon' src="Saturn.png" alt="RoomAid">
-        <span class="h3"> RoomAid </span>
+        <span class="h3">RoomAid</span>
         <nav>
             <ul>
                 <li><a href="#" class="nav-button">Home</a></li>
@@ -70,7 +69,7 @@ if (!$conn) {
                 <li><a href="#" class="nav-button">Expenses</a></li>
             </ul>
         </nav>
-        <a href="#"><img class='icon icon-pfp' src="profile.png" alt="Profile"></a>
+        <a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a>
     </div>
 </header>
 
