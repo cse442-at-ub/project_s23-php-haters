@@ -48,3 +48,6 @@ $sql = "INSERT INTO allExpenses VALUES ('$u_bill', '$u_date', '$totalAmt',
 mysqli_query($mysqli, $sql);
 
 $mysqli->close();
+
+header('Location: shared-expenses.html');
+exit();
