@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c4c1c97-f272-480c-ae53-002e5dcd0437" name="Changes" comment="Edited the CSS of the Shared Expenses page and made it usable for variable screen size #42">
+    <list default="true" id="5c4c1c97-f272-480c-ae53-002e5dcd0437" name="Changes" comment="Moved all the files to a folder. Completed add bill feature for the Shared Expenses page. #42">
+      <change afterPath="$PROJECT_DIR$/Shared_Expenses/Saturn.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shared_Expenses/process-form.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shared_Expenses/profile.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Saturn.png" beforeDir="false" afterPath="$PROJECT_DIR$/Group_Info/Saturn.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared_Expenses.css" beforeDir="false" afterPath="$PROJECT_DIR$/Shared_Expenses/Shared_Expenses.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared_Expenses.php" beforeDir="false" afterPath="$PROJECT_DIR$/Shared_Expenses/Shared_Expenses.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile.png" beforeDir="false" afterPath="$PROJECT_DIR$/Group_Info/profile.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +26,11 @@
     <option name="NEW_BASE" value="fdb19b8" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Spring2-Group-Info-FE" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -45,6 +57,12 @@
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Group_Info" />
+      <recent name="$PROJECT_DIR$/Shared_Expenses" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -55,7 +73,9 @@
       <updated>1678892696776</updated>
       <workItem from="1678892699173" duration="1743000" />
       <workItem from="1678911745165" duration="2657000" />
-      <workItem from="1678934499076" duration="1049000" />
+      <workItem from="1678934499076" duration="2068000" />
+      <workItem from="1678936574795" duration="5365000" />
+      <workItem from="1678942502670" duration="836000" />
     </task>
     <task id="LOCAL-00001" summary="Worked on the displaying of the dough-nut chart using Google Chart API #42">
       <created>1678895169295</created>
@@ -71,7 +91,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678934621639</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Edited the CSS of the Shared Expenses page and made it usable for variable screen size #42">
+      <created>1678935732250</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1678935732250</updated>
+    </task>
+    <task id="LOCAL-00004" summary="BAsic UI for Group Info page. #42">
+      <created>1678941073010</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1678941073010</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -83,12 +117,17 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="Sprint2-shared-expenses-fe" />
+                        <option value="origin/Spring2-Shared-Expenses-FE" />
                       </list>
                     </value>
                   </entry>
@@ -106,12 +145,22 @@
             <list>
               <RecentGroup>
                 <option name="FILTER_VALUES">
-                  <option value="fdb19b8" />
+                  <option value="origin/Spring2-Shared-Expenses-FE" />
                 </option>
               </RecentGroup>
               <RecentGroup>
                 <option name="FILTER_VALUES">
-                  <option value="Spring2-Shared-Expenses-FE" />
+                  <option value="Sprint2-shared-expenses-fe" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
                 </option>
               </RecentGroup>
               <RecentGroup>
@@ -121,7 +170,17 @@
               </RecentGroup>
               <RecentGroup>
                 <option name="FILTER_VALUES">
-                  <option value="HEAD" />
+                  <option value="Spring2-Group-Info-FE" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="fdb19b8" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="Spring2-Shared-Expenses-FE" />
                 </option>
               </RecentGroup>
             </list>
@@ -133,6 +192,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Worked on the displaying of the dough-nut chart using Google Chart API #42" />
     <MESSAGE value="Edited the CSS of the Shared Expenses page and made it usable for variable screen size #42" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edited the CSS of the Shared Expenses page and made it usable for variable screen size #42" />
+    <MESSAGE value="Basic UI for Group Info page. #45" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic UI for Group Info page. #45" />
   </component>
 </project>
