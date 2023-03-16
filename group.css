@@ -1,0 +1,137 @@
+body {
+    background: #CDB7E9;
+}
+
+img[id='icon-pfp'] {
+    position: fixed;
+    width:5.5%;
+    top: 1%;
+    right: 2%;
+}
+
+/* Nav Bar*/
+header {
+    position: fixed;
+    height: 10%;
+    display: flex;
+}
+
+header * {
+    display: flex;
+    align-items: center;
+}
+
+header li {
+    margin: 6.5%;
+    font-size: 2vw; /* Use viewport width as font size */
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+}
+
+.nav-button {
+    box-sizing: border-box;
+    background: #EEE3A4;
+    padding: 8% 16%; /* Use percentage for padding */
+    border: 3px solid #000000;
+    border-radius: 12px;
+}
+
+.h3 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3vw;
+    align-content: center;
+}
+
+/* Invite Button */
+
+button[id="invite"] {
+    position: absolute;
+    width: 22%;
+    height: 6%;
+    left: 22%;
+    top: 90%;
+    /*border: 5px;*/
+    background: #EEE3A4;
+    border-radius: 15px;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1vw;
+
+    color: #000000;
+}
+
+/* Leave Group Button */
+
+button[id="leave_group"] {
+    position: absolute;
+    width: 22%;
+    height: 6%;
+    right: 22%;
+    top: 90%;
+    /*border: 5px;*/
+    background: #EEE3A4;
+    border-radius: 15px;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1vw;
+
+    color: #000000;
+}
+
+/* Group Rectangle Box */
+
+div[id="group_box"] {
+    position: absolute;
+    width: 56%;
+    height: 68%;
+    left: 22%;
+    top: 20%;
+
+    background: #FFFFFF;
+    border-radius: 15px;
+}
+
+/* Group Name */
+
+.group_name {
+    position: absolute;
+    left: 44%;
+    top: 13%;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.5vw;
+
+    color: #000000;
+}
+
+/* profile pic */
+
+img[id="profile"] {
+    position: absolute;
+    left: 5%;
+    top: 5%;
+    width: 8.5%;
+}
+
+/* [Me] */
+
+span[id="name"]{
+    position: absolute;
+    left: 15%;
+    top: 9%;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2vw;
+
+    color: #000000;
+}
