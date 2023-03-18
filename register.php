@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 }
 function nameValidator($name): bool
 {
-    if(!preg_match("/^[a-zA-Z]+$/", $name)){ // check if name contains only letters
+    if(!preg_match("/^[a-zA-Z\s]+$/", $name)){ // check if name contains only letters
         return true; // return true if name is invalid
     }
     else{
