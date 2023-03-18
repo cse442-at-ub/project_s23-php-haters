@@ -38,7 +38,7 @@ $owed4 = ($u_owed4 == '') ? 0.00 : $u_owed4;
 
 $totalAmt = $owed4 + $owed3 + $owed2 + $owed1;
 
-$sql = "INSERT INTO allExpenses VALUES ('$u_bill', '$u_date', '$totalAmt', 
+$sql = "INSERT INTO allExpensesV2 VALUES ('$u_bill', '$u_date', '$totalAmt', 
                                 '$current_user', '$owed1', 
                                 '$User2','$owed2', 
                                 '$User3','$owed3', 
