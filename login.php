@@ -48,7 +48,7 @@ function checkLogin($conn){
         $id = $_SESSION['username']; // get the user's username from the session variable
         $query = "SELECT * FROM users WHERE usersUsername = '$id' limit 1;"; // query the database to get the user's data
         $result = mysqli_query($conn, $query); // execute the query
-        header("location: forgotpw.php");
+        header("location: home.html");
         exit();
     }
     die();
@@ -68,7 +68,7 @@ if (isset($_POST["username"])){
     $_SESSION["username"] = $username;
 
     checkLogin($conn);
-    header("location: forgotpw.php");
+    header("location: home.html");
     exit();
 }
 ?>
