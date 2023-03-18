@@ -69,11 +69,13 @@ div[class="bill_section"] {
 
 /* Bill Box */
 div[class="bill_box"] {
-    position: absolute;
-    left: 4%;
-    right: 4%;
-    top: 4%;
-    bottom: 80%;
+    position: relative;
+    width: 85%;
+    left: 3.5%;
+    height: 10%;
+    padding: 2% 4%;
+    top: 3%;
+
     background: #EEE3A4;
     border-radius: 15px;
 }
@@ -81,46 +83,39 @@ div[class="bill_box"] {
 /* Bill Name */
 span[class="bill_Name"] {
     position: absolute;
-    left: 3%;
-    right: 30%;
-    top: 10%;
-    bottom: 90%;
+    left: 20%;
+    top: 25%;
+
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 4vw;
-    line-height: 4.5vw;
+    font-size: 2vw;
     color: #000000;
 }
 
 /* Bill Date */
 span[class="bill_Date"] {
     position: absolute;
-    left: 3%;
-    right: 30%;
-    top: 40%;
-    bottom: 85%;
+    left: 20.45%;
+    top: 60%;
+
     font-family: 'Inter', sans-serif;
     font-style: normal;
-    font-weight: 400;
-    font-size: 3vw;
-    line-height: 3.5vw;
+    font-weight: 700;
+    font-size: 1vw;
     color: #000000;
 }
 
 /* Bill Amount */
 span[class="bill_Amount"]{
     position: absolute;
-    left: 63%;
-    right: 23.72%;
-    top: 26%;
-    bottom: 85.63%;
+    left: 65%;
+    top: 40%;
 
     font-family: 'Inter', sans-serif;
     font-style: normal;
     font-weight: 700;
-    font-size: 30px;
-    line-height: 36px;
+    font-size: 1.5vw;
 
     color: #000000;
 }
@@ -256,3 +251,71 @@ button[class="btn cancel"] {
 
     background: #EEE3A4;
 }
+
+/*Not displaying fancy for Sprint 2 so working with the basic functionality for now*/
+
+/*!*Bill Info Form*!*/
+
+/*.info-from {*/
+/*    display: none;*/
+/*    position: fixed;*/
+/*    left: 73%;*/
+/*    width: 50%;*/
+/*    height: 50%;*/
+/*    bottom: -5%;*/
+/*    transform: translateX(-50%);*/
+/*    box-sizing: border-box;*/
+/*    background: #EEE3A4;*/
+/*    border: 3px solid #000000;*/
+/*    border-radius: 25px;*/
+/*    z-index: 9999;*/
+/*}*/
+
+/*@keyframes form-transition {*/
+/*    0% {*/
+/*        bottom: -100%;*/
+/*    }*/
+/*    100% {*/
+/*        bottom: 50%;*/
+/*    }*/
+/*}*/
+
+/*button[class="back"] {*/
+/*    position: absolute;*/
+/*    width: 18%;*/
+/*    padding: 0.5% 1%;*/
+/*    margin-top: 3%;*/
+/*    right: 3%;*/
+/*    border-radius: 20px;*/
+
+
+/*    background: #CDB7E9;*/
+/*    border: 3px solid #000000;*/
+/*}*/
+
+/*span[id="expense_name"] {*/
+/*    position: absolute;*/
+/*    left: 5%;*/
+/*    top: 3%;*/
+
+/*    font-family: 'Inter', sans-serif;*/
+/*    font-style: normal;*/
+/*    font-weight: 700;*/
+/*    font-size: 2.5vw;*/
+
+/*    color: #000000;*/
+
+/*}*/
+
+/*span[id="date"] {*/
+/*    position: absolute;*/
+/*    left: 5%;*/
+/*    top: 13%;*/
+
+/*    font-family: 'Inter', sans-serif;*/
+/*    font-style: normal;*/
+/*    font-weight: 700;*/
+/*    font-size: 2vw;*/
+
+/*    color: #000000;*/
+/*}*/
