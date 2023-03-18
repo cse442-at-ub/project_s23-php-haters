@@ -70,24 +70,29 @@ if(isset($_POST["fname"])){
     $username = mysqli_real_escape_string($conn,$_POST["username"]);
     $ps = mysqli_real_escape_string($conn,$_POST["password"]);
 
-    if(nameValidator($name) !== false){
-        header("location: register.php?error=badName");
+    if (nameValidator($name) !== false) {
+        $_SESSION['error'] = 'Sorry, there was an error with your name.';
+        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "register.php";</script>';
         exit();
     }
     if(usernameValidator($username) !== false){
-        header("location: register.php?error=badUsername");
+        $_SESSION['error'] = 'Sorry, there was an error with your username.';
+        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "register.php";</script>';
         exit();
     }
     if(emailMatch($email, $confirmEmail) !== false){
-        header("location: register.php?error=emailDidNotMatch");
+        $_SESSION['error'] = 'Sorry, the emails did not match.';
+        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "register.php";</script>';
         exit();
     }
     if(usernameInDatabase($conn, $username, $email)){
-        header("location: register.php?error=usernameInUse");
+        $_SESSION['error'] = 'Sorry, the username already exists.';
+        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "register.php";</script>';
         exit();
     }
     if(check_password_strength($ps)){
-        header("location: register.php?error=weakPassword");
+        $_SESSION['error'] = 'Please enter a password with less than 20 characters including uppercase, lowercase, numeric and special characters.';
+        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "register.php";</script>';
         exit();
     }
 
