@@ -1,0 +1,143 @@
+/* User Home Page */
+
+body {
+    background-color: #CDB7E9;
+}
+
+.icon {
+    position: relative;
+    width: 10%;
+    height: 10vh;
+}
+
+.icon-pfp {
+    /*position: relative;*/
+    /*width: 30%;*/
+    top: 0;
+    right: 0;
+    height: 10vh;
+}
+
+/* Nav Bar*/
+
+header {
+    width: 100%;
+    position: static;
+    height: 10vh;
+    display: flex;
+}
+
+header * {
+    display: flex;
+    align-items: center;
+}
+
+header li {
+    margin-right: 1%;
+    font-size: 15px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+}
+
+.nav-button {
+    box-sizing: border-box;
+    background: #EEE3A4;
+    padding: 3vh 8vh;
+    border: 3px solid #000000;
+    border-radius: 10px;
+    margin-right: 5vh;
+}
+
+/* Website Name*/
+
+.h3 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    align-content: center;
+}
+
+/* Greeting in the center-ish */
+
+.greeting {
+    margin-top: 4.5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    padding: 10px;
+}
+
+.h2 {
+    font-family: Inter, sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 61px;
+    letter-spacing: 0;
+    text-align: center;
+}
+.below-h2{
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+/* 3 Data Bars */
+
+.container {
+    display: flex;
+    height: auto;
+    text-align: center;
+}
+
+.money {
+    float: left;
+    width: 20%;
+    background-color: rgba(229, 3, 3, 0.4);
+    border: 3px solid #000000;
+    border-radius: 25px;
+    margin-left: 10%;
+}
+
+.todo {
+    float: left;
+    width: 20%;
+    background-color: rgba(255, 196, 84, 0.67);
+    margin-left: 10%;
+    margin-right: 10%;
+    border: 3px solid #000000;
+    border-radius: 25px;
+}
+
+.empty {
+    float: right;
+    width: 20%;
+    background-color: rgba(151, 71, 255, 0.47);
+    border: 3px solid #000000;
+    border-radius: 25px;
+}
+
+.inside-rectangles {
+    border-radius: 5px;
+    background: white;
+    padding: 16px 16px;
+    margin-left: 1%;
+    margin-right: 1%;
+    border: none;
+}
+
+p {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    align-content: center;
+}
+
+

@@ -1,0 +1,45 @@
+.expense-details {
+    position: fixed;
+    width: 50%;
+    height: 40%;
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    background: #EEE3A4;
+    border: 3px solid #000000;
+    border-radius: 25px;
+    z-index: 9999;
+}
+
+.h2 {
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    bottom: 75%;
+    font-size: 2vw;
+    font-family: 'Inter', sans-serif;
+}
+
+.h3 {
+    position: absolute;
+    bottom: 75%;
+    left: 40%;
+    font-size: 1.5vw;
+    font-family: 'Inter', sans-serif;
+}
+
+table, th, td {
+    border: 3px solid#000000;
+}
+table {
+    text-alignalign: center;
+    border-collapse: collapse;
+    margin-top: 12%;
+    margin-left: 36%;
+    border-radius: 15px;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-size: 2vw;
+}

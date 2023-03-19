@@ -1,0 +1,123 @@
+body{
+    background: #CDB7E9;
+}
+
+/* Group Search bar */
+
+input[id="search"] {
+    display: block;
+    position: absolute;
+    width: 50%;
+    height: 10%;
+    right: 25%;
+    top: 10%;
+    cursor: text;
+    background: #EEE3A4;
+    border-radius: 15px;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2vw;
+    text-align: center;
+
+    color: #000000;
+}
+
+/* Create A Room Button */
+
+button[class="open-button"] {
+    padding: 2% 4%;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    top: 50%;
+    right: 41%;
+    border-radius: 15px;
+
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5vw;
+
+    background-color: #EEE3A4;
+    color: #000000;
+}
+
+/* Pop-up Form*/
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    width: 50%;
+    height: 40%;
+    bottom: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    background: #EEE3A4;
+    border: 3px solid #000000;
+    border-radius: 25px;
+    z-index: 9999;
+}
+
+@keyframes form-transition {
+    0% {
+        bottom: -100%;
+    }
+    100% {
+        bottom: 50%;
+    }
+}
+
+input[id="grpname"]{
+    position: absolute;
+    right: 28%;
+    border: 3px solid #000000;
+    background: #CDB7E9;
+    border-radius: 15px;
+    text-align: center;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal; font-weight: 400;
+    font-size: 2vw;
+}
+
+/* Set a style for the Create/Cancel button */
+button[class="btn"] {
+    cursor: pointer;
+    position: absolute;
+    width: 13%;
+    height: 10%;
+    right: 10%;
+    top: 65%;
+    border-radius: 12px;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5vw;
+
+    background: #CDB7E9;
+}
+
+button[class="btn cancel"] {
+    cursor: pointer;
+    position: absolute;
+    width: 13%;
+    height: 10%;
+    right: 25%;
+    top: 65%;
+    border-radius: 12px;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5vw;
+
+    background: #EEE3A4;
+}
+
