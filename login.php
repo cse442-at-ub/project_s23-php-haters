@@ -61,7 +61,8 @@ if (isset($_POST["username"])){
     $user = getUser($conn, $username, $password);
 
     if(!$user){
-        header("location: login.php?error=loginFailed");
+        $_SESSION['error'] = 'Username and password did not match.';
+        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "register.php";</script>';
         exit();
     }
 
