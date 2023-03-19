@@ -53,5 +53,5 @@ mysqli_query($mysqli, $sql);
 
 $mysqli->close();
 
-header('Location: shared-expenses.html');
+header('Location: Shared_Expenses.php');
 exit();
