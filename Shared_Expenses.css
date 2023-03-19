@@ -1,0 +1,321 @@
+body {
+    background: #CDB7E9;
+}
+
+img[id='icon-pfp'] {
+    position: fixed;
+    width:5.5%;
+    top: 1%;
+    right: 2%;
+}
+
+/* Nav Bar*/
+header {
+    position: fixed;
+    height: 10%;
+    display: flex;
+}
+
+header * {
+    display: flex;
+    align-items: center;
+}
+
+header li {
+    margin: 6.5%;
+    font-size: 2vw; /* Use viewport width as font size */
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+}
+
+.nav-button {
+    box-sizing: border-box;
+    background: #EEE3A4;
+    padding: 8% 16%; /* Use percentage for padding */
+    border: 3px solid #000000;
+    border-radius: 12px;
+}
+
+.h3 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3vw;
+    line-height: 1.2;
+    align-content: center;
+}
+
+/* Chart */
+div[id="donutchart"] {
+    background: #CDB7E9;
+    position: absolute;
+    width: 40%;
+    height: 20%;
+    left: 2%;
+    top: 30%;
+}
+
+/* Bill Section Background*/
+div[class="bill_section"] {
+    position: fixed;
+    top: 15%;
+    right: 2%;
+    width: 50%;
+    height: 81%;
+    overflow: auto;
+    background: #FFFFFF;
+    border-radius: 15px;
+}
+
+/* Bill Box */
+div[class="bill_box"] {
+    position: relative;
+    width: 85%;
+    left: 3.5%;
+    height: 10%;
+    padding: 2% 4%;
+    top: 3%;
+
+    background: #EEE3A4;
+    border-radius: 15px;
+}
+
+/* Bill Name */
+span[class="bill_Name"] {
+    position: absolute;
+    left: 20%;
+    top: 25%;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2vw;
+    color: #000000;
+}
+
+/* Bill Date */
+span[class="bill_Date"] {
+    position: absolute;
+    left: 20.45%;
+    top: 60%;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1vw;
+    color: #000000;
+}
+
+/* Bill Amount */
+span[class="bill_Amount"]{
+    position: absolute;
+    left: 65%;
+    top: 40%;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.5vw;
+
+    color: #000000;
+}
+
+/* Add Bill Button */
+
+button[class="add_bill"] {
+    margin-top: 7.5%;
+    padding: 1.5% 3%;
+    background: #EEE3A4;
+    border-radius: 12px;
+
+    font-size: 2vw; /* Use viewport width as font size */
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+}
+
+/* Add Bill Form */
+.form-container {
+    display: none;
+    position: fixed;
+    width: 80%;
+    height: 50%;
+    bottom: -5%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    background: #EEE3A4;
+    border: 3px solid #000000;
+    border-radius: 25px;
+    z-index: 9999;
+}
+
+@keyframes form-transition {
+    0% {
+        bottom: -100%;
+    }
+    100% {
+        bottom: 50%;
+    }
+}
+
+input[id="Name"] {
+    position: absolute;
+    width: 25%;
+    height: 10%;
+    left: 10%;
+    top: 15%;
+    border-radius: 12px;
+    border: 3px solid #000000;
+
+    background: #CDB7E9;
+}
+
+input[id="Date"] {
+    position: absolute;
+    width: 25%;
+    height: 10%;
+    right: 10%;
+    top: 15%;
+    border-radius: 12px;
+    border: 3px solid #000000;
+
+    background: #CDB7E9;
+}
+
+input[id="User_1"] {
+    position: absolute;
+    width: 25%;
+    height: 10%;
+    left: 10%;
+    top: 30%;
+    border-radius: 12px;
+    border: 3px solid #000000;
+
+    background: #CDB7E9;
+}
+
+input[id="User_2"] {
+    position: absolute;
+    width: 25%;
+    height: 10%;
+    right: 10%;
+    top: 30%;
+    border-radius: 12px;
+    border: 3px solid #000000;
+
+    background: #CDB7E9;
+}
+
+input[id="User_3"] {
+    position: absolute;
+    width: 25%;
+    height: 10%;
+    left: 10%;
+    top: 45%;
+    border-radius: 12px;
+    border: 3px solid #000000;
+
+    background: #CDB7E9;
+}
+
+input[id="User_4"] {
+    position: absolute;
+    width: 25%;
+    height: 10%;
+    right: 10%;
+    top: 45%;
+    border-radius: 12px;
+    border: 3px solid #000000;
+
+    background: #CDB7E9;
+}
+
+button[class="btn"] {
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    right: 10%;
+    top: 65%;
+    border-radius: 12px;
+
+    background: #CDB7E9;
+}
+
+button[class="btn cancel"] {
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    right: 25%;
+    top: 65%;
+    border-radius: 12px;
+
+    background: #EEE3A4;
+}
+
+/*Not displaying fancy for Sprint 2 so working with the basic functionality for now*/
+
+/*!*Bill Info Form*!*/
+
+/*.info-from {*/
+/*    display: none;*/
+/*    position: fixed;*/
+/*    left: 73%;*/
+/*    width: 50%;*/
+/*    height: 50%;*/
+/*    bottom: -5%;*/
+/*    transform: translateX(-50%);*/
+/*    box-sizing: border-box;*/
+/*    background: #EEE3A4;*/
+/*    border: 3px solid #000000;*/
+/*    border-radius: 25px;*/
+/*    z-index: 9999;*/
+/*}*/
+
+/*@keyframes form-transition {*/
+/*    0% {*/
+/*        bottom: -100%;*/
+/*    }*/
+/*    100% {*/
+/*        bottom: 50%;*/
+/*    }*/
+/*}*/
+
+/*button[class="back"] {*/
+/*    position: absolute;*/
+/*    width: 18%;*/
+/*    padding: 0.5% 1%;*/
+/*    margin-top: 3%;*/
+/*    right: 3%;*/
+/*    border-radius: 20px;*/
+
+
+/*    background: #CDB7E9;*/
+/*    border: 3px solid #000000;*/
+/*}*/
+
+/*span[id="expense_name"] {*/
+/*    position: absolute;*/
+/*    left: 5%;*/
+/*    top: 3%;*/
+
+/*    font-family: 'Inter', sans-serif;*/
+/*    font-style: normal;*/
+/*    font-weight: 700;*/
+/*    font-size: 2.5vw;*/
+
+/*    color: #000000;*/
+
+/*}*/
+
+/*span[id="date"] {*/
+/*    position: absolute;*/
+/*    left: 5%;*/
+/*    top: 13%;*/
+
+/*    font-family: 'Inter', sans-serif;*/
+/*    font-style: normal;*/
+/*    font-weight: 700;*/
+/*    font-size: 2vw;*/
+
+/*    color: #000000;*/
+/*}*/
