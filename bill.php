@@ -3,17 +3,17 @@
 $current_user = $_SESSION['username'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {     //Check it is coming from a form
-    $u_bill = $_POST["bill"];                   //set PHP variables like this so we can use them anywhere in code below
-    $u_date = $_POST["date"];
+    $u_bill = $_POST["Bill_Name"];                   //set PHP variables like this so we can use them anywhere in code below
+    $u_date = $_POST["Date"];
     $u_date = date('Y-m-d', strtotime($u_date));
 //    print($u_date);
-    $u_owed1 = $_POST["user1"];
+    $u_owed1 = $_POST["U1"];
     $User2 = $_POST["username2"];
-    $u_owed2 = $_POST["user2"];
+    $u_owed2 = $_POST["U2"];
     $User3 = $_POST["username3"];
-    $u_owed3 = $_POST["user3"];
+    $u_owed3 = $_POST["U3"];
     $User4 = $_POST["username4"];
-    $u_owed4 = $_POST["user4"];
+    $u_owed4 = $_POST["U4"];
 }
 
 
