@@ -110,7 +110,7 @@ $graph = mysqli_query($conn, $sql);
     <button class="add_bill" onclick="openBillForm()"><span id="add_bill"> + Add Bill</span></button>
 </div>
 <div class="form-container" id="form-container">
-    <form action="/process-form.php" method="post" name="addBillForm" onsubmit="textClear()">
+    <form action="/bill.php" method="post" name="addBillForm" onsubmit="textClear()">
 
         <input type="text" id="Name" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 1.5vw" placeholder="Enter Bill Name" name="Bill_Name" required>
         <input type="date" id="Date" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 1.5vw" placeholder="EDate" name="Date" required>
