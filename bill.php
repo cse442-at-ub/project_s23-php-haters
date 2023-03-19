@@ -1,19 +1,23 @@
 <?php
 //add-bill.php
-$current_user = $_SESSION['username'];
+//$current_user = $_SESSION['username'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {     //Check it is coming from a form
-    $u_bill = $_POST["bill"];                   //set PHP variables like this so we can use them anywhere in code below
-    $u_date = $_POST["date"];
+    $u_bill = $_POST["Bill_Name"];                   //set PHP variables like this so we can use them anywhere in code below
+    $u_date = $_POST["Date"];
     $u_date = date('Y-m-d', strtotime($u_date));
 //    print($u_date);
-    $u_owed1 = $_POST["user1"];
-    $User2 = $_POST["username2"];
-    $u_owed2 = $_POST["user2"];
-    $User3 = $_POST["username3"];
-    $u_owed3 = $_POST["user3"];
-    $User4 = $_POST["username4"];
-    $u_owed4 = $_POST["user4"];
+    $User1 = "hGilmore909";
+    $u_owed1 = $_POST["U1"];
+//    $User2 = $_POST["username2"];
+    $User2 = "arpithir";
+    $u_owed2 = $_POST["U2"];
+//    $User3 = $_POST["username3"];
+    $User3 = "Adam";
+    $u_owed3 = $_POST["U3"];
+//    $User4 = $_POST["username4"];
+    $User4 = "Ben";
+    $u_owed4 = $_POST["U4"];
 }
 
 
@@ -39,7 +43,7 @@ $owed4 = ($u_owed4 == '') ? 0.00 : $u_owed4;
 $totalAmt = $owed4 + $owed3 + $owed2 + $owed1;
 
 $sql = "INSERT INTO allExpensesV2 VALUES ('$u_bill', '$u_date', '$totalAmt', 
-                                '$current_user', '$owed1', 
+                                '$User1', '$owed1', 
                                 '$User2','$owed2', 
                                 '$User3','$owed3', 
                                 '$User4','$owed4')";
