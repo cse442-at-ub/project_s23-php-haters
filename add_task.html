@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<header>
+    <link rel="stylesheet" href="add_task.css">
+        <img class='icon' src="Saturn.png" alt="RoomAid">
+        <span class="h3">RoomAid</span>
+        <nav>
+            <ul>
+                <li><a href="home.html" class="nav-button">Home</a></li>
+                <li><a href="#" class="nav-button">Schedule</a></li>
+                <li><a href="#" class="nav-button">Calendar</a></li>
+                <li><a href="#" class="nav-button">Inventory</a></li>
+                <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>
+            </ul>
+        </nav>
+        <a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a>
+</header>
+<body>
+    <div>
+        <form class="form_style" method="post" action="add_task.php">
+            <label for="task-name">Task Name:</label>
+            <input type="text" id="task-name" name="task-name" required><br>
+
+            <label for="priority">Priority:</label>
+            <select id="priority" name="priority" autocomplete="off" required>
+                <option value="" selected></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <br>
+
+            <label for="due-date">Due Date:</label>
+            <input type="date" id="due-date" name="due-date" required><br>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+/* ALL FROM OTHER FILES*/
+/* Nav Bar*/
+header {
+    position: fixed;
+    height: 10%;
+    display: flex;
+}
+
+header * {
+    display: flex;
+    align-items: center;
+}
+
+header li {
+    margin: 6.5%;
+    font-size: 2vw; /* Use viewport width as font size */
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+}
+
+.nav-button {
+    box-sizing: border-box;
+    background: #EEE3A4;
+    padding: 8% 16%; /* Use percentage for padding */
+    border: 3px solid #000000;
+    border-radius: 12px;
+}
+
+.h3 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3vw;
+    line-height: 1.2;
+    align-content: center;
+}
+
+body {
+    background: #CDB7E9;
+}
+
+img[id='icon-pfp'] {
+    position: fixed;
+    width:5.5%;
+    top: 1%;
+    right: 2%;
+}
+/* ^ALL FROM OTHER FILES^ */
+
+div {
+    display: block;
+}
+
+.form_style {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
