@@ -25,14 +25,14 @@ function getGroupName($username, $mysqli){
     $stmt->bind_param("ssss", $name, $name, $name, $name);
     $stmt->execute();               // Find the group the user is in
     $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
     $stmt->close();
-    $mysqli->close();
-    return $row["groupName"];
+
+    return $result;
+//    $row = $result->fetch_assoc();
+//    return $row["groupName"];
 }
 
 function getTasks($groupName, $mysqli){
-//    echo $groupName;
 
     $stmt = $mysqli->prepare("SELECT * FROM tasks WHERE groupName = ?");
     $stmt->bind_param("s", $groupName);
@@ -41,10 +41,9 @@ function getTasks($groupName, $mysqli){
     $stmt->close();
     $mysqli->close();
 
-    $rows = array();
-    while ($row = $result->fetch_assoc()) {
-        $rows[] = $row;
-    }
+    return $result;
+}
 
-    return $rows;
+function removeOverdue(){
+    connect();
 }
