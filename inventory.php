@@ -1,3 +1,26 @@
+<?php
+session_start();
+$host = "oceanus.cse.buffalo.edu";
+$user = "accartwr";
+$password = "50432097";
+$database = "cse442_2023_spring_team_ae_db";
+$conn = mysqli_connect($host, $user, $password, $database);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+//    Find group
+$current_user = $_SESSION['username'];
+$sql = "SELECT groupName FROM groupTest WHERE username = ?";
+//  Block pesky SQL injections with prepared statement ;)
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $current_user); // BIND
+$stmt->execute();
+$stmt->store_result();
+$stmt->bind_result($groupName); // BIND
+$result_group  = $stmt->fetch(); // Fetching groupName
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,14 +31,12 @@
             position: relative;
             height: 10vh;
         }
-
         header {
             width: 100%;
             position: static;
             height: 10vh;
             display: flex;
         }
-
         header * {
             display: flex;
             align-items: center;
@@ -27,7 +48,10 @@
             font-family: 'Inter', sans-serif;
             font-style: normal;
         }
-
+        header li a {
+            color: black;
+            text-decoration: none;
+        }
         .nav-button {
             box-sizing: border-box;
             background: #EEE3A4;
@@ -36,7 +60,6 @@
             border-radius: 10px;
             margin-right: 5vh;
         }
-
         /* main  Webpage  */
         .title {
             text-align: center;
@@ -66,7 +89,6 @@
             left: 10%;
             border: 2px solid black;
         }
-
         .item {
             background-color: #F3ECC1;
             color: #000000;
@@ -78,8 +100,6 @@
             justify-content: space-between;
             align-items: center;
         }
-
-
         .item div {
             display: flex;
             flex-direction: row;
@@ -87,24 +107,20 @@
             align-items: center;
             width: 100%;
         }
-
         .item strong {
             font-size: 20px;
             margin-right: 10px;
         }
-
         .item span {
             font-size: 20px;
             font-weight: bold;
             margin-right: 10px;
         }
-
         .item button {
             font-size: 20px;
             font-weight: bold;
             margin-right: 10px;
         }
-
         .btn {
             background-color: #FFFFFF;
             color: #000000;
@@ -116,7 +132,6 @@
             font-size: 50px;
             line-height: 1.5;
         }
-
         #add-item-btn {
             background-color: #EEE3A4;
             color: #000000;
@@ -128,7 +143,6 @@
             display: block; /* make button a block element to center it vertically for now */
             /*margin-top: 10px; !* top margin to put space between button and nav bar!!  */
         }
-
         /*adding new item-  trying to fix layout for new items so it matches others */
         form {
             display: flex;
@@ -136,16 +150,13 @@
             align-items: center;
             margin-top: 25px; /* Add this line to match the margin of the other items */
         }
-
         form > * {
             margin-bottom: 15px; /* this shud match the margin of the other items???...ahhh idk */
         }
-
         form label {
             font-size: 20px;
             margin-right: 10px;
         }
-
         form input {
             padding: 5px;
             font-size: 20px;
@@ -166,7 +177,6 @@
             overflow: auto;
             background-color: rgba(0, 0, 0, 0.4);
         }
-
         #add-item-modal form {
             background-color: #F3ECC1;
             margin: auto;
@@ -174,12 +184,10 @@
             border: 2px solid #000000;
             width: 80%;
         }
-
         #add-item-modal form label {
             font-size: 20px;
             margin-right: 10px;
         }
-
         #add-item-modal form input {
             padding: 5px;
             font-size: 20px;
@@ -211,24 +219,21 @@
         <span class="h3"> RoomAid </span>
         <nav>
             <ul>
-                <li><a href="#" class="nav-button">Home</a></li>
+                <li><a href="home2.php" class="nav-button">Home</a></li>
                 <li><a href="#" class="nav-button">Schedule</a></li>
-                <li><a href="#" class="nav-button">Calendar</a></li>
-                <li><a href="#" class="nav-button">Inventory</a></li>
-                <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>
+                <li><a href="#" class="nav-button">Group</a></li>
+                <li><a href="simpleUI.php" class="nav-button">Inventory</a></li>
+                <li><a href="SharedExpenses.php" class="nav-button">Expenses</a></li>
                 <li><a href="#"><img class='icon-pfp' src="Giraffe.png" alt="Profile"></a></li>
                 </li>
             </ul>
         </nav>
     </div>
 </header>
-
 <!--  Buttons above the scroll box   -->
-
 <div>
     <button id="add-item-btn" class="btn" style="background-color: #EEE3A4; color: #000000;" onclick="showAddItemBox()">Add Item</button>
 </div>
-
 
 <!--add item pop up box-->
 <div id="add-item-modal" style="display: none;">
@@ -246,38 +251,49 @@
         <button class="btn" type="button" onclick="hideAddItemBox()">Close</button>
     </form>
 </div>
-
-
 <div class="title">
-    <h2 style="font-family: sans-serif;">MY SHARED INVENTORY:</h2>
+    <?php if (!$result_group) { ?>
+        <h2 style="font-family: cursive;">Hello <?php echo $_SESSION['username'] ;?>, You must join a group to view inventory!</h2>
+    <?php } else { ?>
+        <h2 style="font-family: cursive;">Hello <?php echo $_SESSION['username'] ;?>, Your viewing <?php echo $groupName;?>'s inventory items:</h2>
+    <?php } ?>
 </div>
 
-<!--SCROLL BAR STATIC OBJECTS FOR NOW?-->
-<div class="scroll-box">
-    <?php
-    // Static inventory data
-    $inventory = array(
-        array("name" => "Item 1", "quantity" => 10, "tag" => "Tag 1"),
-        array("name" => "Item 2", "quantity" => 5, "tag" => "Tag 2"),
-        array("name" => "Item 3", "quantity" => 15, "tag" => "Tag 3"),
-        array("name" => "Item 4", "quantity" => 20, "tag" => "Tag 4"),
-        array("name" => "Item 5", "quantity" => 7, "tag" => "Tag 5"),
-        array("name" => "Item 6", "quantity" => 12, "tag" => "Tag 6")
-    );
 
-    // Display inventory items
-    foreach ($inventory as $item) {
-        echo "<div class='item'>";
-        echo "<div>";
-        echo "<strong>Name:</strong> " . $item['name'] . "<br>";
-        echo "<strong>Quantity:</strong> ";
-        echo "<button class='btn minus-btn' data-id='".$item['name']."'>-</button>";
-        echo "<span class='quantity'>".$item['quantity']."</span>";
-        echo "<button class='btn plus-btn' data-id='".$item['name']."'>+</button>";
-        echo "<br><strong>Tag:</strong> " . $item['tag'];
-        echo "</div>";
-        echo "</div>";
+<!--SCROLL BOX  -->
+<div class="scroll-box">
+
+
+
+    <?php
+    if (!$result_group) {
+        echo "$current_user must join a group to view inventory!";
+    } else {
+        $sql_inventory = "SELECT itemName as name, quantity, tag1 as tag FROM groupInventory WHERE groupName = ?";
+        $stmt_inventory = $conn->prepare($sql_inventory);
+        $stmt_inventory->bind_param("s", $groupName);
+        $stmt_inventory->execute();
+        $result_inventory = $stmt_inventory->get_result();
+        $inventory = $result_inventory->fetch_all(MYSQLI_ASSOC);
+
+
+        // Display inventory items
+        echo "Inventory for group: $groupName viewed by: $current_user.";
+        foreach ($inventory as $item) {
+            echo "<div class='item'>";
+            echo "<div>";
+            echo "<strong>Name:</strong> " . $item['name'] . "<br>";
+            echo "<strong>Quantity:</strong> ";
+            echo "<button class='btn minus-btn' data-id='" . $item['name'] . "'>-</button>";
+            echo "<span class='quantity'>" . $item['quantity'] . "</span>";
+            echo "<button class='btn plus-btn' data-id='" . $item['name'] . "'>+</button>";
+            echo "<br><strong>Tag:</strong> " . $item['tag'];
+            echo "</div>";
+            echo "</div>";
+        }
     }
+    $stmt->close();
+    $stmt_inventory->close();
     ?>
 </div>
 
@@ -286,7 +302,7 @@
     const modal = document.getElementById("add-item-modal");
     const form = modal.querySelector("form");
 
-    // function showAddItemBox() {// javascript can dynamically show/hide forms to enter info ;)
+    // function showAddItemBox() {// javascript can dynamically show/hide forms to enter info
     //     document.getElementById("add-item-box").style.display = "block";
     // }
     function showAddItemBox() {
@@ -373,9 +389,13 @@
             if (quantity > 0) {
                 quantity--;
                 quantityEl.innerText = quantity;
-                if (quantity < 3) {
+                if (quantity > 0 && quantity < 3) {
                     //btn.parentElement.parentElement.style.backgroundColor = "#E50303"; //do 40% of this??
-                    btn.parentElement.parentElement.style.backgroundColor = "#F27A93"; //lighter red looks bettr
+                    btn.parentElement.parentElement.style.backgroundColor = "#f69661";
+                }else if(quantity == 0){
+                    btn.parentElement.parentElement.style.backgroundColor = "#e83939"
+                }else{
+                    btn.parentElement.parentElement.style.backgroundColor = "#F3ECC1";
                 }
             }
         });
@@ -389,38 +409,14 @@
             let quantity = parseInt(quantityEl.innerText);
             quantity++;
             quantityEl.innerText = quantity;
-            if (quantity >= 3) {
+            if (quantity > 0 && quantity < 3) {
+                btn.parentElement.parentElement.style.backgroundColor = "#f69661";
+            }else{
                 btn.parentElement.parentElement.style.backgroundColor = "#F3ECC1";
+
             }
         });
     });
-
-    // adding another listener but only for newly added items
-    const newMinusBtn = itemDiv.querySelector('.minus-btn');
-    const newPlusBtn = itemDiv.querySelector('.plus-btn');
-
-    newMinusBtn.addEventListener('click', () => {
-        const quantityEl = itemDiv.querySelector('.quantity');
-        let quantity = parseInt(quantityEl.innerText);
-        if (quantity > 0) {
-            quantity--;
-            quantityEl.innerText = quantity;
-            if (quantity < 3) {
-                itemDiv.style.backgroundColor = "#F27A93";
-            }
-        }
-    });
-
-    newPlusBtn.addEventListener('click', () => {
-        const quantityEl = itemDiv.querySelector('.quantity');
-        let quantity = parseInt(quantityEl.innerText);
-        quantity++;
-        quantityEl.innerText = quantity;
-        if (quantity >= 3) {
-            itemDiv.style.backgroundColor = "#F3ECC1";
-        }
-    });
-
 
 </script>
 </body>
