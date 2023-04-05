@@ -26,14 +26,11 @@ function getGroupName($username, $mysqli){
     $stmt->execute();               // Find the group the user is in
     $result = $stmt->get_result();
     $stmt->close();
-
-    return $result;
-//    $row = $result->fetch_assoc();
-//    return $row["groupName"];
+    $row = $result->fetch_assoc();
+    return $row["groupName"];
 }
 
 function getTasks($groupName, $mysqli){
-
     $stmt = $mysqli->prepare("SELECT * FROM tasks WHERE groupName = ?");
     $stmt->bind_param("s", $groupName);
     $stmt->execute();
@@ -45,5 +42,9 @@ function getTasks($groupName, $mysqli){
 }
 
 function removeOverdue(){
-    connect();
+    $mysqli = connect();
+    $current_datetime = date('Y-m-d H:i:s');
+    $stmt = $mysqli->prepare("DELETE FROM tasks WHERE due_date <  ? ");
+    $stmt-> bind_param("d", $current_datetime);
+    $stmt-> execute();
 }

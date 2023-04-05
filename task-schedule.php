@@ -3,16 +3,13 @@ include 'util.php';
 
 session_start();
 //$name = $_SESSION["username"];
-$name = "Ben";
-//$name = "asfd";
+//$name = "Ben";
+$name = "asfd";
+
+
 $group_name = getGroupName($name, connect());
-if (mysqli_num_rows($group_name) == 0) {
-    error_log("No results found.");
-    echo '<script>console.log("No Results")</script>';
-} else {
-    $row = $group_name->fetch_assoc();
-    $group_name = $row["groupName"];
-}
+// check if any task at all are overdue
+removeOverdue();
 ?>
 
 
@@ -81,23 +78,29 @@ if (mysqli_num_rows($group_name) == 0) {
 <!--  Here is where tasks are displayed. Works similar to the item-section in shared-inventory.php-->
   <div class="task-section">
       <?php
-        $tasks = getTasks($group_name, connect());
-
-        $data = array();
-        if (mysqli_num_rows($tasks) > 0) {
-            while ($row = mysqli_fetch_assoc($tasks)) {
-                $data[] = $row;
+        // get task
+        if (ctype_space($group_name)) {
+            echo '<script>console.log("No Results")</script>';
+            return "You are not in a group";
+        } else {
+            $tasks = getTasks($group_name, connect());
+            // make it iterable
+            $data = array();
+            if (mysqli_num_rows($tasks) > 0) {
+                while ($row = mysqli_fetch_assoc($tasks)) {
+                    $data[] = $row;
+                }
+            }
+            // iterate through them
+            foreach ($data as $row) {
+                echo '<div class="task_box">';
+                echo '<span class="taskName" id="taskboxname">' . $row['task'] . '</span>';
+                echo '<div class="taskpriority">Priority: ' . $row['importance'] . '</div>';
+                echo '<span class="taskdate" id="taskduedate">Do by: ' . $row['due_date'] . '</span>';
+                echo '</div>';
+                echo '</div>';
             }
         }
-        foreach ($data as $row) {
-            echo '<div class="task_box">';
-            echo '<span class="taskName" id="taskboxname">'. $row['task'] .'</span>';
-            echo '<div class="taskpriority">Priority: ' . $row['importance'] . '</div>';
-            echo '<span class="taskdate" id="taskduedate">Do by: '.$row['due_date'].'</span>';
-            echo '</div>';
-            echo '</div>';
-            }
-
       ?>
 
 </body>

@@ -3,8 +3,8 @@ include 'util.php';
 
 session_start();
 //$name = $_SESSION["username"];
-$name = "Ben";
-//$name = "asfd";
+//$name = "Ben";
+$name = "asfd";
 
 
 $host = "oceanus.cse.buffalo.edu";              // The hostname of the database server
