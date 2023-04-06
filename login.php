@@ -45,10 +45,13 @@ function getUser($conn, $username, $password){
 
 function checkLogin($conn){
     if(isset($_SESSION['username'])){ // check if user session variable is set
+        echo "Username------------->>>>> " . $_SESSION['username'];
+
         $id = $_SESSION['username']; // get the user's username from the session variable
         $query = "SELECT * FROM users WHERE usersUsername = '$id' limit 1;"; // query the database to get the user's data
         $result = mysqli_query($conn, $query); // execute the query
-        header("location: home.html");
+
+        header("location: home2.php");
         exit();
     }
     die();
