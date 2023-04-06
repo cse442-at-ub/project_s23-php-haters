@@ -3,8 +3,8 @@ include 'util.php';
 
 session_start();
 //$name = $_SESSION["username"];
-//$name = "Ben";
-$name = "asfd";
+$name = "Ben";
+//$name = "asfd";
 
 
 $group_name = getGroupName($name, connect());
