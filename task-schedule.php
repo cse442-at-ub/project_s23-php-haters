@@ -3,11 +3,13 @@ include 'util.php';
 
 session_start();
 //$name = $_SESSION["username"];
-$name = "Ben";
+//$name = "Ben";
 //$name = "asfd";
+$name = 'hGilmore909';
 
 
 $group_name = getGroupName($name, connect());
+
 // check if any task at all are overdue
 removeOverdue();
 ?>
@@ -20,13 +22,14 @@ removeOverdue();
   <title>Roomaid Task Schedule</title>
   <link rel="stylesheet" href="task-schedule.css">
   <link rel="stylesheet" href="shared-inventory.css">
-  <script> // Doesn't let user choose a date before current date
-    window.onload = function() {
-      var taskDateInput = document.getElementById("taskDate");
-      var currentDate = new Date().toISOString().split('T')[0];
-      taskDateInput.min = currentDate;
-    }
-  </script>
+    <script>
+        // Doesn't let user choose a date before current date
+        window.onload = function() {
+            var taskDateInput = document.getElementById("due-date");
+            var currentDate = new Date().toISOString().split('T')[0];
+            taskDateInput.min = currentDate;
+        }
+    </script>
 </head>
 <body>
   <header>
@@ -51,7 +54,7 @@ removeOverdue();
   </div>
 
   <div class="formcontainer">
-    <form action="add_task.php"  method="post" name="addTaskForm">
+    <form action="add_task.php"  method="post" name="addTaskForm" id="addTaskForm">
       <div class="taskTitle">
         <input type="text" id="task-name" name="task-name" placeholder="Enter Task Name" required>
       </div>
@@ -69,8 +72,16 @@ removeOverdue();
         <label for="due-date">Set Task Due Date:</label>
         <input type="date" id="due-date" name="due-date" required>
       </div>
-      <button type="submit">Submit</button>
+      <button id="submitButton"  type="submit">Submit</button>
     </form>
+      <script>
+          const form = document.getElementById('addTaskForm');
+          const submitButton = document.getElementById('submitButton');
+          submitButton.addEventListener('click', function() {
+              form.submit();
+              location.reload();
+          });
+      </script>
   </div>
 
 
@@ -79,6 +90,7 @@ removeOverdue();
   <div class="task-section">
       <?php
         // get task
+//      echo ($group_name);
         if (ctype_space($group_name)) {
             echo '<script>console.log("No Results")</script>';
             return "You are not in a group";

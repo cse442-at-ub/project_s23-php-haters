@@ -3,9 +3,9 @@ include 'util.php';
 
 session_start();
 //$name = $_SESSION["username"];
-$name = "Ben";
+//$name = "Ben";
 //$name = "asfd";
-
+$name = 'hGilmore909';
 
 $host = "oceanus.cse.buffalo.edu";              // The hostname of the database server
 $user = "bensonca";                             // The MySQL user
@@ -43,5 +43,5 @@ $stmt->execute();
 $stmt->close();
 $mysqli->close();
 
-
+header('Location: task-schedule.php');
 exit();

@@ -21,8 +21,8 @@ function connect(){
 
 function getGroupName($username, $mysqli){
     $name = $username;
-    $stmt = $mysqli->prepare("SELECT groupName FROM `groups` WHERE usersUsername = ? OR user2 = ? OR user3 = ? OR user4 = ?");
-    $stmt->bind_param("ssss", $name, $name, $name, $name);
+    $stmt = $mysqli->prepare("SELECT groupName FROM `groupTest` WHERE username = ?");
+    $stmt->bind_param("s", $name);
     $stmt->execute();               // Find the group the user is in
     $result = $stmt->get_result();
     $stmt->close();
