@@ -18,10 +18,9 @@ $stmt->bind_param("s", $current_user); // BIND
 $stmt->execute();
 $stmt->store_result();
 $stmt->bind_result($groupName); // BIND
-$result_group  = $stmt->fetch(); // Fetching groupName
+$result_group  = $stmt->fetch(); // return1 if in group, 0 if not
 
-//$_SESSION['groupName'] = $groupName; //STORING GROUPNAME 2 USE W/ UPDATE_QUANTITY PAGE!
-
+$_SESSION['groupName'] = $groupName; //STORING GROUPNAME 2 USE W/ UPDATE_QUANTITY PAGE!
 
 ?>
 <!DOCTYPE html>
@@ -123,9 +122,7 @@ $result_group  = $stmt->fetch(); // Fetching groupName
     $stmt_inventory->close();
     ?>
 </div>
-
 <script>
-    //const form = document.querySelector('form');
     const modal = document.getElementById("add-item-modal");
     const form = modal.querySelector("form");
 
@@ -138,7 +135,6 @@ $result_group  = $stmt->fetch(); // Fetching groupName
         const modal = document.getElementById("add-item-modal");
         modal.style.display = "none";
     }
-
 
     form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -154,6 +150,7 @@ $result_group  = $stmt->fetch(); // Fetching groupName
         form.reset();
         hideAddItemBox();
     });
+
     function addItem(item) {
         const scrollBox = document.querySelector('.scroll-box');
         const itemDiv = document.createElement('div');
@@ -196,46 +193,6 @@ $result_group  = $stmt->fetch(); // Fetching groupName
         itemDiv.appendChild(div2);
         scrollBox.appendChild(itemDiv);
     }
-
-    const minusBtns = document.querySelectorAll('.minus-btn');
-    const plusBtns = document.querySelectorAll('.plus-btn');
-    // cant get to work with newly entered item^^  making new function to track new item buttons
-    minusBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const itemId = btn.getAttribute('data-id');
-            const quantityEl = btn.parentElement.querySelector('.quantity');
-            let quantity = parseInt(quantityEl.innerText);
-            if (quantity > 0) {
-                quantity--;
-                quantityEl.innerText = quantity;
-                if (quantity > 0 && quantity < 3) {
-                    //btn.parentElement.parentElement.style.backgroundColor = "#E50303"; //do 40% of this??
-                    btn.parentElement.parentElement.style.backgroundColor = "#f69661";
-                }else if(quantity == 0){
-                    btn.parentElement.parentElement.style.backgroundColor = "#e83939"
-                }else{
-                    btn.parentElement.parentElement.style.backgroundColor = "#F3ECC1";
-                }
-            }
-        });
-    });
-
-    // plus button for quantity
-    plusBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const itemId = btn.getAttribute('data-id');
-            const quantityEl = btn.parentElement.querySelector('.quantity');
-            let quantity = parseInt(quantityEl.innerText);
-            quantity++;
-            quantityEl.innerText = quantity;
-            if (quantity > 0 && quantity < 3) {
-                btn.parentElement.parentElement.style.backgroundColor = "#f69661";
-            }else{
-                btn.parentElement.parentElement.style.backgroundColor = "#F3ECC1";
-
-            }
-        });
-    });
 
 </script>
 </body>
