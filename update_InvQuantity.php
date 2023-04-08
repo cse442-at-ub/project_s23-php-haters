@@ -16,7 +16,7 @@ if (!$conn) {
 }
 $current_user = $_SESSION['username'];
 $groupName = $_SESSION['groupName'];
-//I'm storing groupName in $SESSION VAR from my 'inventory.php' page
+// ^^^ I'm storing groupName in $SESSION VAR from my 'inventory.php' page
 // Group.php should be storing in session vars after they join?
 
 ////FIND GROUP... or group.php should be storing in session vars after they join?
@@ -33,8 +33,8 @@ $item_name = $_POST['item-name'];
 $item_quantity = $_POST['item-quantity'];
 $action = $_POST['action'];
 
-// check what button they hit
-if ($action == 'minus') {
+// check which button they hit, PREVENT IF <0
+if ($action == 'minus' && $item_quantity > 0) {
     $item_quantity--;
 } elseif ($action == 'plus') {
     $item_quantity++;
