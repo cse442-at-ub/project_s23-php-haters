@@ -20,6 +20,9 @@ $stmt->store_result();
 $stmt->bind_result($groupName); // BIND
 $result_group  = $stmt->fetch(); // Fetching groupName
 
+//$_SESSION['groupName'] = $groupName; //STORING GROUPNAME 2 USE W/ UPDATE_QUANTITY PAGE!
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -39,7 +42,7 @@ $result_group  = $stmt->fetch(); // Fetching groupName
                 <li><a href="#" class="nav-button">Schedule</a></li>
                 <li><a href="#" class="nav-button">Group</a></li>
                 <li><a href="inventory.php" class="nav-button">Inventory</a></li>
-                <li><a href="SharedExpenses.php" class="nav-button">Expenses</a></li>
+                <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>
                 <li><a href="#"><img class='icon-pfp' src="Giraffe.png" alt="Profile"></a></li>
                 </li>
             </ul>
@@ -75,12 +78,8 @@ $result_group  = $stmt->fetch(); // Fetching groupName
     <?php } ?>
 </div>
 
-
 <!--SCROLL BOX  -->
 <div class="scroll-box">
-
-
-
     <?php
     if (!$result_group) {
         echo "$current_user must join a group to view inventory!";
@@ -92,21 +91,33 @@ $result_group  = $stmt->fetch(); // Fetching groupName
         $result_inventory = $stmt_inventory->get_result();
         $inventory = $result_inventory->fetch_all(MYSQLI_ASSOC);
 
-
         // Display inventory items
-        echo "Inventory for group: $groupName viewed by: $current_user.";
         foreach ($inventory as $item) {
-            echo "<div class='item'>";
+            echo "<div class='item' style='background-color: ";
+            $quantity = $item['quantity'];
+            if ($quantity == 0) {
+                echo "#e83939";     // RED - EMPTY
+            } elseif ($quantity == 1 || $quantity == 2) {
+                echo "#f69661"; // ORANGE- WARNING
+            } else {
+                echo "#F3ECC1"; // YELLOW- NORMAL
+            }
+            echo ";'>";
             echo "<div>";
             echo "<strong>Name:</strong> " . $item['name'] . "<br>";
             echo "<strong>Quantity:</strong> ";
-            echo "<button class='btn minus-btn' data-id='" . $item['name'] . "'>-</button>";
-            echo "<span class='quantity'>" . $item['quantity'] . "</span>";
-            echo "<button class='btn plus-btn' data-id='" . $item['name'] . "'>+</button>";
+            echo "<form action='update_InvQuantity.php' method='post'>";
+            echo "<input type='hidden' name='item-name' value='" . $item['name'] . "'>";
+            echo "<input type='hidden' name='item-quantity' value='" . $quantity . "'>";
+            echo "<button class='btn minus-btn' type='submit' name='action' value='minus'>-</button>";
+            echo "<span class='quantity'>" . $quantity . "</span>";
+            echo "<button class='btn plus-btn' type='submit' name='action' value='plus'>+</button>";
+            echo "</form>";
             echo "<br><strong>Tag:</strong> " . $item['tag'];
             echo "</div>";
             echo "</div>";
         }
+
     }
     $stmt->close();
     $stmt_inventory->close();
@@ -118,18 +129,11 @@ $result_group  = $stmt->fetch(); // Fetching groupName
     const modal = document.getElementById("add-item-modal");
     const form = modal.querySelector("form");
 
-    // function showAddItemBox() {// javascript can dynamically show/hide forms to enter info
-    //     document.getElementById("add-item-box").style.display = "block";
-    // }
     function showAddItemBox() {
         const modal = document.getElementById("add-item-modal");
         modal.style.display = "block";
     }
 
-    //
-    // function hideAddItemBox() {
-    //     document.getElementById("add-item-box").style.display = "none";
-    // }
     function hideAddItemBox() {
         const modal = document.getElementById("add-item-modal");
         modal.style.display = "none";
@@ -196,7 +200,6 @@ $result_group  = $stmt->fetch(); // Fetching groupName
     const minusBtns = document.querySelectorAll('.minus-btn');
     const plusBtns = document.querySelectorAll('.plus-btn');
     // cant get to work with newly entered item^^  making new function to track new item buttons
-
     minusBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             const itemId = btn.getAttribute('data-id');
