@@ -108,15 +108,16 @@ $_SESSION['groupName'] = $groupName; //STORING GROUPNAME 2 USE W/ UPDATE_QUANTIT
             echo "<form action='update_InvQuantity.php' method='post'>";
             echo "<input type='hidden' name='item-name' value='" . $item['name'] . "'>";
             echo "<input type='hidden' name='item-quantity' value='" . $quantity . "'>";
+            echo "<div class='quantity-btn'>";
             echo "<button class='btn minus-btn' type='submit' name='action' value='minus'>-</button>";
             echo "<span class='quantity'>" . $quantity . "</span>";
             echo "<button class='btn plus-btn' type='submit' name='action' value='plus'>+</button>";
+            echo "</div>";
             echo "</form>";
             echo "<br><strong>Tag:</strong> " . $item['tag'];
             echo "</div>";
             echo "</div>";
         }
-
     }
     $stmt->close();
     $stmt_inventory->close();
