@@ -38,6 +38,18 @@ input[type=submit] {
     border-radius: 15px;
 }
 
+button[id="reset-password-submit"] {
+    width: 610px;
+    font-weight: bold;
+    font-size: larger;
+    background-color: #EEE3A4;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 3px solid black;
+    border-radius: 15px;
+}
+
 input[type=password] {
     width: 610px;
     font-weight: bold;
@@ -96,6 +108,12 @@ input[type=submit]:hover {
     margin-left: 550px;
 }
 
+.forgotElement {
+    align-items: center;
+    justify-content: center;
+    margin-top: 20%;
+    margin-left: 30%;
+}
 .olduser{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
