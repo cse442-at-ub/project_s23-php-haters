@@ -64,7 +64,7 @@ body {
 .item {
     background-color: #F3ECC1;
     color: #000000;
-    padding: 30px;
+    padding: 25px;
     margin-bottom: 25px;
     border-radius: 25px;
     display: flex;
@@ -181,3 +181,8 @@ form input {
     background-color: #FFFFFF;
     color: #000000;
 }
+/*  trying to get +/- buttons horizonal, not stacked!!*/
+.quantity-btn {
+    display: inline-flex;
+}
+
