@@ -6,14 +6,34 @@ if(isset($_POST["reset-password-submit"])){
     $validator = $_POST["validator"];
     $password = $_POST["pwd"];
     $passwordRepeat = $_POST["pwd-repeat"];
-    if(empty($password) || empty($passwordRepeat)){
-        header("Location: create-new-password.php?newpwd=empty");
+    function passwordMatch($password, $passwordRepeat): bool{
+        if($password !== $passwordRepeat){ // check if email and confirm email inputs match
+            return true; // return true if they don't match
+        }
+        else{
+            return false; // return false if they match
+        }
+    }
+
+    function check_password_strength($password): bool{
+        if (preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\D)(?=.*\d)(?=.*[^A-Za-z0-9\s]).+$/', $password) && strlen($password) >= 8 && strlen($password) <= 20) {
+            return false;
+        }
+        return true;
+    }
+    if(passwordMatch($password, $passwordRepeat) !== false){
+        $_SESSION['error'] = 'Sorry, the passwords did not match.';
+        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "create-new-password.php";</script>';
         exit();
     }
-    else if($password != $passwordRepeat){
-        header("Location: create-new-password.php?newpwd=pwdnotsame");
+    if(check_password_strength($password)){
+        $_SESSION['error'] = 'Please enter a password with less than 20 characters including uppercase, lowercase, numeric and special characters.';
+        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "create-new-password.php";</script>';
         exit();
     }
+
+
+
 
     $currentDate = date("U");
 
@@ -53,7 +73,7 @@ if(isset($_POST["reset-password-submit"])){
                 exit();
             }
             else if($tokenCheck === true){
-                $tokenEmail = $row['pwdResetToken'];
+                $tokenEmail = $row['pwdResetEmail'];
 
                 $sql = "SELECT * FROM users WHERE usersEmail = ?;";
 
@@ -66,7 +86,7 @@ if(isset($_POST["reset-password-submit"])){
                     mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
                     mysqli_stmt_execute($stmt);
                     $result = mysqli_stmt_get_result($stmt);
-                    if($row = mysqli_fetch_assoc($result)){
+                    if(!$row = mysqli_fetch_assoc($result)){
                         echo "There was an error!";
                         exit();
                     }
@@ -82,23 +102,25 @@ if(isset($_POST["reset-password-submit"])){
                             mysqli_stmt_bind_param($stmt, "ss", $newPwdHash, $tokenEmail);
                             mysqli_stmt_execute($stmt);
 
-                            $sql = "DELETE FROM pwdReset WHERE pwdResetEmail=?";
-                            if(!mysqli_stmt_prepare($stmt, $sql)){
-                                echo "There was an error!";
-                                exit();
+
+                                $sql = "DELETE FROM pwdReset WHERE pwdResetEmail=?";
+                                $stmt = mysqli_stmt_init($conn);
+                                if(!mysqli_stmt_prepare($stmt, $sql)){
+                                    echo "There was an error!";
+                                    exit();
+                                }
+                                else {
+                                    mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
+                                    mysqli_stmt_execute($stmt);
+                                    header("Location: login.php?newpwd=passwordupdated");
+                                }
                             }
-                            else{
-                                mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
-                                mysqli_stmt_execute($stmt);
-                                header("Location: login.php?newpwd=passwordupdated");
-                            }
+                            exit();
                         }
                     }
                 }
             }
         }
     }
-}
-else{
-    header("Location: login.php");
-}
+
+else{header("Location: login.php");}
