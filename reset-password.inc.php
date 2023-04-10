@@ -61,7 +61,7 @@ if(isset($_POST["reset-password-submit"])){
 
         $result = mysqli_stmt_get_result($stmt);
         if(!$row = mysqli_fetch_assoc($result)){
-            echo "You need to resubmit your reset request 1.";
+            echo "You need to resubmit your reset request.";
             exit();
         }
         else{
@@ -69,12 +69,11 @@ if(isset($_POST["reset-password-submit"])){
             $tokenCheck = password_verify($tokenBinary,$row["pwdResetToken"]);
 
             if(!$tokenCheck){
-                echo "You need to resubmit your reset request 2.";
+                echo "You need to resubmit your reset request.";
                 exit();
             }
             else{
                 $tokenEmail = $row['pwdResetEmail'];
-
 
                 $sql = "SELECT * FROM users WHERE usersEmail = '$tokenEmail';"; # i changed this
 
@@ -93,7 +92,6 @@ if(isset($_POST["reset-password-submit"])){
                     }
                     else{
                         echo $tokenEmail, $password;
-
                         $sql = "UPDATE users SET usersPassword = '$password' WHERE usersEmail = '$tokenEmail'"; # i changed this
                         $stmt = mysqli_stmt_init($conn);
                         if(!mysqli_stmt_prepare($stmt, $sql)){
