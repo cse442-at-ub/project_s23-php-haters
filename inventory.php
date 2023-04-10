@@ -11,7 +11,7 @@ if (!$conn) {
 
 //    Find group
 $current_user = $_SESSION['username'];
-$sql = "SELECT groupName FROM groupTest WHERE username = ?";
+$sql = "SELECT groupName FROM groupTestV2 WHERE username = ?";
 //  Block pesky SQL injections with prepared statement ;)
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("s", $current_user); // BIND
