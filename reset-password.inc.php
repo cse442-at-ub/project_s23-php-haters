@@ -60,8 +60,10 @@ if(isset($_POST["reset-password-submit"])){
         mysqli_stmt_execute($stmt);
 
         $result = mysqli_stmt_get_result($stmt);
+        echo $selector, $validator;
         if(!$row = mysqli_fetch_assoc($result)){
             echo "You need to resubmit your reset request 1.";
+            echo $selector, $validator;
             exit();
         }
         else{
