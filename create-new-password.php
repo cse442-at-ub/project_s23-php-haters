@@ -13,10 +13,8 @@ ini_set('display_errors', 1);
             $selector = $_GET["selector"];
             $validator = $_GET["validator"];
 
-            echo $selector;
-            echo $validator;
-            echo "selector value from post request ",$_POST["selector"];
-            echo "validator value from post request ",$_POST["validator"];
+            echo $selector = $_GET["selector"];
+            echo $validator = $_GET["validator"];
 
             if(ctype_xdigit($selector) !== false && ctype_xdigit($validator) !== false){
                 ?>
