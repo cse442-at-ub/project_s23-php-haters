@@ -4,6 +4,8 @@ session_start();
 if(isset($_POST["reset-password-submit"])){
     $selector = $_POST["selector"];
     $validator = $_POST["validator"];
+    echo $selector = $_POST["selector"];
+    echo $validator = $_POST["validator"];
     $password = $_POST["pwd"];
     $passwordRepeat = $_POST["pwd-repeat"];
     function passwordMatch($password, $passwordRepeat): bool{
@@ -48,7 +50,7 @@ if(isset($_POST["reset-password-submit"])){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT * FROM pwdReset WHERE pwdResetSelector=? AND pwdResetExpires >= $currentDate";
+    $sql = "SELECT * FROM pwdReset WHERE pwdResetSelector='$selector' AND pwdResetExpires >= '$currentDate'"; # i changed this
 
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
