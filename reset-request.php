@@ -3,7 +3,6 @@ session_start();
 if(isset($_POST["reset-request-submit"])){
     $selector = bin2hex(random_bytes(8));
     $token = random_bytes(32);
-    //$url = "http://localhost:63342/CSE442Sprint2/create-new-password?selector=" . $selector . "&validator=" . bin2hex($token);
     $url = "https://www-student.cse.buffalo.edu/CSE442-542/2023-Spring/cse-442ae/CSE442-PHP-HATERS/create-new-password.php?selector=" . $selector . "&validator=" . bin2hex($token);
     $expires = date("U") + 1800;
 
