@@ -15,7 +15,7 @@ ini_set('display_errors', 1);
 
             if(ctype_xdigit($selector) !== false && ctype_xdigit($validator) !== false){
                 ?>
-        <form action="reset-request.php" method="post">
+        <form action="reset-password.inc.php" method="post">
             <input type="hidden" name="selector" value="<?php echo $selector ?>">
             <input type="hidden" name="validator" value="<?php echo $validator ?>">
             <h2 style="margin-left: 42%;margin-top: 15%">Reset Password</h2>
