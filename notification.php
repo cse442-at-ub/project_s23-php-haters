@@ -25,13 +25,14 @@ $result = mysqli_query($conn, $sql);
 
 // Loop through the tasks and send reminder emails
 while ($row = mysqli_fetch_assoc($result)) {
-    $task_title = $row['task'];$task_due_date = $row['due_date'];
+    $task_title = $row['task'];
+    $task_due_date = $row['due_date'];
     $user_email = $row['email'];
 
     // send reminder email
     $to = $user_email;
     $subject = 'RoomAid Task Reminder';
-    $message = "This is a reminder that you have a task, $task_title, due on $task_due_date within the next 3 days.";
+    $message = "This is a reminder that you have a task, $task_title, due on within the next 3 days.";
     // sending the email
     mail($to, $subject, $message);
 }
@@ -45,11 +46,11 @@ while ($row = mysqli_fetch_assoc($result)) {
     $task_title = $row['task'];
     $task_due_date = $row['due_date'];
     $user_email = $row['email'];
-    
+
     // send reminder email
     $to = $user_email;
     $subject = 'RoomAid Task Reminder';
-    $message = "This is a reminder that you have a task, $task_title, due on $task_due_date within the next 24 hours.";
+    $message = "This is a reminder that you have a task, $task_title, due on within the next 24 hours.";
     // sending the email
     mail($to, $subject, $message);
 }
