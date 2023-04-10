@@ -29,6 +29,7 @@ function getGroupName($username, $mysqli){
     $row = $result->fetch_assoc();
     return $row["groupName"];
 }
+//$email = getEmail($name, $mysqli);
 
 function getTasks($groupName, $mysqli){
     $stmt = $mysqli->prepare("SELECT * FROM tasks WHERE groupName = ?");
@@ -40,6 +41,45 @@ function getTasks($groupName, $mysqli){
 
     return $result;
 }
+
+function getGroupMembers($groupName, $mysqli){
+    $stmt = $mysqli->prepare("SELECT users.usersUsername
+        FROM groupTest
+        JOIN users ON groupTest.username = users.usersUsername
+        WHERE groupTest.groupName = ?;");
+    $stmt->bind_param("s", $groupName);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+//    $dropdown = "<select name='members' class='" . 'assignMember' . "'>";
+    $dropdown = "<select name='members'>";
+    while ($row = $result->fetch_assoc()) {
+        $dropdown .= "<option value='" . $row['usersUsername'] . "'>" . $row['usersUsername'] . "</option>";
+    }
+    $dropdown .= "</select>";
+
+    $assignedTo = "<span>Assigned to: </span>";
+    $output = "<div class='taskDueDate'>" . $assignedTo . $dropdown . "</div>";
+
+
+    $stmt->close();
+    $mysqli->close();
+
+    return $output;
+}
+
+
+function getEmail($member, $mysqli){
+    $stmt = $mysqli->prepare("SELECT usersEmail FROM users WHERE usersUsername = ?");
+    $stmt->bind_param("s", $member);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+    $row = $result->fetch_assoc();
+    return $row["usersEmail"];
+}
+
+
 
 function removeOverdue(){
     $mysqli = connect();

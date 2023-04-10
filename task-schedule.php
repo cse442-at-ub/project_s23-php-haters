@@ -2,10 +2,10 @@
 include 'util.php';
 
 session_start();
-//$name = $_SESSION["username"];
+$name = $_SESSION["username"];
 //$name = "Ben";
 //$name = "asfd";
-$name = 'hGilmore909';
+//$name = 'hGilmore909';
 
 
 $group_name = getGroupName($name, connect());
@@ -54,32 +54,40 @@ removeOverdue();
   </div>
 
   <div class="formcontainer">
-    <form action="add_task.php"  method="post" name="addTaskForm" id="addTaskForm">
-      <div class="taskTitle">
-        <input type="text" id="task-name" name="task-name" placeholder="Enter Task Name" required>
-      </div>
-      <div class="setPriority">
-        <label for="priority">Set Priority To Task:</label>
-        <select name="priority" id="priority" required>
-          <option value="1">1 (Least Important)</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5 (Most Important)</option>
-        </select>
-      </div>
-      <div class="taskDueDate">
-        <label for="due-date">Set Task Due Date:</label>
-        <input type="date" id="due-date" name="due-date" required>
-      </div>
-      <button id="submitButton"  type="submit">Submit</button>
-    </form>
+        <form action="add_task.php"  method="post" name="addTaskForm" id="addTaskForm">
+            <div class="taskTitle">
+              <input type="text" id="task-name" name="task-name" placeholder="Enter Task Name" required>
+            </div>
+            <div class="setPriority">
+              <label for="priority">Set Priority To Task:</label>
+              <select name="priority" id="priority" required>
+                <option value="1">1 (Least Important)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Most Important)</option>
+              </select>
+            </div>
+            <div class="taskDueDate">
+              <label for="due-date">Set Task Due Date:</label>
+              <input type="date" id="due-date" name="due-date" required>
+            </div>
+            <div>
+                <?php echo getGroupMembers($group_name, connect()); ?>
+            </div>
+            <button id="submitButton"  type="submit">Submit</button>
+        </form>
       <script>
           const form = document.getElementById('addTaskForm');
           const submitButton = document.getElementById('submitButton');
-          submitButton.addEventListener('click', function() {
-              form.submit();
-              location.reload();
+          submitButton.addEventListener('click', function (event) {
+              if (form.checkValidity()) {
+                  console.log("VALID FORM")
+                  form.submit();
+                  location.reload();
+              } else {
+                  console.log("ERROR ERROR")
+              }
           });
       </script>
   </div>

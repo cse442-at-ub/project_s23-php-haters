@@ -41,7 +41,7 @@ header li {
 
 .formcontainer{
     width: 90%;
-    height: 400px;
+    height: 500px;
     margin-top: 2%;
     margin-left: 5%;
     background-color: white;
@@ -111,6 +111,14 @@ input[id="taskDate"]{
     background-color: #EEE3A4;
 }
 
+.assignMember{
+    border: solid 2px black;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #EEE3A4;
+}
+
 button[type="submit"]{
     height: 60px;
     margin-left: 45%;
@@ -137,7 +145,7 @@ div[class="task_box"] {
 
 span[class="taskName"] {
     position: absolute;
-    left: 20%;
+    left: 10%;
     top: 25%;
 
     font-family: 'Inter', sans-serif;

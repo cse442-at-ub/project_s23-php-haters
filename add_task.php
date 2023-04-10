@@ -2,10 +2,10 @@
 include 'util.php';
 
 session_start();
-//$name = $_SESSION["username"];
+$name = $_SESSION["username"];
 //$name = "Ben";
 //$name = "asfd";
-$name = 'hGilmore909';
+//$name = 'hGilmore909';
 
 $host = "oceanus.cse.buffalo.edu";              // The hostname of the database server
 $user = "bensonca";                             // The MySQL user
@@ -23,23 +23,31 @@ if ($mysqli->connect_error) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $task_name = $_POST["task-name"];
     $importance = $_POST["priority"];
-    echo $importance;
     $due_date = date('Y-m-d', strtotime($_POST["due-date"]));
+    $member = $_POST["members"];
 }
+print $_POST["task-name"];
+print $_POST["priority"];
+print date('Y-m-d', strtotime($_POST["due-date"]));
+print $_POST["members"];
 
-$email = "sampleuser1@gmail.com";
+
 $group_name = getGroupName($name, $mysqli);
+$email = getEmail($member, $mysqli);
+
 //$group_name = $group_name->fetch_assoc();
 //$group_name = $group_name["groupName"];
 
 //$sql = "INSERT INTO tasks (task, importance, due_date) VALUES ('$task_name', '$importance', '$due_date')";
 // Bind the user input values to the prepared statement (strin, int, string, string)
 // Execute the prepared statement
-
+//connect();
 $stmt = $mysqli->prepare("INSERT INTO tasks (task, importance, due_date, email, groupName) VALUES (?, ?, ?, ?, ?)");
 $stmt->bind_param("sisss", $task_name, $importance, $due_date, $email, $group_name);
 $stmt->execute();
-
+if ($stmt->error) {
+    printf("Error: %s.\n", $stmt->error);
+}
 $stmt->close();
 $mysqli->close();
 
