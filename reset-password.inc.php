@@ -98,7 +98,7 @@ if(isset($_POST["reset-password-submit"])){
                     else{
                         echo $tokenEmail, $password;
 
-                        $sql = "UPDATE users SET usersPassword = '$password' WHERE usersEmail = '$tokenEmail'"; # i changed this
+                        $sql = "UPDATE users SET usersPassword = ? WHERE usersEmail = ?"; # i changed this
                         $stmt = mysqli_stmt_init($conn);
                         if(!mysqli_stmt_prepare($stmt, $sql)){
                             header("There was an error");
@@ -130,7 +130,7 @@ if(isset($_POST["reset-password-submit"])){
     mysqli_stmt_close($stmt);
     mysqli_close($conn);
 
-    header('Location: ../forgotpw.php?reset=success');
+    header('Location: login.php?reset=success');
 }
 
 else{header("Location: login.php");}
