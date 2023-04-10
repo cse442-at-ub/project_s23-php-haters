@@ -48,7 +48,7 @@ if(isset($_POST["reset-password-submit"])){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT * FROM pwdReset WHERE pwdResetSelector=? AND pwdResetExpires >= ?";
+    $sql = "SELECT * FROM pwdReset WHERE pwdResetSelector=? AND pwdResetExpires >= $currentDate";
 
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -72,10 +72,10 @@ if(isset($_POST["reset-password-submit"])){
                 echo "You need to resubmit your reset request.";
                 exit();
             }
-            else if($tokenCheck === true){
+            else{
                 $tokenEmail = $row['pwdResetEmail'];
 
-                $sql = "SELECT * FROM users WHERE usersEmail = ?;";
+                $sql = "SELECT * FROM users WHERE usersEmail = $tokenEmail;";
 
                 $stmt = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -91,7 +91,7 @@ if(isset($_POST["reset-password-submit"])){
                         exit();
                     }
                     else{
-                        $sql = "UPDATE users SET usersPassword = ? WHERE usersEmail = ?";
+                        $sql = "UPDATE users SET usersPassword = '$password' WHERE usersEmail = ?";
                         $stmt = mysqli_stmt_init($conn);
                         if(!mysqli_stmt_prepare($stmt, $sql)){
                             header("There was an error");
@@ -103,24 +103,27 @@ if(isset($_POST["reset-password-submit"])){
                             mysqli_stmt_execute($stmt);
 
 
-                                $sql = "DELETE FROM pwdReset WHERE pwdResetEmail=?";
-                                $stmt = mysqli_stmt_init($conn);
-                                if(!mysqli_stmt_prepare($stmt, $sql)){
-                                    echo "There was an error!";
-                                    exit();
-                                }
-                                else {
-                                    mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
-                                    mysqli_stmt_execute($stmt);
-                                    header("Location: login.php?newpwd=passwordupdated");
-                                }
+                            $sql = "DELETE FROM pwdReset WHERE pwdResetEmail=?";
+                            $stmt = mysqli_stmt_init($conn);
+                            if(!mysqli_stmt_prepare($stmt, $sql)){
+                                echo "There was an error!";
+                                exit();
                             }
-                            exit();
+                            else {
+                                mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
+                                mysqli_stmt_execute($stmt);
+                                header("Location: login.php?newpwd=passwordupdated");
+                            }
                         }
                     }
                 }
             }
         }
     }
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+
+    header('Location: ../forgotpw.php?reset=success');
+}
 
 else{header("Location: login.php");}
