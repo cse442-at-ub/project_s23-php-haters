@@ -75,7 +75,7 @@ if(isset($_POST["reset-password-submit"])){
             else{
                 $tokenEmail = $row['pwdResetEmail'];
 
-                $sql = "SELECT * FROM users WHERE usersEmail = $tokenEmail;";
+                $sql = "SELECT * FROM users WHERE usersEmail = '$tokenEmail';"; # i changed this
 
                 $stmt = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -91,7 +91,8 @@ if(isset($_POST["reset-password-submit"])){
                         exit();
                     }
                     else{
-                        $sql = "UPDATE users SET usersPassword = '$password' WHERE usersEmail = ?";
+                        echo $tokenEmail, $password;
+                        $sql = "UPDATE users SET usersPassword = '$password' WHERE usersEmail = '$tokenEmail'"; # i changed this
                         $stmt = mysqli_stmt_init($conn);
                         if(!mysqli_stmt_prepare($stmt, $sql)){
                             header("There was an error");
