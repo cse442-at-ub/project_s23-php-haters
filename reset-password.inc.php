@@ -4,8 +4,8 @@ session_start();
 if(isset($_POST["reset-password-submit"])){
     $selector = $_POST["selector"];
     $validator = $_POST["validator"];
-    echo $selector = $_POST["selector"];
-    echo $validator = $_POST["validator"];
+//    echo $selector = $_POST["selector"];
+//    echo $validator = $_POST["validator"];
     $password = $_POST["pwd"];
     $passwordRepeat = $_POST["pwd-repeat"];
     function passwordMatch($password, $passwordRepeat): bool{
@@ -50,11 +50,12 @@ if(isset($_POST["reset-password-submit"])){
         die("Connection failed: " . $conn->connect_error);
     }
 
-    $sql = "SELECT * FROM pwdReset WHERE pwdResetSelector='$selector' AND pwdResetExpires >= '$currentDate'"; # i changed this
+    $sql = "SELECT * FROM pwdReset WHERE pwdResetSelector='$selector' AND pwdResetExpires >= '$currentDate'";
 
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("Location: login.php");
+        $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
+        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "create-new-password.php";</script>';
         exit();
     }
     else{
@@ -64,8 +65,8 @@ if(isset($_POST["reset-password-submit"])){
         $result = mysqli_stmt_get_result($stmt);
         echo $selector, $validator;
         if(!$row = mysqli_fetch_assoc($result)){
-            echo "You need to resubmit your reset request 1.";
-            echo $selector, $validator;
+            $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
+            echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "create-new-password.php";</script>';
             exit();
         }
         else{
@@ -73,18 +74,20 @@ if(isset($_POST["reset-password-submit"])){
             $tokenCheck = password_verify($tokenBinary,$row["pwdResetToken"]);
 
             if(!$tokenCheck){
-                echo "You need to resubmit your reset request 2.";
+                $_SESSION['error'] = 'Sorry, there was an error. You need to resubmit your reset request.';
+                echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "create-new-password.php";</script>';
                 exit();
             }
             else{
                 $tokenEmail = $row['pwdResetEmail'];
 
 
-                $sql = "SELECT * FROM users WHERE usersEmail = '$tokenEmail';"; # i changed this
+                $sql = "SELECT * FROM users WHERE usersEmail = '$tokenEmail';";
 
                 $stmt = mysqli_stmt_init($conn);
                 if(!mysqli_stmt_prepare($stmt, $sql)){
-                    header("Location: login.php");
+                    $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
+                    echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "create-new-password.php";</script>';
                     exit();
                 }
                 else{
@@ -92,16 +95,18 @@ if(isset($_POST["reset-password-submit"])){
                     mysqli_stmt_execute($stmt);
                     $result = mysqli_stmt_get_result($stmt);
                     if(!$row = mysqli_fetch_assoc($result)){
-                        echo "There was an error!";
+                        $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
+                        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "create-new-password.php";</script>';
                         exit();
                     }
                     else{
                         echo $tokenEmail, $password;
 
-                        $sql = "UPDATE users SET usersPassword = ? WHERE usersEmail = ?"; # i changed this
+                        $sql = "UPDATE users SET usersPassword = ? WHERE usersEmail = ?";
                         $stmt = mysqli_stmt_init($conn);
                         if(!mysqli_stmt_prepare($stmt, $sql)){
-                            header("There was an error");
+                            $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
+                            echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "create-new-password.php";</script>';
                             exit();
                         }
                         else {
@@ -113,7 +118,8 @@ if(isset($_POST["reset-password-submit"])){
                             $sql = "DELETE FROM pwdReset WHERE pwdResetEmail=?";
                             $stmt = mysqli_stmt_init($conn);
                             if(!mysqli_stmt_prepare($stmt, $sql)){
-                                echo "There was an error!";
+                                $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
+                                echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "create-new-password.php";</script>';
                                 exit();
                             }
                             else {
