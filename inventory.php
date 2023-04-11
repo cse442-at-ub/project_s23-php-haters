@@ -37,9 +37,9 @@ $_SESSION['groupName'] = $groupName; //STORING GROUPNAME 2 USE W/ UPDATE_QUANTIT
         <span class="h3"> RoomAid </span>
         <nav>
             <ul>
-                <li><a href="home2.php" class="nav-button">Home</a></li>
+                <li><a href="home.php" class="nav-button">Home</a></li>
                 <li><a href="#" class="nav-button">Schedule</a></li>
-                <li><a href="#" class="nav-button">Group</a></li>
+                <li><a href="group.php" class="nav-button">Group</a></li>
                 <li><a href="inventory.php" class="nav-button">Inventory</a></li>
                 <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>
                 <li><a href="#"><img class='icon-pfp' src="Giraffe.png" alt="Profile"></a></li>
@@ -55,7 +55,7 @@ $_SESSION['groupName'] = $groupName; //STORING GROUPNAME 2 USE W/ UPDATE_QUANTIT
 
 <!--add item pop up box-->
 <div id="add-item-modal" style="display: none;">
-    <form>
+    <form id="add-item-form" method="post" action="update_InvQuantity.php">
         <label for="item-name">Name:</label>
         <input type="text" id="item-name" name="item-name" required>
         <br>
@@ -65,10 +65,12 @@ $_SESSION['groupName'] = $groupName; //STORING GROUPNAME 2 USE W/ UPDATE_QUANTIT
         <label for="item-tag">Tag:</label>
         <input type="text" id="item-tag" name="item-tag" required>
         <br><br>
-        <button class="btn" type="submit">Add</button>
+        <input type="hidden" name="action" value="add">
+        <button class="btn" type="submit" onclick="submitAddItemForm(event)">Add</button>
         <button class="btn" type="button" onclick="hideAddItemBox()">Close</button>
     </form>
 </div>
+
 <div class="title">
     <?php if (!$result_group) { ?>
         <h2 style="font-family: cursive;">Hello <?php echo $_SESSION['username'] ;?>, You must join a group to view inventory!</h2>
@@ -102,10 +104,10 @@ $_SESSION['groupName'] = $groupName; //STORING GROUPNAME 2 USE W/ UPDATE_QUANTIT
                 echo "#F3ECC1"; // YELLOW- NORMAL
             }
             echo ";'>";
-            echo "<div>";
-            echo "<strong>Name:</strong> " . $item['name'] . "<br>";
-            echo "<strong>Quantity:</strong> ";
-            echo "<form action='update_InvQuantity.php' method='post'>";
+            echo "<div class='item-content' style='display: flex; align-items: center;'>";
+            echo "<span>" . $item['name'] . "</span>";
+
+            echo "<form action='update_InvQuantity.php' method='post' style='display: flex; align-items: center;'>";
             echo "<input type='hidden' name='item-name' value='" . $item['name'] . "'>";
             echo "<input type='hidden' name='item-quantity' value='" . $quantity . "'>";
             echo "<div class='quantity-btn'>";
@@ -113,11 +115,14 @@ $_SESSION['groupName'] = $groupName; //STORING GROUPNAME 2 USE W/ UPDATE_QUANTIT
             echo "<span class='quantity'>" . $quantity . "</span>";
             echo "<button class='btn plus-btn' type='submit' name='action' value='plus'>+</button>";
             echo "</div>";
+            echo  $item['tag'] ;
+            // Add delete button next to the Tag field
+            echo " <button class='btn delete-btn' type='submit' name='action' value='delete'>Delete</button>";
             echo "</form>";
-            echo "<br><strong>Tag:</strong> " . $item['tag'];
             echo "</div>";
             echo "</div>";
         }
+
     }
     $stmt->close();
     $stmt_inventory->close();
@@ -137,62 +142,11 @@ $_SESSION['groupName'] = $groupName; //STORING GROUPNAME 2 USE W/ UPDATE_QUANTIT
         modal.style.display = "none";
     }
 
-    form.addEventListener('submit', function(e) {
+    // need to send form data to updateInvQuantity file!!
+    function submitAddItemForm(e) {
         e.preventDefault();
-        const name = document.getElementById('item-name').value;
-        const quantity = parseInt(document.getElementById('item-quantity').value);
-        const tag = document.getElementById('item-tag').value;
-        const item = {
-            name: name,
-            quantity: quantity,
-            tag: tag
-        };
-        addItem(item);
-        form.reset();
-        hideAddItemBox();
-    });
-
-    function addItem(item) {
-        const scrollBox = document.querySelector('.scroll-box');
-        const itemDiv = document.createElement('div');
-        itemDiv.classList.add('item'); // Add 'item' class to the new item div
-        //const div = document.createElement('div'); //not looking good, try each el as own div
-
-        const div1 = document.createElement('div');
-        const nameSpan = document.createElement('span');
-        nameSpan.innerText = "Name: " + item.name;
-        const quantityBtnDiv = document.createElement('div');
-        quantityBtnDiv.classList.add('quantity-btn');
-        const minusBtn = document.createElement('button');
-        minusBtn.classList.add('btn', 'minus-btn');
-        minusBtn.setAttribute('data-id', item.name);
-        minusBtn.innerText = '-';
-        const quantitySpan = document.createElement('span');
-        quantitySpan.classList.add('quantity');
-        quantitySpan.innerText = item.quantity;
-        const plusBtn = document.createElement('button');
-        plusBtn.classList.add('btn', 'plus-btn');
-        plusBtn.setAttribute('data-id', item.name);
-        plusBtn.innerText = '+';
-        const div2 = document.createElement('div');
-        const tagSpan = document.createElement('span');
-        tagSpan.innerText = "Tag: " + item.tag;
-        const removeBtn = document.createElement('button');
-        removeBtn.classList.add('btn');
-        removeBtn.innerText = 'Remove';
-        removeBtn.addEventListener('click', function() {
-            scrollBox.removeChild(itemDiv);
-        });
-        div1.appendChild(nameSpan);
-        quantityBtnDiv.appendChild(minusBtn);
-        quantityBtnDiv.appendChild(quantitySpan);
-        quantityBtnDiv.appendChild(plusBtn);
-        div1.appendChild(quantityBtnDiv);
-        div2.appendChild(tagSpan);
-        div2.appendChild(removeBtn);
-        itemDiv.appendChild(div1);
-        itemDiv.appendChild(div2);
-        scrollBox.appendChild(itemDiv);
+        const form = document.getElementById("add-item-form");
+        form.submit();
     }
 
 </script>
