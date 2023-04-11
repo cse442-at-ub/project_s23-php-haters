@@ -1,111 +1,80 @@
-<?php
-session_start();
-$host = "oceanus.cse.buffalo.edu";
-$user = "riadmukh";
-$password = "50356618";
-$database = "cse442_2023_spring_team_ae_db";
-// Create connection
-$conn = new mysqli($host, $user, $password, $database);
+    <?php
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+    session_start();
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+    $host = "oceanus.cse.buffalo.edu";
+    $user = "accartwr";
+    $password = "50432097";
+    $database = "cse442_2023_spring_team_ae_db";
+    $conn = mysqli_connect($host, $user, $password, $database);
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    $current_user = $_SESSION['username'];
+    $groupName = $_SESSION['groupName'];
+    // ^^^ I'm storing groupName in $SESSION VAR in my 'inventory.php' page
 
-function getUser($conn, $username, $password){
 
-    // SQL query to select user with given username
-    $sql = "SELECT * FROM users WHERE usersUsername=?";
-    $prep = mysqli_stmt_init($conn);
+    ////so dont need this anymore.. FIND GROUP... or group.php should be storing in session vars after they join?
+    //$sql = "SELECT groupName FROM groupTest WHERE username = ?";
+    //$stmt = $conn->prepare($sql);
+    //$stmt->bind_param("s", $current_user);
+    //$stmt->execute();
+    //$stmt->store_result();
+    //$stmt->bind_result($groupName);
+    //$stmt->fetch(); // Fetching groupName
 
-    if (!mysqli_stmt_prepare($prep, $sql)) {return false;}
-    else {
-        // Bind parameters to statement
-        mysqli_stmt_bind_param($prep, "s", $username);
-        // Execute statement
-        mysqli_stmt_execute($prep);
-        // Get result set from statement
-        $result = mysqli_stmt_get_result($prep);
+    // grab info from hidden html form in my inventory.php file
+    $item_name = $_POST['item-name'];
+    $item_quantity = $_POST['item-quantity'];
+    $action = $_POST['action'];
 
-        if ($row = mysqli_fetch_assoc($result)) {
-            // Verify password hash
-            if (password_verify($password, $row['usersPassword'])) {
-                // Passwords match, return user info
-                return $row;
-            } else {
-                // Passwords don't match
-                return false;
-            }
+
+    // check which button they hit, PREVENT - IF <0
+    if ($action == 'minus' && $item_quantity > 0) {
+        $item_quantity--;
+    } elseif ($action == 'plus') {
+        $item_quantity++;
+    }elseif($action == 'delete'){
+        //need to delete itmName for that GROUPname!!
+        $sql_delete = "DELETE FROM groupInventory WHERE itemName = ? AND groupName = ?";
+        $stmt_delete = $conn->prepare($sql_delete);
+        $stmt_delete->bind_param("ss", $item_name, $groupName);
+        $stmt_delete->execute();
+        $stmt_delete->close();
+        header("Location: inventory.php");
+        exit;
+    }elseif($action == 'add'){
+        $item_tag = $_POST['item-tag'];
+        $sql_add = "INSERT INTO groupInventory (groupName, itemName, quantity, tag1) VALUES (?, ?, ?, ?)";
+        $stmt_add = $conn->prepare($sql_add);
+        $stmt_add->bind_param("ssis", $groupName, $item_name, $item_quantity, $item_tag);
+        $stmt_add->execute();
+            //  dont think im getting here?? try to debug
+        echo "add this item--->: " . $item_name;
+        if ($stmt_add->error) {
+            echo "Error: " . $stmt_add->error;
         } else {
-            // No user found with given username
-            return false;
+            echo "Item added successfully";
         }
-    }
-}
 
-function checkLogin($conn){
-    if(isset($_SESSION['username'])){ // check if user session variable is set
-        echo "Username------------->>>>> " . $_SESSION['username'];
-
-        $id = $_SESSION['username']; // get the user's username from the session variable
-        $query = "SELECT * FROM users WHERE usersUsername = '$id' limit 1;"; // query the database to get the user's data
-        $result = mysqli_query($conn, $query); // execute the query
-
-        header("location: home2.php");
-        exit();
-    }
-    die();
-}
-
-if (isset($_POST["username"])){
-    $username = $_POST["username"];
-    $password = $_POST["password"];
-
-    $user = getUser($conn, $username, $password);
-
-    if(!$user){
-        $_SESSION['error'] = 'Username and password did not match.';
-        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "register.php";</script>';
-        exit();
+        $stmt_add->close();
+        header("Location: inventory.php");
+        exit;
     }
 
-    $_SESSION["username"] = $username;
+    $sql_update = "UPDATE groupInventory SET quantity = ? WHERE itemName = ? AND groupName = ?";
+    $stmt_update = $conn->prepare($sql_update);
+    $stmt_update->bind_param("iss", $item_quantity, $item_name, $groupName);
+    echo "CurrentUser: " . $current_user . "<br>";
+    echo "Item name: " . $item_name . "<br>";
+    echo "Item quantity: " . $item_quantity . "<br>";
+    echo "Group name: " . $groupName . "<br>";
 
-    checkLogin($conn);
-    header("location: home2.php");
-    exit();
-}
-?>
+    $stmt_update->execute();
+    header("Location: inventory.php");
+    exit;
 
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-    <title>Roomaid Login</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-
-
-
-<body>
-<div class="loginElement">
-    <form method="post" action="login.php">
-        <label>
-            <input type="text" id="username" name="username" placeholder="Enter Username" required>
-        </label>
-        <br>
-        <input type="password" id="password" name="password" placeholder="Enter Password" required>
-        <br>
-        <div class="forgotpw">
-            <a href="forgotpw.php">Forgot Password?</a> <!-- Need to redirect to forgot password page -->
-        </div>
-        <p>
-            <input type="submit" value="LOGIN"> <!-- Need to redirect to homepage -->
-        <div class="newuser">
-            <a href="register.php">New Here? Sign Up!</a>
-        </div>
-    </form>
-</div>
-</body>
-</html>
-
+    $stmt_update->close();
+    ?>
