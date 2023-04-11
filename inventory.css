@@ -1,3 +1,8 @@
+/* Add this at the beginning of your CSS file */
+html {
+    font-size: 16px;
+}
+
 /*Nav Bar */
 .icon-pfp {
     position: relative;
@@ -8,15 +13,25 @@ header {
     position: static;
     height: 10vh;
     display: flex;
+    justify-content: center; /* test */
+    flex-wrap: wrap; /* tryin this flex thing to keep nav bar consistent */
 }
 header * {
     display: flex;
     align-items: center;
 }
-
+header ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /*flex-wrap: wrap;  -->trying nowrap to fix smaller screens? */
+    flex-wrap: nowrap;
+    list-style-type: none;
+    padding: 0;
+}
 header li {
     margin-right: 1%;
-    font-size: 15px;
+    font-size: 1em;
     font-family: 'Inter', sans-serif;
     font-style: normal;
 }
@@ -32,6 +47,15 @@ header li a {
     border-radius: 10px;
     margin-right: 5vh;
 }
+/*try percentages for smaller screens? */
+/*.nav-button {*/
+/*    box-sizing: border-box;*/
+/*    background: #EEE3A4;*/
+/*    padding: 1.5% 3%; !*  padding w/ percentage *!*/
+/*    border: 3px solid #000000;*/
+/*    border-radius: 10px;*/
+/*    margin-right: 2%; !* margin w/ percentage *!*/
+/*}*/
 /* main  Webpage  */
 .title {
     text-align: center;
@@ -40,7 +64,7 @@ header li a {
 }
 
 .title h2 {
-    font-size: 24px;
+    font-size: 1.5em;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -54,9 +78,9 @@ body {
     height: 75vh;
     max-height: calc(75vh - 10vh);
     overflow: auto;
-    padding: 25px;
+    padding: 2em;
     position: fixed;
-    bottom: 10px;
+    bottom: 1em;
     width: 80%;
     left: 10%;
     border: 2px solid black;
@@ -64,34 +88,30 @@ body {
 .item {
     background-color: #F3ECC1;
     color: #000000;
-    padding: 25px;
-    margin-bottom: 25px;
-    border-radius: 25px;
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 2em;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
+    justify-content: space-around;
     align-items: center;
 }
 .item div {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
 }
-.item strong {
-    font-size: 20px;
-    margin-right: 10px;
-}
-.item span {
-    font-size: 20px;
-    font-weight: bold;
-    margin-right: 10px;
+.item strong, .item span {
+    font-size: 1.25em;
+    margin-right: 0.5em;
 }
 .item button {
-    font-size: 20px;
+    font-size: 1.25em;
     font-weight: bold;
-    margin-right: 10px;
+    margin-right: 0.5em;
 }
 .btn {
     background-color: #FFFFFF;
@@ -101,42 +121,39 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 50px;
+    font-size: 3.125em;
     line-height: 1.5;
 }
 #add-item-btn {
     background-color: #EEE3A4;
     color: #000000;
-    font-size: 24px;
-    padding: 10px 20px;
+    font-size: 1.5em;
+    padding: 0.5em 1em;
     border: 3px solid #000000;
     border-radius: 10px;
-    /*margin: 0 auto; !* center button horizontally for now...  *!*/
-    display: block; /* make button a block element to center it vertically for now */
-    /*margin-top: 10px; !* top margin to put space between button and nav bar!!  */
+    display: block;
 }
 /*adding new item-  trying to fix layout for new items so it matches others */
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 25px; /* Add this line to match the margin of the other items */
+    margin-top: 25px;
 }
 form > * {
-    margin-bottom: 15px; /* this shud match the margin of the other items???...ahhh idk */
+    margin-bottom: 1em;
 }
 form label {
-    font-size: 20px;
+    font-size: 1.25em;
     margin-right: 10px;
 }
 form input {
     padding: 5px;
-    font-size: 20px;
+    font-size: 1.25em;
     border: none;
     border-bottom: 2px solid black;
     background-color: #F3ECC1;
 }
-
 /* trying modal box to add an item */
 #add-item-modal {
     position: fixed;
@@ -186,3 +203,47 @@ form input {
     display: inline-flex;
 }
 
+/* Media Queries */
+@media screen and (max-width: 600px) {
+    header li {
+        font-size: 0.8em;
+    }
+    .nav-button {
+        padding: 1.5vh 3vh;
+        margin-right: 2vh;
+        /*still stacked weird on smaller screens  */
+        /*padding: 1% 2%;     !* trying padding w/ percentages *!*/
+        /*margin-right: 1%;   !*  trying margin w/ percentages *!*/
+    }
+    .title h2 {
+        font-size: 1.2em;
+    }
+    .scroll-box {
+        padding: 1em;
+        bottom: 0.5em;
+    }
+    .item strong, .item span, .item button {
+        font-size: 1em;
+        margin-right: 0.25em;
+    }
+    .btn {
+        font-size: 2.5em;
+    }
+    #add-item-btn {
+        font-size: 1.2em;
+        padding: 0.5em 1em;
+    }
+    form label, form input {
+        font-size: 1em;
+    }
+    #add-item-modal form label {
+        font-size: 1em;
+    }
+    #add-item-modal form input {
+        font-size: 1em;
+    }
+    #add-item-modal form button[type="submit"],
+    #add-item-modal form button[type="button"] {
+        font-size: 1em;
+    }
+}
