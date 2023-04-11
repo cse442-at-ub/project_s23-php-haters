@@ -131,6 +131,11 @@ button[type="submit"]{
     font-weight: bold;
 }
 
+button.deleteEntryBtn[type="submit"]{
+    border: none;
+    background-color: transparent;
+}
+
 div[class="task_box"] {
     position: relative;
     width: 82%;
@@ -141,6 +146,9 @@ div[class="task_box"] {
     border: solid 2px black;
     background: #EEE3A4;
     border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 span[class="taskName"] {
@@ -163,6 +171,10 @@ span[class="taskName"] {
     font-weight: bold;
 }
 
+.deleteEntry{
+    display: flex;
+    align-items: center;
+}
 
 span[class="priority"] {
     position: absolute;

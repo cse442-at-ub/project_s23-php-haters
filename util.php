@@ -21,7 +21,7 @@ function connect(){
 
 function getGroupName($username, $mysqli){
     $name = $username;
-    $stmt = $mysqli->prepare("SELECT groupName FROM `groupTest` WHERE username = ?");
+    $stmt = $mysqli->prepare("SELECT groupName FROM `groupTestV2` WHERE username = ?");
     $stmt->bind_param("s", $name);
     $stmt->execute();               // Find the group the user is in
     $result = $stmt->get_result();
@@ -44,9 +44,9 @@ function getTasks($groupName, $mysqli){
 
 function getGroupMembers($groupName, $mysqli){
     $stmt = $mysqli->prepare("SELECT users.usersUsername
-        FROM groupTest
-        JOIN users ON groupTest.username = users.usersUsername
-        WHERE groupTest.groupName = ?;");
+        FROM groupTestV2
+        JOIN users ON groupTestV2.username = users.usersUsername
+        WHERE groupTestV2.groupName = ?;");
     $stmt->bind_param("s", $groupName);
     $stmt->execute();
     $result = $stmt->get_result();

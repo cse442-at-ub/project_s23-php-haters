@@ -26,10 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $due_date = date('Y-m-d', strtotime($_POST["due-date"]));
     $member = $_POST["members"];
 }
-print $_POST["task-name"];
-print $_POST["priority"];
-print date('Y-m-d', strtotime($_POST["due-date"]));
-print $_POST["members"];
+//print $_POST["task-name"];
+//print $_POST["priority"];
+//print date('Y-m-d', strtotime($_POST["due-date"]));
+//print $_POST["members"];
 
 
 $group_name = getGroupName($name, $mysqli);

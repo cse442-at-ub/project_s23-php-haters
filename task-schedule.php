@@ -113,16 +113,23 @@ removeOverdue();
             }
             // iterate through them
             foreach ($data as $row) {
-                echo '<div class="task_box">';
-                echo '<span class="taskName" id="taskboxname">' . $row['task'] . '</span>';
-                echo '<div class="taskpriority">Priority: ' . $row['importance'] . '</div>';
-                echo '<span class="taskdate" id="taskduedate">Do by: ' . $row['due_date'] . '</span>';
-                echo '</div>';
-                echo '</div>';
+                ?>
+                <div class="task_box">
+                    <span class="taskName" id="taskboxname"><?php echo $row['task']; ?></span>
+                    <div class="taskpriority">Priority: <?php echo $row['importance']; ?></div>
+                    <span class="taskdate" id="taskduedate">Do by: <?php echo $row['due_date']; ?></span>
+                    <form class="deleteEntry" method="POST" action="taskComplete.php">
+                        <input type="hidden" name="check_task" value="<?php echo $row['task']; ?>">
+                        <input type="hidden" name="check_imp" value="<?php echo $row['importance']; ?>">
+                        <input type="hidden" name="check_date" value="<?php echo $row['due_date']; ?>">
+                        <button class="deleteEntryBtn" type="submit" name="delete_task">X</button>
+                    </form>
+                </div>
+                <?php
             }
         }
       ?>
-
+  </div>
 </body>
 </html>
 
