@@ -51,7 +51,7 @@ function checkLogin($conn){
         $query = "SELECT * FROM users WHERE usersUsername = '$id' limit 1;"; // query the database to get the user's data
         $result = mysqli_query($conn, $query); // execute the query
 
-        header("location: home2.php");
+        header("location: home.html");
         exit();
     }
     die();
