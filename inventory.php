@@ -20,7 +20,8 @@ $stmt->store_result();
 $stmt->bind_result($groupName); // BIND
 $result_group  = $stmt->fetch(); // return1 if in group, 0 if not
 
-$_SESSION['groupName'] = $groupName; //STORING GROUPNAME 2 USE W/ UPDATE_QUANTITY PAGE!
+$_SESSION['groupName'] = $groupName;
+//^^^ STORING GROUPNAME as session variable 2 USE W/ Update_invQuantity.php PAGE
 
 ?>
 <!DOCTYPE html>
