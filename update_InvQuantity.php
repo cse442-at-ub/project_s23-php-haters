@@ -13,7 +13,7 @@
     }
     $current_user = $_SESSION['username'];
     $groupName = $_SESSION['groupName'];
-    // ^^^ I'm storing groupName in $SESSION VAR in my 'inventory.php' page
+    // ^^^ retrieving groupName from $SESSION VAR, 'inventory.php' page stored for easy access
 
 
     ////so dont need this anymore.. FIND GROUP... or group.php should be storing in session vars after they join?
