@@ -1,10 +1,10 @@
 <?php
 session_start();
-if(isset($_SESSION['username'])) {
-    echo "home2.php....Username is set: " . $_SESSION['username'];
-} else {
-    echo "Username is not set";
-}
+// if(isset($_SESSION['username'])) {
+//     echo "home2.php....Username is set: " . $_SESSION['username'];
+// } else {
+//     echo "Username is not set";
+// }
 ?>
 
 <!DOCTYPE html>
