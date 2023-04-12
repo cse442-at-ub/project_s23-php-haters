@@ -12,7 +12,8 @@ $database = "cse442_2023_spring_team_ae_db";
 $conn = mysqli_connect($host, $user, $password, $database);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
-}?>
+}
+?>
 
 <?php
 // $sql = "SELECT * FROM roomAidExpenses WHERE username = '$current_user'";
@@ -71,20 +72,6 @@ $graph = mysqli_query($conn, $sql);
             return false;
         }
     </script>
-
-<!--Script for opening and closing of the bill infor form-->
-<!--    <script>-->
-<!--        function openBillInfo(expenseName) {-->
-<!--            document.getElementById("info-from").style.display = "block";-->
-<!--            document.getElementById("form-container").style.display = "none";-->
-<!--            // var billName = document.getElementById("store_var").getAttribute("data-value");-->
-<!--            document.getElementById("expense_name").innerHTML = billName;-->
-<!--            // document.getElementById("date").innerHTML = dueDate;-->
-<!--        }-->
-<!--        function closeBillInfo() {-->
-<!--            document.getElementById("info-from").style.display = "none";-->
-<!--        }-->
-<!--    </script>-->
 </head>
 <body>
 
@@ -110,7 +97,7 @@ $graph = mysqli_query($conn, $sql);
     <button class="add_bill" onclick="openBillForm()"><span id="add_bill"> + Add Bill</span></button>
 </div>
 <div class="form-container" id="form-container">
-    <form action="/bill.php" method="post" name="addBillForm" onsubmit="textClear()">
+    <form action="bill.php" method="post" name="addBillForm" onsubmit="textClear()">
 
         <input type="text" id="Name" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 1.5vw" placeholder="Enter Bill Name" name="Bill_Name" required>
         <input type="date" id="Date" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 1.5vw" placeholder="EDate" name="Date" required>
@@ -151,20 +138,6 @@ $graph = mysqli_query($conn, $sql);
         $i++;
     }?>
 </div>
-
-
-<!--Not displaying fancy for Sprint 2 so working with the basic functionality for now-->
-<!--<div class="info-from" id="info-from">-->
-<!--    <form action="/info.php" name="BillInfoForm">-->
-<!---->
-<!--        <button type="button" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 2vw" class="back" onclick="closeBillInfo()">Back</button>-->
-<!---->
-<!--        <span id="expense_name"></span>-->
-<!--        <span id="date">Date: </span>-->
-<!---->
-<!---->
-<!--    </form>-->
-<!--</div>-->
 
 
 </body>
