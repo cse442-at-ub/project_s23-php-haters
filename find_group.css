@@ -2,7 +2,7 @@ body{
     background: #CDB7E9;
 }
 
-/* Group Search bar */
+/* Group Search Bar */
 
 input[id="search"] {
     display: block;
@@ -24,6 +24,27 @@ input[id="search"] {
     color: #000000;
 }
 
+/* Group Seach Button */
+button[id="search"] {
+    padding: 1% 2%;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    top: 12%;
+    right: 14%;
+    border-radius: 15px;
+
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5vw;
+
+    background-color: #EEE3A4;
+    color: #000000;
+}
+
 /* Create A Room Button */
 
 button[class="open-button"] {
@@ -33,7 +54,7 @@ button[class="open-button"] {
     opacity: 0.8;
     position: fixed;
     top: 50%;
-    right: 41%;
+    right: 40%;
     border-radius: 15px;
 
     text-align: center;
