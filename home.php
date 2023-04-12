@@ -18,7 +18,7 @@ session_start();
     <span class="h3"> RoomAid </span>
         <nav>
             <ul>
-                <li><a href="home2.php" class="nav-button">Home</a></li>
+                <li><a href="home.php" class="nav-button">Home</a></li>
                 <li><a href="#" class="nav-button">Schedule</a></li>
                 <li><a href="#" class="nav-button">Group</a></li>
                 <li><a href="inventory.php" class="nav-button">Inventory</a></li>
