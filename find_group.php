@@ -1,5 +1,17 @@
 <?php
     session_start();
+
+    //Database Connection
+    $host = "oceanus.cse.buffalo.edu";
+    $user = "arpithir";
+    $pass = "50340819";
+    $database = "cse442_2023_spring_team_ae_db";
+
+    //make sure we found oceanus
+    $conn = mysqli_connect($host, $user, $pass, $database);
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
 ?>
 
 <!DOCTYPE html>
@@ -14,11 +26,13 @@
         function openGroupForm() {
             document.getElementById("groupForm").style.display = "block";
             document.getElementById("search").style.display = "none";
+            document.getElementById("search_button").style.display = "none";
         }
 
         function closeGroupForm() {
             document.getElementById("groupForm").style.display = "none";
             document.getElementById("search").style.display = "block";
+            document.getElementById("search_button").style.display = "block";
         }
     </script>
 </head>
@@ -27,9 +41,10 @@
 <div class="search">
     <form class="search" method="post" action="find_group_be.php">
         <input id="search" type="text" placeholder="Search Group" name="search" required>
-        <button class="search" id="search" type="submit" name="submit">Search</button>
+        <button class="search" id="search_button" type="submit" name="submit">Search</button>
     </form>
 </div>
+
 
 <button class="open-button" onclick="openGroupForm()">Create A Group</button>
 <div class="form-popup" id="groupForm">

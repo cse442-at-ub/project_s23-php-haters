@@ -25,7 +25,8 @@ input[id="search"] {
 }
 
 /* Group Seach Button */
-button[id="search"] {
+button[id="search_button"] {
+    display: block;
     padding: 1% 2%;
     border: none;
     cursor: pointer;
@@ -48,6 +49,7 @@ button[id="search"] {
 /* Create A Room Button */
 
 button[class="open-button"] {
+    display: block;
     padding: 2% 4%;
     border: none;
     cursor: pointer;
@@ -142,3 +144,77 @@ button[class="btn cancel"] {
     background: #EEE3A4;
 }
 
+/* Group Info Form*/
+
+/* The popup form - hidden by default */
+.group_info_box {
+    display: block;
+    position: fixed;
+    width: 50%;
+    height: 50%;
+    bottom: 28%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    background: #EEE3A4;
+    border: 3px solid #000000;
+    border-radius: 25px;
+    z-index: 9999;
+}
+
+@keyframes form-transition {
+    0% {
+        bottom: -100%;
+    }
+    100% {
+        bottom: 50%;
+    }
+}
+
+/* Set a style for the Create/Cancel button */
+button[class="join"] {
+    cursor: pointer;
+    position: absolute;
+    width: 13%;
+    height: 10%;
+    right: 5%;
+    top: 83%;
+    border-radius: 12px;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5vw;
+
+    background: #CDB7E9;
+}
+
+button[class="cancel"] {
+    cursor: pointer;
+    position: absolute;
+    width: 13%;
+    height: 10%;
+    right: 20%;
+    top: 83%;
+    border-radius: 12px;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5vw;
+
+    background: #EEE3A4;
+}
+
+span[class="name"]{
+    position: absolute;
+    left: 10%;
+    margin-top: 6%;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2vw;
+
+    color: #000000;
+}
