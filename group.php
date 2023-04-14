@@ -29,7 +29,7 @@ if (!$conn) {
         <nav>
             <ul>
                 <li><a href="home.php " class="nav-button">Home</a></li>
-                <li><a href="#" class="nav-button">Schedule</a></li>
+                <li><a href="task-schedule.php" class="nav-button">Schedule</a></li>
                 <li><a href="group.php" class="nav-button">Group</a></li>
                 <li><a href="inventory.php" class="nav-button">Inventory</a></li>
                 <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>
