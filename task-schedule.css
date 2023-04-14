@@ -21,6 +21,15 @@ header li {
     font-family: 'Inter', sans-serif;
     font-style: normal;
 }
+header nav a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px;
+    border-radius: 5px;
+}
+header nav a:visited {
+    text-decoration: none;
+}
 
 .nav-button {
     box-sizing: border-box;
