@@ -34,7 +34,8 @@ while ($row = $result->fetch_assoc()) {
 </head>
 <body style="background: #CDB7E9;">
 <div class="expense-details">
-    <h2 class="h2"><?php echo $expenseName; ?></h2>
+        <h2 class="h2"><?php echo $expenseName; ?></h2>
+
     <table>
         <tr>
             <th>User</th>
