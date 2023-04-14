@@ -134,7 +134,6 @@ $graph = mysqli_query($conn, $sql);
     <span class="bill_Name" id="bill_Name">'.$expenseName.'</span>
     <span class="bill_Date" id="bill_Date">'.$dueDate.'</span>
     <span class="bill_Amount" id="bill_Amount">'.$amount.'</span></div>';
-//        echo '<div id="store_var" data-value='.$row['expenseName'].' style="display: none"></div>';
         $i++;
     }?>
 </div>
