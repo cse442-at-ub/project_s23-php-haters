@@ -25,7 +25,7 @@ $graph = mysqli_query($conn, $sql);
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shared Expenses</title>
 
     <link rel="stylesheet" href="Shared_Expenses.css">
@@ -81,11 +81,11 @@ $graph = mysqli_query($conn, $sql);
         <span class="h3">RoomAid</span>
         <nav>
             <ul>
-                <li><a href="home.html" class="nav-button">Home</a></li>
-                <li><a href="#" class="nav-button">Schedule</a></li>
-                <li><a href="#" class="nav-button">Calendar</a></li>
-                <li><a href="#" class="nav-button">Inventory</a></li>
+                <li><a href="home.php" class="nav-button">Home</a></li>
+                <li><a href="task-schedule.php" class="nav-button">Schedule</a></li>
+                <li><a href="shared-inventory.php" class="nav-button">Inventory</a></li>
                 <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>
+                <li><a href="#" class="nav-button">Group</a></li>
             </ul>
         </nav>
         <a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a>
@@ -112,33 +112,34 @@ $graph = mysqli_query($conn, $sql);
     </form>
 </div>
 
+<div id="container">
+    <div id="donutchart" style="width: 900px; height: 500px;"></div>
 
-<div id="donutchart" style="width: 900px; height: 500px;"></div>
 
 
-
-<div class="bill_section">
-    <?php
-//    Here 'hGilmore909' is a test user in a group but it will be change to current user once group formation page is done.
-    $sql = "SELECT * FROM allExpensesV2 WHERE (username = 'hGilmore909' OR user2 = 'hGilmore909' OR user3 = 'hGilmore909' OR user4 = 'hGilmore909')";
-    $result = mysqli_query($conn, $sql);
-    $top_increment = 3;
-    $i = 1;
-    while ($row = mysqli_fetch_assoc($result)) {
-        $expenseName = $row['expenseName'];
-        $dueDate = $row['dueDate'];
-        $amount = $row['totalAmt'];
-        $top = $top_increment * $i;
-        $bill_box_id = "bill_box".$i;
-        echo '<div class="bill_box" id='.$bill_box_id.' onclick="window.open(\'Display_Expenses.php?expenseName='.$expenseName.'\', \'_blank\', \'width=600, height=400\')" style="top: '. $top .'%;">
+    <div class="bill_section">
+        <?php
+        //    Here 'hGilmore909' is a test user in a group but it will be change to current user once group formation page is done.
+        $sql = "SELECT * FROM allExpensesV2 WHERE (username = 'hGilmore909' OR user2 = 'hGilmore909' OR user3 = 'hGilmore909' OR user4 = 'hGilmore909')";
+        $result = mysqli_query($conn, $sql);
+        $top_increment = 3;
+        $i = 1;
+        while ($row = mysqli_fetch_assoc($result)) {
+            $expenseName = $row['expenseName'];
+            $dueDate = $row['dueDate'];
+            $amount = $row['totalAmt'];
+            $top = $top_increment * $i;
+            $bill_box_id = "bill_box".$i;
+            echo '<div class="bill_box" id='.$bill_box_id.' onclick="window.open(\'Display_Expenses.php?expenseName='.$expenseName.'\', \'_blank\', \'width=600, height=400\')" style="top: '. $top .'%;">
     <span class="bill_Name" id="bill_Name">'.$expenseName.'</span>
     <span class="bill_Date" id="bill_Date">'.$dueDate.'</span>
     <span class="bill_Amount" id="bill_Amount">'.$amount.'</span></div>';
 //        echo '<div id="store_var" data-value='.$row['expenseName'].' style="display: none"></div>';
-        $i++;
-    }?>
-</div>
+            $i++;
+        }?>
+    </div>
 
+</div>
 
 </body>
 </html>

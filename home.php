@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 ?>
@@ -25,6 +24,7 @@ session_start();
         </nav>
     </div>
 </header>
+
 
 <div class="greeting">
     <h2 class="h2 nav-button">Welcome to RoomAid! Your personal roommate solution.</h2>

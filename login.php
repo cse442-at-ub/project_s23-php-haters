@@ -101,9 +101,7 @@ if (isset($_POST["username"])){
     <title>Roomaid Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <body>
 <div class="loginElement">
     <form method="post" action="login.php">
@@ -122,7 +120,13 @@ if (isset($_POST["username"])){
             <a href="register.php">New Here? Sign Up!</a>
         </div>
     </form>
+    <?php
+    if (isset($_GET["newpwd"])) {
+        if ($_GET["newpwd"] == "passwordupdated") {
+            echo '<p class="signupsucess">Your password has been updated successfully!</p>';
+        }
+    }
+    ?>
 </div>
 </body>
 </html>
-
