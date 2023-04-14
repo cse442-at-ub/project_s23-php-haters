@@ -66,7 +66,7 @@ button[id="invite"] {
 
 /* Leave Group Button */
 
-button[id="leave_group"] {
+input[id="leave_group"] {
     position: absolute;
     width: 22%;
     height: 6%;
@@ -86,7 +86,7 @@ button[id="leave_group"] {
 
 /* Group Rectangle Box */
 
-div[id="group_box"] {
+div[class="group_box"] {
     position: absolute;
     width: 56%;
     height: 68%;
@@ -112,20 +112,11 @@ div[id="group_box"] {
     color: #000000;
 }
 
-/* profile pic */
-
-img[id="profile"] {
-    position: absolute;
-    left: 5%;
-    top: 5%;
-    width: 8.5%;
-}
-
 /* [Me] */
 
-span[id="name"]{
+span[class="name"]{
     position: absolute;
-    left: 15%;
+    left: 9%;
     top: 9%;
 
     font-family: 'Inter', sans-serif;
@@ -134,4 +125,13 @@ span[id="name"]{
     font-size: 2vw;
 
     color: #000000;
+}
+
+/* profile pic */
+
+img[id="profile"] {
+    position: absolute;
+    left: 5%;
+    top: 5%;
+    width: 8.5%;
 }

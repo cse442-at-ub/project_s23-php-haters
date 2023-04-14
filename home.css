@@ -10,12 +10,11 @@ body {
     height: 10vh;
 }
 
-.icon-pfp {
-    /*position: relative;*/
-    /*width: 30%;*/
-    top: 0;
-    right: 0;
-    height: 10vh;
+img[id='icon-pfp'] {
+    position: fixed;
+    width:5.5%;
+    top: 1%;
+    right: 2%;
 }
 
 /* Nav Bar*/
