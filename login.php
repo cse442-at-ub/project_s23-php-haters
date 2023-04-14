@@ -33,7 +33,7 @@ function getUser($conn, $username, $password){
                 // Passwords match, return user info
                 return $row;
             } else {
-                // Passwords don't match 
+                // Passwords don't match
                 return false;
             }
         } else {
@@ -83,13 +83,14 @@ if (isset($_POST["username"])){
 
     if(!$user){
         $_SESSION['error'] = 'Username and password did not match.';
-        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "register.php";</script>';
+        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "login.php";</script>';
         exit();
     }
 
     $_SESSION["username"] = $username;
 
     checkLogin($conn);
+    header("location: home.php");
     exit();
 }
 ?>
@@ -101,9 +102,7 @@ if (isset($_POST["username"])){
     <title>Roomaid Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
-
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <body>
 <div class="loginElement">
     <form method="post" action="login.php">
@@ -122,7 +121,13 @@ if (isset($_POST["username"])){
             <a href="register.php">New Here? Sign Up!</a>
         </div>
     </form>
+    <?php
+    if (isset($_GET["newpwd"])) {
+        if ($_GET["newpwd"] == "passwordupdated") {
+            echo '<p class="signupsucess">Your password has been updated successfully!</p>';
+        }
+    }
+    ?>
 </div>
 </body>
 </html>
-
