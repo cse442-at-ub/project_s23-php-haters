@@ -1,10 +1,5 @@
 <?php
 session_start();
-// if(isset($_SESSION['username'])) {
-//     echo "home2.php....Username is set: " . $_SESSION['username'];
-// } else {
-//     echo "Username is not set";
-// }
 ?>
 
 <!DOCTYPE html>
@@ -20,15 +15,16 @@ session_start();
             <ul>
                 <li><a href="home.php" class="nav-button">Home</a></li>
                 <li><a href="#" class="nav-button">Schedule</a></li>
-                <li><a href="#" class="nav-button">Group</a></li>
+                <li><a href="#" class="nav-button">Calendar</a></li>
                 <li><a href="inventory.php" class="nav-button">Inventory</a></li>
                 <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>
-                <li><a href="#"><img class='icon-pfp' src="Giraffe.png" alt="Profile"></a></li>
+                <li><a href="group.php"><img class='icon-pfp' src="profile.png" alt="Profile"></a></li>
             </li>
             </ul>
         </nav>
     </div>
 </header>
+
 
 <div class="greeting">
     <h2 class="h2 nav-button">Welcome to RoomAid! Your personal roommate solution.</h2>
