@@ -1,45 +1,146 @@
 .expense-details {
-    position: fixed;
-    width: 50%;
-    height: 40%;
-    bottom: 30%;
-    left: 50%;
-    transform: translateX(-50%);
-    box-sizing: border-box;
+    width: 45%;
+    height: 400px;
     background: #EEE3A4;
     border: 3px solid #000000;
     border-radius: 25px;
-    z-index: 9999;
+    margin-left: 25%;
+    margin-top: 10%;
 }
 
-.h2 {
-    position: absolute;
+.expense-details h2 {
+    margin-left: 2.5%;
     text-align: center;
     width: 100%;
-    bottom: 75%;
-    font-size: 2vw;
+    font-size: 4vw;
     font-family: 'Inter', sans-serif;
 }
 
-.h3 {
-    position: absolute;
-    bottom: 75%;
-    left: 40%;
-    font-size: 1.5vw;
-    font-family: 'Inter', sans-serif;
+.expense-details th, td {
+    border: 3px solid #000000;
 }
-
-table, th, td {
-    border: 3px solid#000000;
-}
-table {
-    text-alignalign: center;
+.expense-details table{
     border-collapse: collapse;
-    margin-top: 12%;
-    margin-left: 36%;
-    border-radius: 15px;
+    font-family: Inter, sans-serif;
+    margin-left: 30%;
+    width: 5%;
+    height: 30px;
+    font-size: 2.5vw;
+}
 
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-size: 2vw;
+
+@media only screen and (max-width: 1100px) {
+    .expense-details h2{
+        font-size: 4vw;
+    }
+    .expense-details table{
+        margin-top: 15%;
+        margin-left: 35%;
+        font-size: 3vw;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .expense-details h2{
+        font-size: 4vw;
+    }
+    .expense-details table{
+        margin-top: 15%;
+        margin-left: 30%;
+        font-size: 4vw;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .expense-details h2{
+        font-size: 5vw;
+    }
+    .expense-details table{
+        margin-top: 20%;
+        margin-left: 25%;
+        font-size: 4vw;
+
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .expense-details h2{
+        font-size: 7vw;
+    }
+    .expense-details table{
+        margin-top: 25%;
+        margin-left: 20%;
+        font-size: 4vw;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .expense-details h2{
+        font-size: 7vw;
+    }
+    .expense-details table{
+        margin-top: 25%;
+        margin-left: 20%;
+        font-size: 3vw;
+    }
+
+}
+
+@media only screen and (max-width: 600px) {
+    .expense-details h2{
+        font-size: 7vw;
+    }
+    .expense-details table{
+        margin-top: 25%;
+        margin-left: 20%;
+        font-size: 3vw;
+    }
+    .expense-details {
+        width: 45%;
+        height: 250px;
+        background: #EEE3A4;
+        border: 3px solid #000000;
+        border-radius: 25px;
+        margin-left: 25%;
+        margin-top: 10%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .expense-details h2{
+        font-size: 7vw;
+    }
+    .expense-details table{
+        margin-top: 25%;
+        margin-left: 20%;
+        font-size: 4vw;
+    }
+    .expense-details {
+        width: 45%;
+        height: 250px;
+        background: #EEE3A4;
+        border: 3px solid #000000;
+        border-radius: 25px;
+        margin-left: 25%;
+        margin-top: 10%;
+    }
+}
+@media only screen and (max-width: 400px) {
+    .expense-details h2{
+        font-size: 7vw;
+    }
+    .expense-details table{
+        margin-top: 25%;
+        margin-left: 20%;
+        font-size: 4vw;
+    }
+    .expense-details {
+        width: 45%;
+        height: 250px;
+        background: #EEE3A4;
+        border: 3px solid #000000;
+        border-radius: 25px;
+        margin-left: 25%;
+        margin-top: 10%;
+    }
 }

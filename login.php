@@ -33,7 +33,7 @@ function getUser($conn, $username, $password){
                 // Passwords match, return user info
                 return $row;
             } else {
-                // Passwords don't match
+                // Passwords don't match 
                 return false;
             }
         } else {
@@ -83,14 +83,13 @@ if (isset($_POST["username"])){
 
     if(!$user){
         $_SESSION['error'] = 'Username and password did not match.';
-        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "login.php";</script>';
+        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "register.php";</script>';
         exit();
     }
 
     $_SESSION["username"] = $username;
 
     checkLogin($conn);
-    header("location: home.php");
     exit();
 }
 ?>

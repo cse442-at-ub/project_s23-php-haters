@@ -27,7 +27,9 @@ ini_set('display_errors', 1);
                 </form>
                 <?php
             } } else {
-            echo "Could not validate your request!";
+            $_SESSION['error'] = 'Sorry, there was an error.';
+            echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "login.php";</script>';
+            exit();
         } ?>
     </section>
 </div>
