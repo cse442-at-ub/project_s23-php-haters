@@ -2,52 +2,6 @@ body {
     background: #CDB7E9;
 }
 
-/* Nav Bar*/
-header {
-    position: fixed;
-    height: 10%;
-    display: flex;
-    top: 1%;
-}
-
-header * {
-    display: flex;
-    align-items: center;
-}
-
-header li {
-    margin: 6.5%;
-    font-size: 2vw; /* Use viewport width as font size */
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-}
-header nav a {
-    text-decoration: none;
-    color: #333;
-    padding: 5px;
-    border-radius: 5px;
-}
-header nav a:visited {
-    text-decoration: none;
-}
-
-.nav-button {
-    box-sizing: border-box;
-    background: #EEE3A4;
-    padding: 8% 16%; /* Use percentage for padding */
-    border: 3px solid #000000;
-    border-radius: 12px;
-}
-
-.h3 {
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 3vw;
-    line-height: 1.2;
-    align-content: center;
-}
-
 .formcontainer{
     width: 90%;
     height: 500px;
@@ -59,7 +13,7 @@ header nav a:visited {
 }
 
 .pageTitle{
-    margin-top: 10%;
+    padding-top: 10%;
     margin-left: 45%;
     font-weight: bolder;
     font-size: 30px;
