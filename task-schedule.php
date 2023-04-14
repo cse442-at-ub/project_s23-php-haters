@@ -22,6 +22,7 @@ removeOverdue();
   <title>Roomaid Task Schedule</title>
   <link rel="stylesheet" href="task-schedule.css">
   <link rel="stylesheet" href="shared-inventory.css">
+  <link rel="stylesheet" href="group.css">
     <script>
         // Doesn't let user choose a date before current date
         window.onload = function() {
@@ -38,7 +39,7 @@ removeOverdue();
       <span class="h3">RoomAid</span>
       <nav>
         <ul>
-          <li><a href="home.html" class="nav-button">Home</a></li>
+          <li><a href="home.php" class="nav-button">Home</a></li>
           <li><a href="#" class="nav-button">Schedule</a></li>
           <li><a href="#" class="nav-button">Calendar</a></li>
           <li><a href="shared-inventory.php" class="nav-button">Inventory</a></li>
