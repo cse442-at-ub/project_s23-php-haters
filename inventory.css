@@ -23,7 +23,7 @@ header * {
 
 header li {
     margin: 6.5%;
-    font-size: 2vw; /* Use viewport width as font size */
+    font-size: 2vw; 
     font-family: 'Inter', sans-serif;
     font-style: normal;
 }
@@ -36,7 +36,7 @@ header li a {
 .nav-button {
     box-sizing: border-box;
     background: #EEE3A4;
-    padding: 8% 16%; /* Use percentage for padding */
+    padding: 8% 16%;
     border: 3px solid #000000;
     border-radius: 12px;
 }
