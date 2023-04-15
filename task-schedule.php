@@ -21,7 +21,6 @@ removeOverdue();
 <head>
   <title>Roomaid Task Schedule</title>
   <link rel="stylesheet" href="task-schedule.css">
-  <link rel="stylesheet" href="shared-inventory.css">
   <link rel="stylesheet" href="group.css">
     <script>
         // Doesn't let user choose a date before current date
@@ -33,25 +32,26 @@ removeOverdue();
     </script>
 </head>
 <body>
-  <header>
+
+<header>
     <div>
-      <img class='icon' src="Saturn.png" alt="RoomAid">
-      <span class="h3">RoomAid</span>
-      <nav>
-        <ul>
-          <li><a href="home.php" class="nav-button">Home</a></li>
-          <li><a href="#" class="nav-button">Schedule</a></li>
-          <li><a href="#" class="nav-button">Calendar</a></li>
-          <li><a href="shared-inventory.php" class="nav-button">Inventory</a></li>
-          <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>
-        </ul>
-      </nav>
-      <a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a>
+        <img class='icon' src="Saturn.png" alt="RoomAid">
+        <span class="h3"> RoomAid </span>
+        <nav>
+            <ul>
+                <li><a href="home.php " class="nav-button">Home</a></li>
+                <li><a href="task-schedule.php" class="nav-button">Schedule</a></li>
+                <li><a href="group.php" class="nav-button">Group</a></li>
+                <li><a href="inventory.php" class="nav-button">Inventory</a></li>
+                <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>
+            </ul>
+        </nav>
+        <a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a>
     </div>
-  </header>
+</header>
 
   <div class="pageTitle">
-    Task Schedule
+      Task Schedule
   </div>
 
   <div class="formcontainer">

@@ -2,41 +2,55 @@ body {
     background: #CDB7E9;
 }
 
-/* Nav Bar*/
-header {
-    position: fixed;
-    height: 10%;
-    display: flex;
-    top: 1%;
+/* For screens with a maximum width of 768px */
+@media screen and (max-width: 768px) {
+    img[id='icon-pfp'] {
+        width: 10%;
+    }
+
+    header {
+        height: 15%;
+    }
+
+    header li {
+        margin: 3%;
+        font-size: 4vw;
+    }
+
+    .nav-button {
+        padding: 5% 10%;
+        border-radius: 8px;
+    }
+
+    .h3 {
+        font-size: 5vw;
+    }
 }
 
-header * {
-    display: flex;
-    align-items: center;
-}
+/* For screens with a maximum width of 480px */
+@media screen and (max-width: 480px) {
+    img[id='icon-pfp'] {
+        display: none;
+    }
 
-header li {
-    margin: 6.5%;
-    font-size: 2vw; /* Use viewport width as font size */
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-}
+    header {
+        height: 20%;
+        flex-direction: column;
+    }
 
-.nav-button {
-    box-sizing: border-box;
-    background: #EEE3A4;
-    padding: 8% 16%; /* Use percentage for padding */
-    border: 3px solid #000000;
-    border-radius: 12px;
-}
+    header li {
+        margin: 2%;
+        font-size: 6vw;
+    }
 
-.h3 {
-    font-family: 'Inter', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 3vw;
-    line-height: 1.2;
-    align-content: center;
+    .nav-button {
+        padding: 3% 6%;
+        border-radius: 4px;
+    }
+
+    .h3 {
+        font-size: 7vw;
+    }
 }
 
 .formcontainer{
@@ -50,7 +64,7 @@ header li {
 }
 
 .pageTitle{
-    margin-top: 10%;
+    padding-top: 10%;
     margin-left: 45%;
     font-weight: bolder;
     font-size: 30px;

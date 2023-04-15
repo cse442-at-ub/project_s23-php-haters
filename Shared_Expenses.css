@@ -28,6 +28,11 @@ header li {
     font-style: normal;
 }
 
+header li a {
+    color: black;
+    text-decoration: none;
+}
+
 .nav-button {
     box-sizing: border-box;
     background: #EEE3A4;
@@ -41,9 +46,9 @@ header li {
     font-style: normal;
     font-weight: 700;
     font-size: 3vw;
-    line-height: 1.2;
     align-content: center;
 }
+
 
 /* Chart */
 div[id="donutchart"] {
@@ -639,19 +644,30 @@ button[class="btn cancel"] {
 }
 
 @media only screen and (max-width: 400px) {
+    nav {
+        overflow: auto;
+        margin-left: -8%;
+    }
+    img[id='icon-pfp'] {
+        max-width:10px;
+        height: 10px;
+        top: 1%;
+        right: 2%;
+    }
+
     div[id="donutchart"] {
         background: #CDB7E9;
         width: 50%;
         height: 10%;
-        margin-left:-10%;
-        margin-top: -10%;
+        margin-left:-30%;
+        margin-top: -5%;
         flex: none;
     }
     div[class="bill_section"] {
-        margin-top: 30%;
-        margin-right: 15%;
+        margin-top: 35%;
+        margin-right: 52.5%;
         right: 2%;
-        width: 75%;
+        width: 40%;
         max-height: 60%;
         overflow: auto;
         background: #FFFFFF;
@@ -659,7 +675,7 @@ button[class="btn cancel"] {
         flex: none;
     }
     button[class="add_bill"] {
-        margin-top: 40%;
+        margin-top: 50%;
         margin-left: 5%;
         padding: 1.5% 3%;
         background: #EEE3A4;
@@ -670,9 +686,10 @@ button[class="btn cancel"] {
         font-style: normal;
     }
     img[id='icon-pfp'] {
-        width:5.5%;
-        margin-top: 6%;
-        margin-right: 15%;
+        max-width: 30%;
+        height: 40px;
+        margin-top: 7%;
+        margin-right: 47%;
     }
     /* Bill Name */
     span[class="bill_Name"] {

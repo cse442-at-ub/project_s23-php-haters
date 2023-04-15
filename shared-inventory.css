@@ -1,0 +1,246 @@
+body {
+    background: #CDB7E9;
+}
+
+img[id='icon-pfp'] {
+    position: fixed;
+    width:5.5%;
+    top: 1%;
+    right: 2%;
+}
+
+/* Nav Bar*/
+header {
+    position: fixed;
+    height: 10%;
+    display: flex;
+}
+
+header * {
+    display: flex;
+    align-items: center;
+}
+
+header li {
+    margin: 6.5%;
+    font-size: 2vw; /* Use viewport width as font size */
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+}
+
+.nav-button {
+    box-sizing: border-box;
+    background: #EEE3A4;
+    padding: 8% 16%; /* Use percentage for padding */
+    border: 3px solid #000000;
+    border-radius: 12px;
+}
+
+.h3 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3vw;
+    line-height: 1.2;
+    align-content: center;
+}
+
+
+/* Item Section Background*/
+div[class="item_section"] {
+    position: fixed;
+    top: 30%;
+    right: 5%;
+    width: 90%;
+    height: 81%;
+    overflow: auto;
+    background: #FFFFFF;
+    border-radius: 15px;
+    border: 3px solid black;
+}
+
+/* Item Box */
+div[class="item_box"] {
+    position: relative;
+    width: 85%;
+    left: 3.5%;
+    height: 10%;
+    padding: 1% 4%;
+    margin-top: 1%;
+
+    background: #EEE3A4;
+    border-radius: 15px;
+}
+
+span[class="itemName"] {
+    position: absolute;
+    left: 20%;
+    top: 25%;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2vw;
+    color: #000000;
+}
+
+div[class="quantitytitle"] {
+    position: absolute;
+    left: 40%;
+    top: 30%;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.5vw;
+    color: #000000;
+}
+
+span[class="quantity"]{
+    position: absolute;
+    left: 55%;
+    top: 35%;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.5vw;
+
+    color: #000000;
+}
+
+span[class="tag"]{
+    position: absolute;
+    left: 65%;
+    top: 20%;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.5vw;
+    border: 2px solid black;
+    border-radius: 15%;
+    padding: 1%;
+    color: #000000;
+}
+
+/* Add Item Button */
+
+button[class="add_item"] {
+    margin-top: 7.5%;
+    padding: 1.5% 3%;
+    background: #EEE3A4;
+    border-radius: 12px;
+
+    font-size: 2vw; /* Use viewport width as font size */
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+}
+
+/* Add Item Form */
+.form-container {
+    display: none;
+    position: fixed;
+    width: 80%;
+    height: 50%;
+    bottom: -5%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    background: #EEE3A4;
+    border: 3px solid #000000;
+    border-radius: 25px;
+    z-index: 9999;
+}
+
+@keyframes form-transition {
+    0% {
+        bottom: -100%;
+    }
+    100% {
+        bottom: 50%;
+    }
+}
+
+input[id="itemName"] {
+    position: absolute;
+    width: 25%;
+    height: 10%;
+    left: 10%;
+    top: 15%;
+    border-radius: 12px;
+    border: 3px solid #000000;
+    color: black;
+    background: #CDB7E9;
+}
+
+input::placeholder {
+    color: darkslateblue;
+    font-weight: bold;
+    font-size: 18px;
+    left: 25%;
+}
+
+input[id="quantity"] {
+    position: absolute;
+    width: 25%;
+    height: 10%;
+    left: 10%;
+    top: 30%;
+    border-radius: 12px;
+    border: 3px solid #000000;
+
+    background: #CDB7E9;
+}
+
+div[class="tagtitle"] {
+    color: black;
+    background: #EEE3A4;
+    margin-left: 10%;
+    margin-top: 15%;
+}
+
+div[class="incquant"] {
+    margin-left: 50%;
+    margin-top: 2%;
+}
+
+div[class="decquant"] {
+    margin-left: 60%;
+    margin-top: -2%;
+}
+
+div[class="removeitem"] {
+    margin-left: 90%;
+    margin-top: -2%;
+}
+
+
+
+input[type="radio"] {
+    margin-left: 10%;
+    font-size: medium;
+}
+
+button[class="btn"] {
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    right: 10%;
+    top: 65%;
+    border-radius: 12px;
+
+    background: #CDB7E9;
+}
+
+button[class="btn cancel"] {
+    position: absolute;
+    width: 10%;
+    height: 10%;
+    right: 25%;
+    top: 65%;
+    border-radius: 12px;
+
+    background: #EEE3A4;
+}
+

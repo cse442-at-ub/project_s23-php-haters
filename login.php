@@ -33,7 +33,7 @@ function getUser($conn, $username, $password){
                 // Passwords match, return user info
                 return $row;
             } else {
-                // Passwords don't match
+                // Passwords don't match 
                 return false;
             }
         } else {
@@ -63,16 +63,14 @@ function checkGroup($conn){
     }
     die();
 }
+
 function checkLogin($conn){
     if(isset($_SESSION['username'])){ // check if user session variable is set
-        echo "Username------------->>>>> " . $_SESSION['username'];
-
         $id = $_SESSION['username']; // get the user's username from the session variable
-        $query = "SELECT * FROM users WHERE usersUsername = '$id' limit 1;"; // query the database to get the user's data
+        $query = "SELECT * FROM users WHERE usersUsername = '$id' limit 1"; // query the database to get the user's data
         $result = mysqli_query($conn, $query); // execute the query
-        header("location: home.php");
+        checkGroup($conn);
         exit();
-
     }
     die();
 }
@@ -85,14 +83,13 @@ if (isset($_POST["username"])){
 
     if(!$user){
         $_SESSION['error'] = 'Username and password did not match.';
-        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "login.php";</script>';
+        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "register.php";</script>';
         exit();
     }
 
     $_SESSION["username"] = $username;
 
     checkLogin($conn);
-    header("location: home.php");
     exit();
 }
 ?>

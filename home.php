@@ -1,12 +1,8 @@
+
 <?php
 session_start();
-// if(isset($_SESSION['username'])) {
-//     echo "home2.php....Username is set: " . $_SESSION['username'];
-// } else {
-//     echo "Username is not set";
-// }
 ?>
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" type="text/css" href="home.css">
@@ -14,19 +10,19 @@ session_start();
 <body>
 <header>
     <div>
-    <img class='icon' src="Saturn.png" alt="RoomAid">
-    <span class="h3"> RoomAid </span>
+        <img class='icon' src="Saturn.png" alt="RoomAid">
+        <span class="h3"> RoomAid </span>
         <nav>
-            <ul>
-                <li><a href="home.php" class="nav-button">Home</a></li>
-                <li><a href="#" class="nav-button">Schedule</a></li>
-                <li><a href="#" class="nav-button">Group</a></li>
+            <li>
+                <li><a href="home.php " class="nav-button">Home</a></li>
+                <li><a href="task-schedule.php" class="nav-button">Schedule</a></li>
+                <li><a href="group.php" class="nav-button">Group</a></li>
                 <li><a href="inventory.php" class="nav-button">Inventory</a></li>
                 <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>
-                <li><a href="#"><img class='icon-pfp' src="Giraffe.png" alt="Profile"></a></li>
-            </li>
+                <li><a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a></li>
             </ul>
         </nav>
+        <a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a>
     </div>
 </header>
 
