@@ -1,7 +1,10 @@
     <?php
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
+
     session_start();
+    //$current_user = $_SESSION['username'];
+    //$groupName = $_SESSION['groupName'];
 
     $host = "oceanus.cse.buffalo.edu";
     $user = "accartwr";
@@ -13,10 +16,10 @@
     }
     $current_user = $_SESSION['username'];
     $groupName = $_SESSION['groupName'];
-    // ^^^ retrieving groupName from $SESSION VAR, 'inventory.php' page stored for easy access
+    // ^^^ I'm storing groupName in $SESSION VAR from my 'inventory.php' page
+    // Group.php should be storing in session vars after they join?
 
-
-    ////so dont need this anymore.. FIND GROUP... or group.php should be storing in session vars after they join?
+    ////FIND GROUP... or group.php should be storing in session vars after they join?
     //$sql = "SELECT groupName FROM groupTest WHERE username = ?";
     //$stmt = $conn->prepare($sql);
     //$stmt->bind_param("s", $current_user);
@@ -31,7 +34,7 @@
     $action = $_POST['action'];
 
 
-    // check which button they hit, PREVENT - IF <0
+    // check which button they hit, PREVENT IF <0
     if ($action == 'minus' && $item_quantity > 0) {
         $item_quantity--;
     } elseif ($action == 'plus') {
@@ -45,7 +48,7 @@
         $stmt_delete->close();
         header("Location: inventory.php");
         exit;
-    }elseif($action == 'add'){
+    }elseif($action == 'add' && $item_quantity >= 0){
         $item_tag = $_POST['item-tag'];
         $sql_add = "INSERT INTO groupInventory (groupName, itemName, quantity, tag1) VALUES (?, ?, ?, ?)";
         $stmt_add = $conn->prepare($sql_add);
