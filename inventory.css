@@ -1,71 +1,60 @@
-html {
-    font-size: 16px;
+body {
+    background: #CDB7E9;
 }
 
-/*Nav Bar */
-.icon-pfp {
-    position: relative;
-    height: 10vh;
+img[id='icon-pfp'] {
+    position: fixed;
+    width:5.5%;
+    top: 1%;
+    right: 2%;
 }
+
+/* Nav Bar*/
 header {
-    width: 100%;
-    position: static;
-    height: 10vh;
+    position: fixed;
+    height: 10%;
     display: flex;
-    justify-content: center; /* test */
-    flex-wrap: wrap; /* tryin this flex thing to keep nav bar consistent */
 }
+
 header * {
     display: flex;
     align-items: center;
 }
-header ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /*flex-wrap: wrap;  -->trying nowrap to fix smaller screens? */
-    flex-wrap: nowrap;
-    list-style-type: none;
-    padding: 0;
-}
+
 header li {
-    margin-right: 1%;
-    font-size: 1em;
+    margin: 6.5%;
+    font-size: 2vw; /* Use viewport width as font size */
     font-family: 'Inter', sans-serif;
     font-style: normal;
 }
+
 header li a {
     color: black;
     text-decoration: none;
 }
+
 .nav-button {
     box-sizing: border-box;
     background: #EEE3A4;
-    padding: 3vh 8vh;
+    padding: 8% 16%; /* Use percentage for padding */
     border: 3px solid #000000;
-    border-radius: 10px;
-    margin-right: 5vh;
-}
-/*try percentages for smaller screens? */
-/*.nav-button {*/
-/*    box-sizing: border-box;*/
-/*    background: #EEE3A4;*/
-/*    padding: 1.5% 3%; !*  padding w/ percentage *!*/
-/*    border: 3px solid #000000;*/
-/*    border-radius: 10px;*/
-/*    margin-right: 2%; !* margin w/ percentage *!*/
-/*}*/
-/* main  Webpage  */
-.title {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    border-radius: 12px;
 }
 
-.title h2 {
-    font-size: 1.5em;
-    font-weight: bold;
-    text-transform: uppercase;
+.h3 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3vw;
+    align-content: center;
+}
+
+.title {
+    text-align: center;
+    margin-top: 10vh;
+    height: 20vh;
+    margin-bottom: 1vh;
+    font-size: 1vw;
 }
 
 body {
@@ -74,8 +63,8 @@ body {
 
 .scroll-box {
     background-color: #FFFFFF;
-    height: 75vh;
-    max-height: calc(75vh - 10vh);
+    height: 70vh;
+    max-height: calc(65vh - 10vh);
     overflow: auto;
     padding: 2em;
     position: fixed;
@@ -92,7 +81,6 @@ body {
     border-radius: 2em;
     display: flex;
     flex-direction: row;
-    /*justify-content: space-between;*/
     justify-content: space-around;
     align-items: center;
 }
@@ -126,11 +114,18 @@ body {
 #add-item-btn {
     background-color: #EEE3A4;
     color: #000000;
-    font-size: 1.5em;
-    padding: 0.5em 1em;
-    border: 3px solid #000000;
+    /*font-size: 1.5em;*/
+    font-size: 1.5vw;
+    /*padding: 0.5em 1em;*/
+    padding: 1vh 2vw;
+    border: 1px solid #000000;
     border-radius: 10px;
     display: block;
+    /*plz work for the love of */
+    position: relative;
+    top: 15vh;
+    right: 2vw;
+    left: 2vw;
 }
 /*adding new item-  trying to fix layout for new items so it matches others */
 form {
@@ -200,49 +195,4 @@ form input {
 /*  trying to get +/- buttons horizonal, not stacked!!*/
 .quantity-btn {
     display: inline-flex;
-}
-
-/* Media Queries */
-@media screen and (max-width: 600px) {
-    header li {
-        font-size: 0.8em;
-    }
-    .nav-button {
-        padding: 1.5vh 3vh;
-        margin-right: 2vh;
-        /*still stacked weird on smaller screens  */
-        /*padding: 1% 2%;     !* trying padding w/ percentages *!*/
-        /*margin-right: 1%;   !*  trying margin w/ percentages *!*/
-    }
-    .title h2 {
-        font-size: 1.2em;
-    }
-    .scroll-box {
-        padding: 1em;
-        bottom: 0.5em;
-    }
-    .item strong, .item span, .item button {
-        font-size: 1em;
-        margin-right: 0.25em;
-    }
-    .btn {
-        font-size: 2.5em;
-    }
-    #add-item-btn {
-        font-size: 1.2em;
-        padding: 0.5em 1em;
-    }
-    form label, form input {
-        font-size: 1em;
-    }
-    #add-item-modal form label {
-        font-size: 1em;
-    }
-    #add-item-modal form input {
-        font-size: 1em;
-    }
-    #add-item-modal form button[type="submit"],
-    #add-item-modal form button[type="button"] {
-        font-size: 1em;
-    }
 }
