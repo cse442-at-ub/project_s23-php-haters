@@ -22,7 +22,8 @@ if(isset($_POST["reset-request-submit"])){
     $sql = "DELETE FROM pwdReset WHERE pwdResetEmail=?";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("Location: login.php");
+        $_SESSION['error'] = 'Sorry, there was an error.';
+        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "login.php";</script>';
         exit();
     }
     else{
@@ -33,7 +34,8 @@ if(isset($_POST["reset-request-submit"])){
     $sql = "INSERT INTO pwdReset (pwdResetEmail, pwdResetSelector, pwdResetToken, pwdResetExpires) VALUES (?,?,?,?);";
     $stmt = mysqli_stmt_init($conn);
     if(!mysqli_stmt_prepare($stmt, $sql)){
-        header("Location: login.php");
+        $_SESSION['error'] = 'Sorry, there was an error.';
+        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "login.php";</script>';
         exit();
     }
     else{

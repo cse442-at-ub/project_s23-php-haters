@@ -1,0 +1,219 @@
+body {
+    background: #CDB7E9;
+}
+
+/* For screens with a maximum width of 768px */
+@media screen and (max-width: 768px) {
+    img[id='icon-pfp'] {
+        width: 10%;
+    }
+
+    header {
+        height: 15%;
+    }
+
+    header li {
+        margin: 3%;
+        font-size: 4vw;
+    }
+
+    .nav-button {
+        padding: 5% 10%;
+        border-radius: 8px;
+    }
+
+    .h3 {
+        font-size: 5vw;
+    }
+}
+
+/* For screens with a maximum width of 480px */
+@media screen and (max-width: 480px) {
+    img[id='icon-pfp'] {
+        display: none;
+    }
+
+    header {
+        height: 20%;
+        flex-direction: column;
+    }
+
+    header li {
+        margin: 2%;
+        font-size: 6vw;
+    }
+
+    .nav-button {
+        padding: 3% 6%;
+        border-radius: 4px;
+    }
+
+    .h3 {
+        font-size: 7vw;
+    }
+}
+
+.formcontainer{
+    width: 90%;
+    height: 500px;
+    margin-top: 2%;
+    margin-left: 5%;
+    background-color: white;
+    border: solid 3px black;
+    border-radius: 25px;
+}
+
+.pageTitle{
+    padding-top: 10%;
+    margin-left: 45%;
+    font-weight: bolder;
+    font-size: 30px;
+    font-family: Arial;
+}
+
+.taskTitle input[type="text"]{
+    margin-left: 30%;
+    margin-top: 2%;
+    width: 40%;
+    height: 50px;
+    border: solid 3px black;
+    border-radius: 20px;
+    background-color: #EEE3A4;
+}
+
+.taskTitle input[type="text"]:focus{
+    margin-left: 30%;
+    margin-top: 2%;
+    width: 40%;
+    height: 50px;
+    border: solid 3px black;
+    border-radius: 20px;
+    background-color: #EEE3A4;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.setPriority{
+    margin-top: 5%;
+    margin-left: 36%;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+select[id="task-priority"]{
+    border: solid 2px black;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #EEE3A4;
+}
+
+.taskDueDate{
+    margin-top: 3%;
+    margin-left: 36%;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+input[id="taskDate"]{
+    border: solid 2px black;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #EEE3A4;
+}
+
+.assignMember{
+    border: solid 2px black;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #EEE3A4;
+}
+
+
+
+
+button[type="submit"]{
+    height: 60px;
+    margin-left: 45%;
+    margin-top: 5%;
+    width: 10%;
+    border: solid 3px black;
+    border-radius: 20px;
+    background-color: #EEE3A4;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+button.deleteEntryBtn[type="submit"]{
+    border: none;
+    background-color: transparent;
+}
+
+div[class="task_box"] {
+    position: relative;
+    width: 82%;
+    left: 5%;
+    height: 30px;
+    padding: 1% 4%;
+    margin-top: 1%;
+    border: solid 2px black;
+    background: #EEE3A4;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+span[class="taskName"] {
+    position: absolute;
+    left: 10%;
+    top: 25%;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2vw;
+    color: #000000;
+}
+
+.taskpriority{
+    margin-left: 40%;
+    margin-top:0.5%;
+    font-size: 22px;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+.deleteEntry{
+    display: flex;
+    align-items: center;
+}
+
+span[class="priority"] {
+    position: absolute;
+    left: 50%;
+    top: 25%;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2vw;
+    color: #000000;
+}
+
+
+span[class="taskdate"] {
+    position: absolute;
+    left: 70%;
+    top: 25%;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2vw;
+    color: #000000;
+}

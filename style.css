@@ -5,6 +5,7 @@ body{
 }
 
 a, a:link{
+    margin-left: 0%;
     text-decoration: none;
     color: black;
 }
@@ -78,6 +79,16 @@ input[type=submit]:hover {
     background-color: #7f699c;
 }
 
+.forgotElement h3{
+    margin-right: 20%;
+    font-weight: lighter;
+    font-size:2vw;
+}
+
+.forgotElement h2{
+    margin-left:17.5%;
+}
+
 /* login.html */
 
 .loginElement {
@@ -120,108 +131,528 @@ input[type=submit]:hover {
     margin-left: 190px;
 }
 
+@media screen and (max-width: 1100px) {
+    .loginElement {
+        font-size: 2vw;
+        margin-top: 30%;
+        margin-left: 5%;
+        align-content: center;
+    }
 
-/*THIS BELOW IS THE ONE I HAD BEFORE THE CHANGE BY YESHU*/
-/*body{*/
-/*    background-color: #CDB7E9;*/
-/*    font-family: Arial, Helvetica, sans-serif;*/
-/*    font-weight: bold;*/
-/*}*/
+    .loginElement input[type=text] {
+        width: 50%;
+        margin-left: 25%;
+    }
 
-/*a, a:link{*/
-/*    text-decoration: none;*/
-/*    color: black;*/
-/*}*/
+    .loginElement input[type=submit] {
+        width: 50%;
+        margin-left: 25%;
+    }
 
-/*a:hover{*/
-/*    text-decoration: none;*/
-/*    color: #523379;*/
-/*}*/
+    .loginElement input[type=password] {
+        width: 50%;
+        margin-left: 25%;
+    }
+    .newuser {
+        margin-right: 26%;
+    }
 
-/*input[type=text] {*/
-/*    width: 50%;*/
-/*    font-weight: bold;*/
-/*    font-size: larger;*/
-/*    padding: 12px 20px;*/
-/*    margin: 8px 0;*/
-/*    display: inline-block;*/
-/*    border: 3px solid black;*/
-/*    border-radius: 15px;*/
-/*    box-sizing: border-box;*/
-/*}*/
+    .forgotpw{
+        margin-left: 32%;
+    }
 
-/*input[type=submit] {*/
-/*    width: 50%;*/
-/*    font-weight: bold;*/
-/*    font-size: larger;*/
-/*    background-color: #EEE3A4;*/
-/*    color: black;*/
-/*    padding: 14px 20px;*/
-/*    margin: 8px 0;*/
-/*    border: 3px solid black;*/
-/*    border-radius: 15px;*/
-/*}*/
+    .registerElement {
+        font-size: 2vw;
+        margin-top: 20%;
+        margin-left: 0%;
+    }
 
-/*input[type=password] {*/
-/*    width: 50%;*/
-/*    font-weight: bold;*/
-/*    font-size: larger;*/
-/*    padding: 12px 20px;*/
-/*    margin: 8px 0;*/
-/*    display: inline-block;*/
-/*    border: 3px solid black;*/
-/*    border-radius: 15px;*/
-/*    box-sizing: border-box;*/
-/*}*/
+    .registerElement input[type=text] {
+        width: 50%;
+        margin-left: 25%;
+    }
 
-/*input[type=email] {*/
-/*    width: 50%;*/
-/*    font-weight: bold;*/
-/*    font-size: larger;*/
-/*    padding: 12px 20px;*/
-/*    margin: 8px 0;*/
-/*    display: inline-block;*/
-/*    border: 3px solid black;*/
-/*    border-radius: 15px;*/
-/*    box-sizing: border-box;*/
-/*}*/
+    .registerElement input[type=submit] {
+        width: 50%;
+        margin-left: 25%;
+    }
 
-/*input[type=submit]:hover {*/
-/*    background-color: #7f699c;*/
-/*}*/
+    .registerElement input[type=email]{
+        width: 50%;
+        margin-left: 25%;
+    }
 
-/*!* login.html *!*/
+    .registerElement input[type=password] {
+        width: 50%;
+        margin-left: 25%;
+    }
+    .registerElement a, a:link,a:hover{
+        margin-left: 35%;
+    }
 
-/*.loginElement {*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    margin-top: 17%;*/
-/*    margin-left: 33.5%;*/
-/*}*/
+    .olduser {
+        margin-left: 4%;
+    }
 
-/*.forgotpw{*/
-/*    font-family: Arial, Helvetica, sans-serif;*/
-/*    font-weight: bold;*/
-/*    margin-left: 450px;*/
-/*}*/
+    .forgotElement{
+        font-size: 2vw;
+        margin-left: 22.5%;
+    }
 
-/*.newuser{*/
-/*    font-family: Arial, Helvetica, sans-serif;*/
-/*    font-weight: bold;*/
-/*    margin-left: 220px;*/
-/*}*/
+    .forgotElement h2{
+        margin-left: 20%;
+    }
 
-/*!* register.html *!*/
+}
 
-/*.registerElement {*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    margin-top: 10%;*/
-/*    margin-left: 33.5%;*/
-/*}*/
+@media screen and (max-width: 900px) {
+    .loginElement {
+        font-size: 2vw;
+        margin-top: 30%;
+        margin-left: 5%;
+        align-content: center;
+    }
 
-/*.olduser{*/
-/*    font-family: Arial, Helvetica, sans-serif;*/
-/*    font-weight: bold;*/
-/*    margin-left: 190px;*/
-/*}
+    .loginElement input[type=text] {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .loginElement input[type=submit] {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .loginElement input[type=password] {
+        width: 50%;
+        margin-left: 25%;
+    }
+    .newuser {
+        margin-right: 30%;
+    }
+
+    .forgotpw{
+        margin-left: 32%;
+    }
+
+    .registerElement {
+        font-size: 2vw;
+        margin-top: 20%;
+        margin-left: 0%;
+    }
+
+    .registerElement input[type=text] {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .registerElement input[type=submit] {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .registerElement input[type=email]{
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .registerElement input[type=password] {
+        width: 50%;
+        margin-left: 25%;
+    }
+    .registerElement a, a:link,a:hover{
+        margin-left: 35%;
+    }
+
+    .olduser {
+        margin-left: 4%;
+    }
+
+    .forgotElement{
+        font-size: 2vw;
+        margin-left: 22.5%;
+    }
+
+    .forgotElement h2{
+        margin-left: 20%;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+    .loginElement {
+        font-size: 2vw;
+        margin-top: 30%;
+        margin-left: 5%;
+        align-content: center;
+    }
+
+    .loginElement input[type=text] {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .loginElement input[type=submit] {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .loginElement input[type=password] {
+        width: 50%;
+        margin-left: 25%;
+    }
+    .newuser {
+        margin-right: 38%;
+    }
+
+    .forgotpw{
+        margin-left: 32%;
+    }
+
+    .registerElement {
+        font-size: 2vw;
+        margin-top: 20%;
+        margin-left: 0%;
+    }
+
+    .registerElement input[type=text] {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .registerElement input[type=submit] {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .registerElement input[type=email]{
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .registerElement input[type=password] {
+        width: 50%;
+        margin-left: 25%;
+    }
+    .registerElement a, a:link,a:hover{
+        margin-left: 35%;
+    }
+
+    .olduser {
+        margin-left: 4%;
+    }
+
+    .forgotElement{
+        font-size: 2vw;
+        margin-left: 22.5%;
+    }
+
+    .forgotElement h2{
+        margin-left: 20%;
+    }
+
+}
+
+@media screen and (max-width: 700px) {
+    .loginElement {
+        font-size: 2vw;
+        margin-top: 30%;
+        margin-left: 2.5%;
+        align-content: center;
+    }
+
+    .loginElement input[type=text] {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .loginElement input[type=submit] {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .loginElement input[type=password] {
+        width: 50%;
+        margin-left: 25%;
+    }
+    .newuser {
+        margin-right: 35.5%;
+    }
+
+    .forgotpw{
+        margin-left: 32%;
+    }
+
+    .registerElement {
+        font-size: 2vw;
+        margin-top: 20%;
+        margin-left: 0%;
+    }
+
+    .registerElement input[type=text] {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .registerElement input[type=submit] {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .registerElement input[type=email]{
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .registerElement input[type=password] {
+        width: 50%;
+        margin-left: 25%;
+    }
+    .registerElement a, a:link,a:hover{
+        margin-left: 35%;
+    }
+
+    .olduser {
+        margin-left: 4%;
+    }
+
+    .forgotElement{
+        font-size: 2vw;
+        margin-left: 22.5%;
+    }
+
+    .forgotElement h2{
+        margin-left: 20%;
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .loginElement {
+        font-size: 2vw;
+        margin-top: 30%;
+        margin-left: 2.5%;
+        align-content: center;
+    }
+
+    .loginElement input[type=text] {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .loginElement input[type=submit] {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .loginElement input[type=password] {
+        width: 50%;
+        margin-left: 25%;
+    }
+    .newuser {
+        margin-left: 27.5%;
+    }
+
+    .forgotpw{
+        margin-left: 32%;
+    }
+
+    .registerElement {
+        font-size: 2vw;
+        margin-top: 20%;
+        margin-left: 0%;
+    }
+
+    .registerElement input[type=text] {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .registerElement input[type=submit] {
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .registerElement input[type=email]{
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .registerElement input[type=password] {
+        width: 50%;
+        margin-left: 25%;
+    }
+    .registerElement a, a:link,a:hover{
+        margin-left: 35%;
+    }
+
+    .olduser {
+        margin-left: 4%;
+    }
+
+    .forgotElement{
+        font-size: 2vw;
+        margin-left: 22.5%;
+    }
+
+    .forgotElement h2{
+        margin-left: 20%;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+    .loginElement {
+        font-size: 3vw;
+        margin-top: 30%;
+        margin-left: 2.5%;
+        align-content: center;
+    }
+
+    .loginElement input[type=text] {
+        width: 65%;
+        margin-left: 17.5%;
+    }
+
+    .loginElement input[type=submit] {
+        width: 65%;
+        margin-left: 17.5%;
+    }
+
+    .loginElement input[type=password] {
+        width: 65%;
+        margin-left: 17.5%;
+    }
+    .newuser {
+        margin-left: 17.5%;
+    }
+
+    .forgotpw{
+        margin-left: 32%;
+    }
+
+    .registerElement {
+        font-size: 3vw;
+        margin-top: 20%;
+        margin-left: 0%;
+    }
+
+    .registerElement input[type=text] {
+        width: 65%;
+        margin-left: 17.5%;
+    }
+
+    .registerElement input[type=submit] {
+        width: 65%;
+        margin-left: 17.5%;
+    }
+
+    .registerElement input[type=email]{
+        width: 65%;
+        margin-left: 17.5%;
+    }
+
+    .registerElement input[type=password] {
+        width: 65%;
+        margin-left: 17.5%;
+    }
+    .registerElement a, a:link,a:hover{
+        margin-left: 35%;
+    }
+
+    .olduser {
+        margin-left: -6%;
+    }
+
+    .forgotElement{
+        margin-left: 17.5%;
+    }
+
+    .forgotElement h2{
+        font-size: 3vw;
+        margin-left: 20%;
+    }
+
+    .forgotElement h3{
+        font-size: 2vw;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .loginElement {
+        font-size: 3vw;
+        margin-top: 30%;
+        margin-left: 2.5%;
+        align-content: center;
+    }
+
+    .loginElement input[type=text] {
+        width: 65%;
+        margin-left: 17.5%;
+    }
+
+    .loginElement input[type=submit] {
+        width: 65%;
+        margin-left: 17.5%;
+    }
+
+    .loginElement input[type=password] {
+        width: 65%;
+        margin-left: 17.5%;
+    }
+    .newuser {
+        margin-left: 16%;
+    }
+
+    .forgotpw{
+        margin-left: 32%;
+    }
+
+    .registerElement {
+        font-size: 3vw;
+        margin-top: 20%;
+        margin-left: 0%;
+    }
+
+    .registerElement input[type=text] {
+        width: 65%;
+        margin-left: 17.5%;
+    }
+
+    .registerElement input[type=submit] {
+        width: 65%;
+        margin-left: 17.5%;
+    }
+
+    .registerElement input[type=email]{
+        width: 65%;
+        margin-left: 17.5%;
+    }
+
+    .registerElement input[type=password] {
+        width: 65%;
+        margin-left: 17.5%;
+    }
+    .registerElement a, a:link,a:hover{
+        margin-left: 35%;
+    }
+
+    .olduser {
+        margin-left: -6%;
+    }
+
+    .forgotElement{
+        margin-left: 10%;
+    }
+
+    .forgotElement h2{
+        font-size: 3vw;
+        margin-left: 20%;
+    }
+
+    .forgotElement h3{
+        font-size: 2vw;
+    }
+
+}

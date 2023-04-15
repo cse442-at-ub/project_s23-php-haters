@@ -7,8 +7,8 @@
 </head>
 <body>
 <div class="forgotElement">
-    <h2 style="margin-left:17.5%">Forgot Password?</h2>
-    <h2 style="margin-left:10%; font-weight: lighter;font-size:18px;">No worries, we will send you reset instructions!</h2>
+    <h2>Forgot Password?</h2>
+    <h3>No worries, we will send you reset instructions!</h3>
     <form method="post" action="reset-request.php">
         <label>
             <input type="email" id="email" name="email" placeholder="Enter your e-mail address" required>

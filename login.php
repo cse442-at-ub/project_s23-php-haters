@@ -33,7 +33,7 @@ function getUser($conn, $username, $password){
                 // Passwords match, return user info
                 return $row;
             } else {
-                // Passwords don't match
+                // Passwords don't match 
                 return false;
             }
         } else {
@@ -43,14 +43,34 @@ function getUser($conn, $username, $password){
     }
 }
 
+function checkGroup($conn){
+    if(isset($_SESSION['username'])){ // check if user session variable is set
+        $current_user = $_SESSION['username'];
+        $sql = "SELECT groupName FROM groupTestV2 WHERE username = ?";
+        //  Block pesky SQL injections with prepared statement ;)
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $current_user); // BIND
+        $stmt->execute();
+        $stmt->store_result();
+        $stmt->bind_result(); // BIND
+        $result_group  = $stmt->fetch();
+        if ($result_group == null){
+            header("location: find_group.php");
+        }
+        else {
+            header("location: home.php");
+        }
+    }
+    die();
+}
+
 function checkLogin($conn){
     if(isset($_SESSION['username'])){ // check if user session variable is set
         $id = $_SESSION['username']; // get the user's username from the session variable
-        $query = "SELECT * FROM users WHERE usersUsername = '$id' limit 1;"; // query the database to get the user's data
+        $query = "SELECT * FROM users WHERE usersUsername = '$id' limit 1"; // query the database to get the user's data
         $result = mysqli_query($conn, $query); // execute the query
-        header("location: home.html");
+        checkGroup($conn);
         exit();
-
     }
     die();
 }
@@ -63,14 +83,13 @@ if (isset($_POST["username"])){
 
     if(!$user){
         $_SESSION['error'] = 'Username and password did not match.';
-        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "login.php";</script>';
+        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "register.php";</script>';
         exit();
     }
 
     $_SESSION["username"] = $username;
 
     checkLogin($conn);
-    header("location: home.html");
     exit();
 }
 ?>
@@ -82,6 +101,7 @@ if (isset($_POST["username"])){
     <title>Roomaid Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <body>
 <div class="loginElement">
     <form method="post" action="login.php">
