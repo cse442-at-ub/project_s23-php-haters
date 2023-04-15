@@ -20,8 +20,7 @@ $stmt->store_result();
 $stmt->bind_result($groupName); // BIND
 $result_group  = $stmt->fetch(); // return1 if in group, 0 if not
 
-$_SESSION['groupName'] = $groupName;
-//^^^ STORING GROUPNAME as session variable 2 USE W/ Update_invQuantity.php PAGE
+$_SESSION['groupName'] = $groupName; //STORING GROUPNAME 2 USE W/ UPDATE_QUANTITY PAGE!
 
 ?>
 <!DOCTYPE html>
@@ -39,22 +38,22 @@ $_SESSION['groupName'] = $groupName;
         <nav>
             <ul>
                 <li><a href="home.php" class="nav-button">Home</a></li>
-                <li><a href="#" class="nav-button">Schedule</a></li>
+                <li><a href="task-schedule.php" class="nav-button">Schedule</a></li>
                 <li><a href="group.php" class="nav-button">Group</a></li>
                 <li><a href="inventory.php" class="nav-button">Inventory</a></li>
                 <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>
-                <li><a href="#"><img class='icon-pfp' src="Giraffe.png" alt="Profile"></a></li>
-                </li>
+                <li><a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a></li>
             </ul>
         </nav>
     </div>
 </header>
+
 <!--  Buttons above the scroll box   -->
 <div>
     <button id="add-item-btn" class="btn" style="background-color: #EEE3A4; color: #000000;" onclick="showAddItemBox()">Add Item</button>
 </div>
 
-<!--add item pop up box-->
+<!-- Add item pop up box -->
 <div id="add-item-modal" style="display: none;">
     <form id="add-item-form" method="post" action="update_InvQuantity.php">
         <label for="item-name">Name:</label>
