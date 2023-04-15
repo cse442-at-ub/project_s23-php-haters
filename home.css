@@ -13,8 +13,8 @@ img[id='icon-pfp'] {
 
 /* Nav Bar*/
 header {
-    position: fixed;
-    height: 10%;
+    position: absolute;
+    height: 0%;
     display: flex;
 }
 
