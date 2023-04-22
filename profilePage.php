@@ -1,8 +1,8 @@
 <?php
 session_start();
-//$user_id = $_SESSION["username"];
+$user_id = $_SESSION["username"];
 //$user_id = "ben";
-$user_id = "hGilmore9";
+//$user_id = "hGilmore9";
 $image_path = "uploads/$user_id/";
 $files = glob($image_path . '*.{jpg,jpeg,png,gif}', GLOB_BRACE); // check if an image is already uploaded
 if (count($files) > 0 && !isset($_FILES["image"])) { // only display the image if a new photo has not been uploaded
