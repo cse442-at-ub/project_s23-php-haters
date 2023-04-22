@@ -9,7 +9,7 @@ if (count($files) > 0 && !isset($_FILES["image"])) { // only display the image i
     $image_filename = basename($files[0]);
     echo "<img src='$image_path$image_filename' class='profile-image' alt='Profile Image'>";
 }
-echo $user_id;
+//echo $user_id;
 ?>
 
 <html>
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $target_file = $target_dir . $user_id . '_' . basename($_FILES["image"]["name"]); // get the full path of the uploaded file with the username preceeding the image name
         $target_file = $target_dir . basename($_FILES["image"]["name"]); // get the full path of the uploaded file
         move_uploaded_file($file_tmp, $target_file);
-//        echo "<img src='$target_file' class='profile-image' alt='Uploaded image' class='profile-image'>";
+        echo "<img src='$target_file' class='profile-image' alt='Uploaded image' class='profile-image'>";
 
     }
 //    else {
