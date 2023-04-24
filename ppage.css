@@ -2,6 +2,61 @@ body {
     background: #CDB7E9;
 }
 
+@media screen and (max-width: 768px) {
+    img[id='icon-pfp'] {
+        width: 10%;
+    }
+
+    header {
+        height: 15%;
+
+    }
+
+    header li {
+        margin: 3%;
+        font-size: 4vw;
+    }
+
+    .nav-button {
+        padding: 5% 10%;
+        border-radius: 8px;
+    }
+
+    .h3 {
+        font-size: 5vw;
+    }
+}
+
+/* For screens with a maximum width of 480px */
+@media screen and (max-width: 480px) {
+    img[id='icon-pfp'] {
+        display: none;
+    }
+
+    header {
+        height: 20%;
+        flex-direction: column;
+    }
+
+    header li {
+        margin: 2%;
+        font-size: 6vw;
+    }
+
+    .nav-button {
+        padding: 3% 6%;
+        border-radius: 4px;
+    }
+
+    .h3 {
+        font-size: 7vw;
+    }
+
+    div[class="bodysection"]{
+        margin-top: 10%;
+    }
+}
+
 img[id='icon-pfp'] {
     position: fixed;
     width:5.5%;
