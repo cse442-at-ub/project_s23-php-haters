@@ -100,7 +100,26 @@ if(isset($_SESSION['username'])){ // check if user session variable is set
     }
 ?>
 
-<button onclick="generateLink()" id="invite">Invite Link [Click to Copy]</button>
+<form method="post" id="usrInvite" action="generate_invite_link.php">
+    <button type="submit" id="invite" name="invite">Invite Link [Click to Copy]</button>
+</form>
+
+<script>
+    function copyToClipboard(text) {
+        // Copy the text to the clipboard
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Copied to Clipboard");
+        })
+    }
+</script>
+
+<?php
+    if (isset($_GET["link"])) {
+        if ($_GET["link"] == "success") {
+            echo '<script>copyToClipboard("'. $_SESSION['url'] .'")</script>';
+        }
+    }
+?>
 
 </body>
 </html>
