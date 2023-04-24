@@ -26,6 +26,17 @@ $image_path = "uploads/$user_id/";
 
 <title>Roomaid Register</title>
 
+<script>
+    function deleteConfirm() {
+        document.getElementById("form-container").style.display = "block";
+    }
+
+    function closeDeleteConfirm() {
+        document.getElementById("form-container").style.display = "none";
+    }
+
+</script>
+
 <header>
     <div>
         <img class='icon' src="Saturn.png" alt="RoomAid">
@@ -44,6 +55,15 @@ $image_path = "uploads/$user_id/";
 
 <!--username, name, email, image, logout, delete button but make a popup that says-->
 <body>
+<div class="form-container" id="form-container">
+    <form action="register.php" method="post" name="deleteAcc"> <!--change the form action-->
+
+       <h2>Careful! By clicking 'Delete' you are permanently deleting your account and data from RoomAid.</h2>
+
+        <button type="button" id="cancelDel" onclick="closeDeleteConfirm()">Cancel</button>
+        <button type="submit" id="deleteAcc">Delete</button>
+        </form>
+</div>
 <br>
 <div class="pfpContainer">
     <?php
@@ -127,7 +147,7 @@ $image_path = "uploads/$user_id/";
 
 <div class="deleteSection">
     <h2>Deleting your account is a permanent action. You cannot get any data back. </h2>
-    <button type="submit" id="delete">Delete Account</button>  <!-- link this button to something -->
+    <button type="submit" id="delete" onclick="deleteConfirm()">Delete Account</button>  <!-- link this button to something -->
 </div>
 
 </body>
