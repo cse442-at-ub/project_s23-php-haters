@@ -126,6 +126,11 @@ if (isset($_POST["username"])){
             echo '<p class="signupsucess">Your password has been updated successfully!</p>';
         }
     }
+    if (isset($_GET["invite"])) {
+        if ($_GET["invite"] == "success") {
+            echo '<script>alert("You have successfully joined the group.")';
+        }
+    }
     ?>
 </div>
 </body>
