@@ -23,7 +23,7 @@ ini_set('display_errors', 1);
         $validator = $_GET["validator"];
         $currentDate = date("U");
 
-        $sql = "SELECT * FROM userInvite WHERE inviteSelector='$selector' AND inviteExpires >= '$currentDate'";
+        $sql = "SELECT * FROM userInvite WHERE inviteSelector=? AND inviteExpires >= ?";
         $stmt = mysqli_stmt_init($conn);
 
         if(!mysqli_stmt_prepare($stmt, $sql)){
