@@ -8,6 +8,17 @@ ini_set('display_errors', 1);
 </head>
 <div class="invite-form">
     <?php
+    $host = "oceanus.cse.buffalo.edu";
+    $user = "arpithir";
+    $pass = "50340819";
+    $database = "cse442_2023_spring_team_ae_db";
+    
+    //make sure we found oceanus
+    $conn = mysqli_connect($host, $user, $pass, $database);
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    
     $currentDate = date("U");
     if (isset($_GET["selector"]) && isset($_GET["validator"])) {
         $selector = $_GET["selector"];
