@@ -140,3 +140,53 @@ button[id="delete"]{
     font-weight: bold;
     text-align: center;
 }
+
+.form-container {
+    display: none;
+    position: fixed;
+    width: 80%;
+    height: 50%;
+    bottom: -5%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    background: #EEE3A4;
+    border: 3px solid #000000;
+    border-radius: 25px;
+    z-index: 9999;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    font-size: 1vw;
+}
+
+@keyframes form-transition {
+    0% {
+        bottom: -100%;
+    }
+    100% {
+        bottom: 50%;
+    }
+}
+
+button[id="cancelDel"]{
+    width: 20%;
+    height: 80px;
+    margin-left: -5%;
+    margin-top: 5%;
+    border: 3px solid black;
+    border-radius: 25px;
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+
+button[id="deleteAcc"]{
+    width: 20%;
+    height: 80px;
+    margin-left: 27.5%;
+    margin-top: 5%;
+    background-color: indianred;
+    border: 3px solid black;
+    border-radius: 25px;
+    font-size: 1.5vw;
+    font-weight: bold;
+}
