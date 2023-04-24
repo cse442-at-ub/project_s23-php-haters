@@ -13,7 +13,7 @@ ini_set('display_errors', 1);
         $selector = $_GET["selector"];
         $validator = $_GET["validator"];
 
-        $sql = "SELECT * FROM pwdReset WHERE pwdResetSelector='$selector' AND pwdResetExpires >= '$currentDate'";
+        $sql = "SELECT * FROM userInvite WHERE inviteSelector='$selector' AND inviteExpires >= '$currentDate'";
         $stmt = mysqli_stmt_init($conn);
         mysqli_stmt_bind_param($stmt, "ss", $selector, $currentDate);
         mysqli_stmt_execute($stmt);
