@@ -69,7 +69,7 @@ if(isset($_POST["invite_submit"])) {
 
                         $result = mysqli_stmt_get_result($stmt);
                         if(!$row = mysqli_fetch_assoc($result)){
-                            $_SESSION['error'] = 'Sorry, you do not have a account please create one.';
+                            $_SESSION['error'] = 'Sorry, you do not have an account, please create one.';
                             echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "register.php";</script>';
                             exit();
                         }
@@ -95,7 +95,7 @@ if(isset($_POST["invite_submit"])) {
                                     $num_arr = mysqli_fetch_assoc($num);
                                     $num_people = $num_arr['total'];
                                     if ($num_people >= 4){
-                                        $_SESSION['error'] = 'Sorry, the group is currently full. Create a new group or Join a different group.';
+                                        $_SESSION['error'] = 'Sorry, the group you are invite is currently full. Create a new group or Join a different group.';
                                         echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "login.php";</script>';
                                         exit();
                                     }
