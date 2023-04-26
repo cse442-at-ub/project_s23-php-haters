@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+ini_set('display_errors', 1);
+
 if(isset($_POST["invite_submit"])) {
 
     //Database Connection

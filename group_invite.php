@@ -51,7 +51,7 @@ ini_set('display_errors', 1);
                         <input type="hidden" name="validator" value="<?php echo $validator ?>">
                         <h2 id="invite"><?php echo $inviteGroup; ?>'s Invite</h2>
                         <input type="text" name="usrName" id="username" placeholder="Enter your Username" required>
-                        <button type="submit" name="invite-submit" id="invite_submit">Submit</button>
+                        <button type="submit" name="invite_submit" id="invite_submit">Submit</button>
                     </form>
                     <?php
                 } else {
