@@ -55,7 +55,7 @@ if(isset($_POST["invite_submit"])) {
 
                 if(isset($_POST["invite_submit"])) {
                     //Checking if the user has an account or not
-                    $sql = "SELECT * FROM users WHERE userName = ?";
+                    $sql = "SELECT * FROM users WHERE usersUsername = ?";
                     $stmt = mysqli_stmt_init($conn);
 
                     if(!mysqli_stmt_prepare($stmt, $sql)){
@@ -69,16 +69,11 @@ if(isset($_POST["invite_submit"])) {
 
                         $result = mysqli_stmt_get_result($stmt);
                         if(!$row = mysqli_fetch_assoc($result)){
-                            $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
-                            echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "group_invite.php";</script>';
+                            $_SESSION['error'] = 'Sorry, you do not have a account please create one.';
+                            echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "register.php";</script>';
                             exit();
                         }
                         else {
-                            if ($row == null) {
-                                $_SESSION['error'] = 'Sorry, you do not have a account please create one.';
-                                echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "register.php";</script>';
-                                exit();
-                            }
                             // Checking if the user already has a group or not
                             $sql = "SELECT * FROM groupTestV2 WHERE username = ?";
                             $stmt = mysqli_stmt_init($conn);
@@ -94,36 +89,29 @@ if(isset($_POST["invite_submit"])) {
         
                                 $result = mysqli_stmt_get_result($stmt);
                                 if(!$row = mysqli_fetch_assoc($result)){
-                                    $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
-                                    echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "group_invite.php";</script>';
-                                    exit();
-                                }
-                                else {
-                                    if ($row != null) {
-                                        $_SESSION['error'] = 'Sorry, you already have a group. Please leave that group to join a new group.';
+                                    // Checking if the invited group is full or not
+                                    $sql2 = "SELECT COUNT(*) AS total FROM groupTestV2 WHERE groupName = '$tokenGroup'";
+                                    $num = mysqli_query($conn,$sql2);
+                                    $num_arr = mysqli_fetch_assoc($num);
+                                    $num_people = $num_arr['total'];
+                                    if ($num_people >= 4){
+                                        $_SESSION['error'] = 'Sorry, the group is currently full. Create a new group or Join a different group.';
                                         echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "login.php";</script>';
                                         exit();
                                     }
-                                    else {
-                                        // Checking if the invited group is full or not
-                                        $sql2 = "SELECT COUNT(*) AS total FROM groupTestV2 WHERE groupName = '$tokenGroup'";
-                                        $num = mysqli_query($conn,$sql2);
-                                        $num_arr = mysqli_fetch_assoc($num);
-                                        $num_people = $num_arr['total'];
-                                        if ($num_people >= 4){
-                                            $_SESSION['error'] = 'Sorry, the group is currently full. Create a new group or Join a different group.';
-                                            echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "login.php";</script>';
-                                            exit();
-                                        }
-                                        if ($num_people < 4){
-                                            // Adding the user to the group if its not full.
-                                            $arr = "INSERT INTO groupTestV2 VALUES ('$user_name', '$tokenGroup')";
-                                            $stmt = $conn->prepare($arr);
-                                            $stmt->execute();
-                                            header("Location: login.php?invite=success");
-                                            $stmt->close();
-                                        }
+                                    if ($num_people < 4){
+                                        // Adding the user to the group if its not full.
+                                        $arr = "INSERT INTO groupTestV2 VALUES ('$user_name', '$tokenGroup')";
+                                        $stmt = $conn->prepare($arr);
+                                        $stmt->execute();
+                                        header("Location: login.php?invite=success");
+                                        $stmt->close();
                                     }
+                                }
+                                else {
+                                    $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
+                                    echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "group_invite.php";</script>';
+                                    exit();
                                 }
                             }
                         }
