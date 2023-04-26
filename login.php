@@ -129,7 +129,7 @@ if (isset($_POST["username"])){
     }
     if (isset($_GET["invite"])) {
         if ($_GET["invite"] == "success") {
-            echo '<script>alert("You have successfully joined the group.")';
+            echo '<script>alert("You have successfully joined the group.")</script>';
         }
     }
     ?>
