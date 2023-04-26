@@ -1,4 +1,5 @@
 <?php
+ini_set('display_errors', 1);
 session_start();
 $host = "oceanus.cse.buffalo.edu";
 $user = "riadmukh";
