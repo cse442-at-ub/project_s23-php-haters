@@ -55,7 +55,7 @@ if(isset($_POST["invite_submit"])) {
 
                 if(isset($_POST["invite_submit"])) {
                     //Checking if the user has an account or not
-                    $sql = "SELECT * FROM users WHERE userName = ?";
+                    $sql = "SELECT * FROM users WHERE usersUsername = ?";
                     $stmt = mysqli_stmt_init($conn);
 
                     if(!mysqli_stmt_prepare($stmt, $sql)){
