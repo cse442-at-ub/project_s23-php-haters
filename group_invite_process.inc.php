@@ -109,8 +109,8 @@ if(isset($_POST["invite_submit"])) {
                                     }
                                 }
                                 else {
-                                    $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
-                                    echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "group_invite.php";</script>';
+                                    $_SESSION['error'] = 'Sorry, you already have a group. Please leave that group to join a new group.';
+                                    echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "login.php";</script>';
                                     exit();
                                 }
                             }
