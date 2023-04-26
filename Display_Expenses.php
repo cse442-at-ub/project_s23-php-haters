@@ -31,11 +31,11 @@ while ($row = $result->fetch_assoc()) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Expense Details</title>
     <link rel="stylesheet" href="Display_Expenses.css">
+
 </head>
 <body style="background: #CDB7E9;">
 <div class="expense-details">
-        <h2 class="h2"><?php echo $expenseName; ?></h2>
-
+    <h2 class="h2"><?php echo $expenseName; ?></h2>
     <table>
         <tr>
             <th>User</th>
