@@ -1,19 +1,15 @@
 <?php
-//include "login.php";
-//$host = "oceanus.cse.buffalo.edu";
-//$user = "bensonca";
-//$password = "50355548";
-//$database = "cse442_2023_spring_team_ae_db";
-//// Create connection
-//$conn = new mysqli($host, $user, $password, $database);
-//checkLogin($conn);
+
+session_start();
+$current_user = $_SESSION["username"];
+if (!$current_user) { ?>
+    <h2 style="font-family: 'monospace';">YOU MUST SIGN IN FIRST!!!
+    <?php header('Location: login.php'); ?></h2>
+<?php }
 
 $max_size = 8 * 1024 * 1024; // 8MB byte max size automatically set my php
 
-session_start();
-//$user_id = $_SESSION["username"];
-//$user_id = "ben";
-$user_id = "hGilmore9";
+$user_id = $_SESSION["username"];
 $image_path = "uploads/$user_id/";
 //echo $user_id;
 ?>
@@ -73,7 +69,10 @@ $image_path = "uploads/$user_id/";
         echo "<label for='image' style>";
         echo "<img src='$image_path$image_filename' class='pfp' style='cursor: pointer' alt='Profile-Picture'>";
         echo "</label>";
+        $_SESSION["image_filename"] = $image_path.$image_filename;
+        echo "<form action='' class='pfp' method='POST' enctype='multipart/form-data' name='aForm' id='aForm' style='display:none;'>";
     }
+
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if(isset($_FILES["image"]) && $_FILES["image"]["error"] == UPLOAD_ERR_OK){
             // get the file details
@@ -96,7 +95,7 @@ $image_path = "uploads/$user_id/";
 
             $target_file = $target_dir . $user_id . '_' . basename($_FILES["image"]["name"]); // get the full path of the uploaded file with the username preceeding the image name
             $target_file = $target_dir . basename($_FILES["image"]["name"]); // get the full path of the uploaded file
-
+            $_SESSION["image_filename"] = $target_file;
 
             if ($_FILES["image"]["size"] > $max_size) {
                 trigger_error("file too large");
@@ -112,11 +111,10 @@ $image_path = "uploads/$user_id/";
         header('Location: ppage.php');
         exit;
     }
-
     ?>
-    <form action="" method="POST" enctype="multipart/form-data" name="aForm" id="aForm">
+    <form action="" class='pfp' method="POST" enctype="multipart/form-data" name="aForm" id="aForm">
         <label for="image"></label>
-        <input type="file" id="image" name="image" style="display:none;">
+        <input type="file" id="image" name="image" style="align-content: center">
         <br><br>
         <input type="submit" value="Upload" id="submitButton" style="display:none;">
     </form>
@@ -125,6 +123,8 @@ $image_path = "uploads/$user_id/";
         const image = document.getElementById('image');
         image.addEventListener('change', function() {
             form.submit();
+            form.style.display = 'none';
+
         });
     </script>
 </div>
