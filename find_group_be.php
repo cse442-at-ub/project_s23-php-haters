@@ -14,22 +14,40 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+function check_password_strength($password): bool{
+    if (preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\D)(?=.*\d)(?=.*[^A-Za-z0-9\s]).+$/', $password) && strlen($password) >= 8 && strlen($password) <= 20) {
+        return false;
+    }
+    return true;
+}
+
 if (isset($_POST['group'])) { 
     if(isset($_SESSION['username'])){ // check if user session variable is set
         $current_user = $_SESSION['username'];
         $grpName = $_POST['group'];
+        $pass = $_POST["grppassword"];
         $sql = "SELECT * FROM groupTestV2 WHERE groupName = '$grpName'";
         $result = mysqli_query($conn,$sql);
         $result_val = mysqli_fetch_assoc($result);
         $group_name = $result_val['groupName'];
+        if(check_password_strength($pass)){
+            $_SESSION['error'] = 'Please enter a password with less than 20 characters including uppercase, lowercase, numeric and special characters.';
+            echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "find_group.php";</script>';
+            exit();
+        }
         if (is_null($group_name)){
+            $ps = password_hash($pass, PASSWORD_DEFAULT);
+            $sql = "INSERT INTO groupPassword (groupName, groupPassword) VALUES ('$grpName','$ps')";
             $arr = "INSERT INTO groupTestV2 VALUES ('$current_user', '$grpName')";
-            //  Block pesky SQL injections with prepared statement ;)
             $stmt = $conn->prepare($arr);
+            $stmt2 = $conn->prepare($sql);
             $stmt->bind_param("ss", $current_user, $grpName); // BIND
+            $stmt2->bind_param("ss", $grpName, $ps);
             $stmt->execute();
+            $stmt2->execute();
             echo "<script>window.location.href='group.php';</script>";
             $stmt->close();
+            $stmt2->close();
         }
         else {
             $_SESSION['error'] = 'Sorry, the group name already exists. Pick a new group name.';
@@ -45,12 +63,41 @@ function joinGroup($conn){
     if(isset($_SESSION['username'])){ // check if user session variable is set
         $current_user = $_SESSION['username'];
         $search_grp = $_SESSION['search'];
-        echo $search_grp;
-        $arr = "INSERT INTO groupTestV2 VALUES ('$current_user', '$search_grp')";
-        $stmt = $conn->prepare($arr);
-        $stmt->execute();
-        echo "<script>window.location.href='group.php';</script>";
-        $stmt->close();
+        $pass = $_POST["grpPass"];
+
+        $sql = "SELECT * FROM groupPassword WHERE groupName=?";
+        $prep = mysqli_stmt_init($conn);
+
+        if (!mysqli_stmt_prepare($prep, $sql)) {
+            $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
+            echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "find_group.php";</script>';
+            exit();
+        }
+        else {
+            // Bind parameters to statement
+            mysqli_stmt_bind_param($prep, "s", $search_grp);
+            // Execute statement
+            mysqli_stmt_execute($prep);
+            // Get result set from statement
+            $result = mysqli_stmt_get_result($prep);
+
+            if ($row = mysqli_fetch_assoc($result)) {
+                // Verify password hash
+                if (password_verify($pass, $row['groupPassword'])) {
+                    // Passwords match, Join the group
+                    $arr = "INSERT INTO groupTestV2 VALUES ('$current_user', '$search_grp')";
+                    $stmt = $conn->prepare($arr);
+                    $stmt->execute();
+                    echo "<script>window.location.href='group.php';</script>";
+                    $stmt->close();
+                } else {
+                    // Passwords don't match
+                    $_SESSION['error'] = 'Sorry, incorrect password. Please try again.';
+                    echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "find_group.php";</script>';
+                    exit();
+                }
+            }
+        }
     }
 }
 
@@ -123,7 +170,7 @@ function addUser($conn) {
                                 }
                             }
                         ?>
-
+                        <input type="password" id="grpPass" name="grpPass" placeholder="Enter Password" required>
                         <button type="submit" class="join" name="join">Join</button>
                         <button type="button" class="cancel" onclick="closeGroupInfo()">Cancel</button>
                     </form>
