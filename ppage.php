@@ -143,6 +143,10 @@ $image_path = "uploads/$user_id/";
 
 <div class="logoutSection">
     <button type="submit" id="logout" onclick="window.location.href='login.php';">Logout</button>  <!-- link this button to something -->
+    <?php
+    $_SESSION = array();
+    session_destroy();
+    ?>
 </div>
 
 <div class="deleteSection">
