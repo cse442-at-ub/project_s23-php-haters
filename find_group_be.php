@@ -58,6 +58,56 @@ if (isset($_POST['group'])) {
     }
 }
 
+function getNotificaton($conn, $userid){
+    $search_grp = $_SESSION['search'];
+    $sql = "SELECT username FROM groupTestV2 WHERE groupName =?";
+    $prep = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($prep, $sql)) {
+        $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
+        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "find_group.php";</script>';
+        exit();
+    }
+    else {
+        // Bind parameters to statement
+        mysqli_stmt_bind_param($prep, "s", $search_grp);
+        // Execute statement
+        mysqli_stmt_execute($prep);
+        // Get result set from statement
+        $result = mysqli_stmt_get_result($prep);
+
+        while($row = mysqli_fetch_assoc($result)) {
+            $sql = "SELECT usersEmail FROM users WHERE usersUsername = ?";
+            $prep = mysqli_stmt_init($conn);
+            if (!mysqli_stmt_prepare($prep, $sql)) {
+                $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
+                echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "find_group.php";</script>';
+                exit();
+            }
+            else {
+                // Bind parameters to statement
+                mysqli_stmt_bind_param($prep, "s", $row);
+                // Execute statement
+                mysqli_stmt_execute($prep);
+                // Get result set from statement
+                $result_val = mysqli_stmt_get_result($prep);
+
+                if ($email = mysqli_fetch_assoc($result_val)) {
+
+                    $to = $email;
+                    $subject = "New User joined ".$search_grp;
+                    $message =  '<p>'.$userid.' joined the group</p>';
+                    $headers = "Content-type: text/html\r\n";
+                    mail($to, $subject, $message, $headers);
+                }
+                else {
+                    $_SESSION['error'] = 'Sorry, there was an error in sending the email.';
+                    echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href =.php";</script>';
+                    exit();
+                }
+            }
+        }
+    }
+}
 
 function joinGroup($conn){
     if(isset($_SESSION['username'])){ // check if user session variable is set
@@ -90,6 +140,7 @@ function joinGroup($conn){
                     $stmt->execute();
                     echo "<script>window.location.href='group.php';</script>";
                     $stmt->close();
+                    getNotificaton($conn, $current_user);
                 } else {
                     // Passwords don't match
                     $_SESSION['error'] = 'Sorry, incorrect password. Please try again.';
