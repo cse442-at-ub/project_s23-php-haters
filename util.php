@@ -19,7 +19,7 @@ function connect(){
     return mysqli_connect($host, $user, $password, $database);
 }
 
-function getGroupName($username, $mysqli){
+function getGroupName($username, $mysqli){  # gets the group name given the username and a connection (use connect())
     $name = $username;
     $stmt = $mysqli->prepare("SELECT groupName FROM `groupTestV2` WHERE username = ?");
     $stmt->bind_param("s", $name);
@@ -31,7 +31,7 @@ function getGroupName($username, $mysqli){
 }
 //$email = getEmail($name, $mysqli);
 
-function getTasks($groupName, $mysqli){
+function getTasks($groupName, $mysqli){  # gets the tasks given the group's name and a connection (use connect())
     $stmt = $mysqli->prepare("SELECT * FROM tasks WHERE groupName = ?");
     $stmt->bind_param("s", $groupName);
     $stmt->execute();
@@ -42,7 +42,8 @@ function getTasks($groupName, $mysqli){
     return $result;
 }
 
-function getGroupMembers($groupName, $mysqli){
+function getGroupMembers($groupName, $mysqli){ # given the group name, get the group members in form of a dropdown
+                                               # and a connection (use connect())
     $stmt = $mysqli->prepare("SELECT users.usersUsername
         FROM groupTestV2
         JOIN users ON groupTestV2.username = users.usersUsername
@@ -69,7 +70,7 @@ function getGroupMembers($groupName, $mysqli){
 }
 
 
-function getEmail($member, $mysqli){
+function getEmail($member, $mysqli){ # get the email of a user given their username a connection (use connect())
     $stmt = $mysqli->prepare("SELECT usersEmail FROM users WHERE usersUsername = ?");
     $stmt->bind_param("s", $member);
     $stmt->execute();
@@ -81,10 +82,20 @@ function getEmail($member, $mysqli){
 
 
 
-function removeOverdue(){
+function removeOverdue(){  # runs when page is loaded and gets rid of overdue tasks
     $mysqli = connect();
     $current_datetime = date('Y-m-d H:i:s');
     $stmt = $mysqli->prepare("DELETE FROM tasks WHERE due_date <  ? ");
     $stmt-> bind_param("d", $current_datetime);
     $stmt-> execute();
+}
+
+function GetProfileImage($username){
+    $image_path = "uploads/$username/";
+    $files = glob($image_path . '*.{jpg,jpeg,png,gif}', GLOB_BRACE); // check if an image is already uploaded
+        if (count($files) > 0 && !isset($_FILES["image"])) { // only display the image if a new photo has not been uploaded
+            $image_filename = basename($files[0]);
+            return $image_path.$image_filename;
+        }
+        return false;
 }
