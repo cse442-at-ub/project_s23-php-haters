@@ -80,6 +80,7 @@ $image_path = "uploads/$user_id/";
             $file_size = $_FILES['image']['size'];
             $file_tmp = $_FILES['image']['tmp_name'];
             $file_type = $_FILES['image']['type'];
+            error_log($file_name, $file_size, $file_tmp, $file_type);
 
             // Delete all files in the directory
             $target_dir = 'uploads/' . $user_id . '/';
@@ -124,7 +125,6 @@ $image_path = "uploads/$user_id/";
         image.addEventListener('change', function() {
             form.submit();
             form.style.display = 'none';
-
         });
     </script>
 </div>
@@ -142,10 +142,15 @@ $image_path = "uploads/$user_id/";
 </div>
 
 <div class="logoutSection">
-    <button type="submit" id="logout" onclick="window.location.href='login.php';">Logout</button>  <!-- link this button to something -->
+    <form method="post">
+        <button type="submit" name="logout" id="logout">Logout</button>
+    </form>
     <?php
-    $_SESSION = array();
-    session_destroy();
+    if(isset($_POST['logout'])){
+        // Only destroy session variables when the logout button is pressed
+        $_SESSION = array();
+        session_destroy();
+    }
     ?>
 </div>
 
