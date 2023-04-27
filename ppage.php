@@ -1,5 +1,7 @@
 <?php
 
+include 'util.php';
+
 session_start();
 $current_user = $_SESSION["username"];
 $user_id = $_SESSION["username"];
@@ -10,7 +12,6 @@ if (!$user_id) { ?>
 
 $max_size = 8 * 1024 * 1024; // 8MB byte max size automatically set my php
 
-$user_id = $_SESSION["username"];
 $image_path = "uploads/$user_id/";
 //echo $user_id;
 ?>
@@ -63,7 +64,7 @@ $image_path = "uploads/$user_id/";
 </div>
 <br>
 <div class="pfpContainer">
-    <?php
+<!--    --><?php
     $files = glob($image_path . '*.{jpg,jpeg,png,gif}', GLOB_BRACE); // check if an image is already uploaded
     if (count($files) > 0 && !isset($_FILES["image"])) { // only display the image if a new photo has not been uploaded
         $image_filename = basename($files[0]);
@@ -73,52 +74,66 @@ $image_path = "uploads/$user_id/";
         $_SESSION["image_filename"] = $image_path.$image_filename;
         echo "<form action='' class='pfp' method='POST' enctype='multipart/form-data' name='aForm' id='aForm' style='display:none;'>";
     }
+//    echo "Currently No Profile Picture";
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if(isset($_FILES["image"]) && $_FILES["image"]["error"] == UPLOAD_ERR_OK){
-            // get the file details
+//        echo "Post method requested";
+//        echo "POST REQUESTED";
+        if (isset($_FILES["image"]) && $_FILES["image"]["error"] == UPLOAD_ERR_OK) {
+//            // get the file details
             $file_name = $_FILES['image']['name'];
             $file_size = $_FILES['image']['size'];
             $file_tmp = $_FILES['image']['tmp_name'];
             $file_type = $_FILES['image']['type'];
-            error_log($file_name, $file_size, $file_tmp, $file_type);
-
-            // Delete all files in the directory
-            $target_dir = 'uploads/' . $user_id . '/';
-            $files = glob($target_dir . '*');
-            foreach ($files as $file) {
-                if (is_file($file)) { // Check if it's a file and not a directory
-                    unlink($file); // Delete the file
-                }
-            }
-            if (!file_exists($target_dir)) {
-                mkdir($target_dir, 0777, true); // create the directory if it doesn't exist
-            }
-
-            $target_file = $target_dir . $user_id . '_' . basename($_FILES["image"]["name"]); // get the full path of the uploaded file with the username preceeding the image name
-            $target_file = $target_dir . basename($_FILES["image"]["name"]); // get the full path of the uploaded file
-            $_SESSION["image_filename"] = $target_file;
-
-            if ($_FILES["image"]["size"] > $max_size) {
-                trigger_error("file too large");
-                die();
+            echo $file_size, $file_type;
+//            trigger_error($file_name, $file_size, $file_tmp, $file_type);
+//
+            if (!validImage(substr($file_type, 6))) {
+                header("location: ppage.php");
             } else {
-                move_uploaded_file($file_tmp, $target_file);
-                echo "<label for='image' style>";
-                echo "<img src='$target_file' style='cursor: pointer' class='pfp' alt='Profile-Picture' class='profile-image'>";
-                echo "</label>";
+//                echo validImage(substr($file_type, 6));
+//            // Delete all files in the directory
+                $target_dir = 'uploads/' . $user_id . '/';
+                $files = glob($target_dir . '*');
+                foreach ($files as $file) {
+                    if (is_file($file)) { // Check if it's a file and not a directory
+                        unlink($file); // Delete the file
+                    }
+                }
+                if (!file_exists($target_dir)) {
+                    mkdir($target_dir, 0777, true); // create the directory if it doesn't exist
+                }
+//
+                $target_file = $target_dir . $user_id . '_' . basename($_FILES["image"]["name"]); // get the full path of the uploaded file with the username preceeding the image name
+                $target_file = $target_dir . basename($_FILES["image"]["name"]); // get the full path of the uploaded file
+                $_SESSION["image_filename"] = $target_file;
+//
+                if ($_FILES["image"]["size"] > $max_size) {
+                    trigger_error("file too large");
+                    die();
+                } else {
+//                    echo "made it here";
+                    move_uploaded_file($file_tmp, $target_file);
+                    echo "<label for='image'>";
+                    echo "<img src='$target_file' style='cursor: pointer' class='pfp' alt='Profile-Picture' class='profile-image'>";
+                    echo "</label>";
+                }
+//
             }
+            header('Location: ppage.php');
+            exit;
+        } else {
+            header('Location: ppage.php');
+            exit;
 
         }
-        header('Location: ppage.php');
-        exit;
     }
     ?>
     <form action="" class='pfp' method="POST" enctype="multipart/form-data" name="aForm" id="aForm">
         <label for="image"></label>
-        <input type="file" id="image" name="image" style="align-content: center">
+        <input type="file" id="image" name="image" style="align-content: center" accept="image/jpeg, image/jpg, image/png">
         <br><br>
-        <input type="submit" value="Upload" id="submitButton" style="display:none;">
+        <input type="submit" value="Upload" id="submitButton" accept="image/jpeg, image/jpg, image/png" style="display:none;">
     </form>
     <script>
         const form = document.getElementById('aForm');
