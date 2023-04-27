@@ -12,6 +12,12 @@
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
+
+    if (!isset($_SESSION['username'])) {
+        // Redirect to the login page
+        header('Location: login.php');
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>
@@ -52,6 +58,7 @@
         <h2 style="text-align: center; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 2.5vw;">Create A Group</h2>
 
         <input id="grpname" type="text" placeholder="Enter Group Name" name="group" required>
+        <input type="password" id="grppassword" name="grppassword" placeholder="Enter Password" required>
 
         <button type="submit" class="btn">Create</button>
         <button type="button" class="btn cancel" onclick="closeGroupForm()">Cancel</button>
