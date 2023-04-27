@@ -2,9 +2,10 @@
 
 session_start();
 $current_user = $_SESSION["username"];
-if (!$current_user) { ?>
+$user_id = $_SESSION["username"];
+if (!$user_id) { ?>
     <h2 style="font-family: 'monospace';">YOU MUST SIGN IN FIRST!!!
-    <?php header('Location: login.php'); ?></h2>
+        <?php header('Location: login.php'); ?></h2>
 <?php }
 
 $max_size = 8 * 1024 * 1024; // 8MB byte max size automatically set my php
@@ -142,16 +143,9 @@ $image_path = "uploads/$user_id/";
 </div>
 
 <div class="logoutSection">
-    <form method="post">
+    <form action="logout.php" name="logout">
         <button type="submit" name="logout" id="logout">Logout</button>
     </form>
-    <?php
-    if(isset($_POST['logout'])){
-        // Only destroy session variables when the logout button is pressed
-        $_SESSION = array();
-        session_destroy();
-    }
-    ?>
 </div>
 
 <div class="deleteSection">
