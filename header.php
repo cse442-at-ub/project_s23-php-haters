@@ -1,6 +1,12 @@
 <?php
 session_start();
 $user_id = $_SESSION["username"];
+if (!$user_id) { ?>
+    <h2 style="font-family: 'monospace';">YOU MUST SIGN IN FIRST!!!
+        <?php header('Location: login.php'); ?></h2>
+<?php }
+?>
+<?php
 $image_path = "uploads/$user_id/";
 // display other parts of your application with the uploaded image
 $files = glob($image_path . '*.{jpg,jpeg,png,gif}', GLOB_BRACE); // check if an image is already uploaded
