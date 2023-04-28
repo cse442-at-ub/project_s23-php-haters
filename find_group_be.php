@@ -1,5 +1,6 @@
 <?php
 
+ini_set('display_errors', 1);
 session_start();
 
 //Database Connection
@@ -58,9 +59,8 @@ if (isset($_POST['group'])) {
     }
 }
 
-function getNotificaton($conn, $userid){
-    $search_grp = $_SESSION['search'];
-    $sql = "SELECT username FROM groupTestV2 WHERE groupName =?";
+function getNotification($conn, $userid, $group_name){
+    $sql = "SELECT * FROM groupTestV2 WHERE groupName =?";
     $prep = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($prep, $sql)) {
         $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
@@ -69,45 +69,45 @@ function getNotificaton($conn, $userid){
     }
     else {
         // Bind parameters to statement
-        mysqli_stmt_bind_param($prep, "s", $search_grp);
+        mysqli_stmt_bind_param($prep, "s", $group_name);
         // Execute statement
         mysqli_stmt_execute($prep);
         // Get result set from statement
         $result = mysqli_stmt_get_result($prep);
 
+        $to_array = array(); // array to store email addresses
+
         while($row = mysqli_fetch_assoc($result)) {
             $sql = "SELECT usersEmail FROM users WHERE usersUsername = ?";
-            $prep = mysqli_stmt_init($conn);
-            if (!mysqli_stmt_prepare($prep, $sql)) {
+            $prep_val = mysqli_stmt_init($conn);
+            if (!mysqli_stmt_prepare($prep_val, $sql)) {
                 $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
                 echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "find_group.php";</script>';
                 exit();
             }
             else {
+                $username = $row["username"];
                 // Bind parameters to statement
-                mysqli_stmt_bind_param($prep, "s", $row);
+                mysqli_stmt_bind_param($prep_val, "s", $username);
                 // Execute statement
-                mysqli_stmt_execute($prep);
+                mysqli_stmt_execute($prep_val);
                 // Get result set from statement
-                $result_val = mysqli_stmt_get_result($prep);
-
-                if ($email = mysqli_fetch_assoc($result_val)) {
-
-                    $to = $email;
-                    $subject = "New User joined ".$search_grp;
-                    $message =  '<p>'.$userid.' joined the group</p>';
-                    $headers = "Content-type: text/html\r\n";
-                    mail($to, $subject, $message, $headers);
-                }
-                else {
-                    $_SESSION['error'] = 'Sorry, there was an error in sending the email.';
-                    echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href =.php";</script>';
-                    exit();
-                }
+                $result_val = mysqli_stmt_get_result($prep_val);
+                $result_email = mysqli_fetch_assoc($result_val);
+                $email = $result_email["usersEmail"];
+                $to_array[] = $email; // add email address to array
             }
         }
+
+        // send email to all recipients
+        $to = implode(",", $to_array); // convert array to comma-separated string
+        $subject = "New User joined ".$group_name;
+        $message = '<p>'.$userid.' joined the group</p>';
+        $headers = "Content-type: text/html\r\n";
+        mail($to, $subject, $message, $headers);
     }
 }
+
 
 function joinGroup($conn){
     if(isset($_SESSION['username'])){ // check if user session variable is set
@@ -140,7 +140,7 @@ function joinGroup($conn){
                     $stmt->execute();
                     echo "<script>window.location.href='group.php';</script>";
                     $stmt->close();
-                    getNotificaton($conn, $current_user);
+                    getNotification($conn, $current_user, $search_grp);
                 } else {
                     // Passwords don't match
                     $_SESSION['error'] = 'Sorry, incorrect password. Please try again.';
