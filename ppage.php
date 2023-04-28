@@ -92,18 +92,18 @@ if(isset($_SESSION['username'])){
             </ul>
         </nav>
     </div>
-</header>
+</header>s
 
 <!--username, name, email, image, logout, delete button but make a popup that says-->
 <body>
 <div class="form-container" id="form-container">
-    <form action="register.php" method="post" name="deleteAcc"> <!--change the form action-->
+    <form action="delAcc.php" method="post" name="deleteAcc"> <!--change the form action-->
 
-       <h2>Careful! By clicking 'Delete' you are permanently deleting your account and data from RoomAid.</h2>
+        <h2>Careful! By clicking 'Delete' you are permanently deleting your account and data from RoomAid.</h2>
 
         <button type="button" id="cancelDel" onclick="closeDeleteConfirm()">Cancel</button>
         <button type="submit" id="deleteAcc">Delete</button>
-        </form>
+    </form>
 </div>
 <br>
 <div class="pfpContainer">
