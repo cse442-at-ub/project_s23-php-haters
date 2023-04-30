@@ -88,37 +88,9 @@ if(isset($_SESSION['username'])){ // check if user session variable is set
 </div>
 
 
-<form method="post" id="grp">
+<form method="post" id="grp" action="leave_group_be.php">
     <input type="submit" id="leave_group" name="leave_group" value="Leave Group">
 </form>
-
-<!--The user will be directed to again finding the roommate page as soon as he leaves the room.-->
-<?php
-    if(isset($_POST['leave_group'])){ // check if post request is working is set
-        $sql = "DELETE FROM groupTestV2 WHERE username = ? AND groupName = ?";
-        $current_user = $_SESSION['username'];
-        $grpName = $_SESSION['groupName'];
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $current_user, $grpName); // BIND
-        $stmt->execute();
-        $stmt->close();
-
-//      Deletes the password for the group that has only one user.
-        $sql2 = "SELECT COUNT(*) AS total FROM groupTestV2 WHERE groupName = '$grpName'";
-        $num = mysqli_query($conn,$sql2);
-        $num_arr = mysqli_fetch_assoc($num);
-        $num_people = $num_arr['total'];
-
-        if ($num_people < 1) {
-            $sql = "DELETE FROM groupPassword WHERE groupName = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("s",$grpName); // BIND
-            $stmt->execute();
-            $stmt->close();
-        }
-        header("location: find_group.php");
-    }
-?>
 
 <form method="post" id="usrInvite" action="generate_invite_link.php">
     <button type="submit" id="invite" name="invite">Invite Link [Click to Copy]</button>
