@@ -34,6 +34,7 @@ if ($mysqli->connect_error) {
     die("Connection failed: " . $mysqli->connect_error);
 }
 
+
 $owed1 = ($u_owed1 == '') ? 0.00 : $u_owed1;
 $owed2 = ($u_owed2 == '') ? 0.00 : $u_owed2;
 $owed3 = ($u_owed3 == '') ? 0.00 : $u_owed3;
