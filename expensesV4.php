@@ -37,8 +37,7 @@ if (!$result_group) { ?>
 <?php }
 
 //modifying bensons util funct
-function getGroupMembersEXPENSE($groupName, $mysqli){ # given the group name, get the group members in form of a dropdown
-    # and a connection (use connect())
+function getGroupMembersEXPENSE($groupName, $mysqli) {
     $stmt = $mysqli->prepare("SELECT users.usersUsername
         FROM groupTestV2
         JOIN users ON groupTestV2.username = users.usersUsername
@@ -47,23 +46,27 @@ function getGroupMembersEXPENSE($groupName, $mysqli){ # given the group name, ge
     $stmt->execute();
     $result = $stmt->get_result();
 
-//    $dropdown = "<select name='members' class='" . 'assignMember' . "'>";
-    $dropdown = "<select name='members'>";
+    $dropdown = "<select name='members[]'>"; #save the selctions
+
+    $numMembers = $result->num_rows;
+
+    // adding "NULL" option if <4members in group
+    if ($numMembers < 4) {
+        for ($i = 0; $i < (4 - $numMembers); $i++) {
+            $dropdown .= "<option value='NULL'>NULL</option>";
+        }
+    }
+
     while ($row = $result->fetch_assoc()) {
         $dropdown .= "<option value='" . $row['usersUsername'] . "'>" . $row['usersUsername'] . "</option>";
     }
     $dropdown .= "</select>";
 
-    $assignedTo = "<span>Assigned to: </span>";
-    $output = "<div class='taskDueDate'>" . $assignedTo . $dropdown . "</div>";
-
-
     $stmt->close();
-    $mysqli->close();
 
-    return $output;
+    return $dropdown;
 }
-?>
+
 
 
 
