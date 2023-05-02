@@ -1,4 +1,8 @@
 <?php
+include 'util.php';
+//include 'header.php';
+
+
 session_start();
 $host = "oceanus.cse.buffalo.edu";
 $user = "accartwr";
@@ -25,6 +29,45 @@ $stmt->bind_result($groupName);
 $result_group  = $stmt->fetch();
 
 $_SESSION['groupName'] = $groupName;
+//try to get group members to displays
+if (!$result_group) { ?>
+    <h2 style="font-family: cursive;">Hello <?php echo $_SESSION['username'] ;?>, You must join a group to view expenses!</h2>
+<?php } else { ?>
+    <h2 style="font-family: cursive;">Hello <?php echo $_SESSION['username'] ;?>, Your viewing <?php echo $groupName;?>'s expenses:</h2>
+<?php }
+
+//modifying bensons util funct
+function getGroupMembersEXPENSE($groupName, $mysqli){ # given the group name, get the group members in form of a dropdown
+    # and a connection (use connect())
+    $stmt = $mysqli->prepare("SELECT users.usersUsername
+        FROM groupTestV2
+        JOIN users ON groupTestV2.username = users.usersUsername
+        WHERE groupTestV2.groupName = ?;");
+    $stmt->bind_param("s", $groupName);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+//    $dropdown = "<select name='members' class='" . 'assignMember' . "'>";
+    $dropdown = "<select name='members'>";
+    while ($row = $result->fetch_assoc()) {
+        $dropdown .= "<option value='" . $row['usersUsername'] . "'>" . $row['usersUsername'] . "</option>";
+    }
+    $dropdown .= "</select>";
+
+    $assignedTo = "<span>Assigned to: </span>";
+    $output = "<div class='taskDueDate'>" . $assignedTo . $dropdown . "</div>";
+
+
+    $stmt->close();
+    $mysqli->close();
+
+    return $output;
+}
+?>
+
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -68,22 +111,17 @@ $_SESSION['groupName'] = $groupName;
         <label for="amount1">Your Share:</label>
         <input type="number" name="amount1" step="0.01" required>
 
-        <label for="user2">User2:</label>
-        <input type="text" name="user2">
-        <label for="amount2">Amount:</label>
-        <input type="number" name="amount2" step="0.01">
-
-        <label for="user3">User3:</label>
-        <input type="text" name="user3">
-        <label for="amount3">Amount:</label>
-        <input type="number" name="amount3" step="0.01">
-
-        <label for="user4">User4:</label>
-        <input type="text" name="user4">
-        <label for="amount4">Amount:</label>
-        <input type="number" name="amount4" step="0.01">
-
-
+        <?php
+        $dropdown = getGroupMembersEXPENSE($groupName, connect());
+        for ($i = 2; $i <= 4; $i++) {
+            echo "<div>";
+            echo "<label for='user{$i}'>User{$i}:</label>";
+            echo $dropdown;
+            echo "<label for='amount{$i}'>Amount:</label>";
+            echo "<input type='number' name='amount{$i}' step='0.01'>";
+            echo "</div>";
+        }
+        ?>
 
         <br><br>
         <input type="hidden" name="action" value="add">
@@ -91,13 +129,11 @@ $_SESSION['groupName'] = $groupName;
         <button class="btn" type="button" onclick="hideAddExpenseBox()">Close</button>
     </form>
 </div>
-
-<?php if (!$result_group) { ?>
-    <h2 style="font-family: cursive;">Hello <?php echo $_SESSION['username'] ;?>, You must join a group to view expenses!</h2>
-<?php } else { ?>
-    <h2 style="font-family: cursive;">Hello <?php echo $_SESSION['username'] ;?>, Your viewing <?php echo $groupName;?>'s expenses:</h2>
-<?php } ?>
 </div>
+
+
+
+
 
 <div class="scroll-box">
     <?php
