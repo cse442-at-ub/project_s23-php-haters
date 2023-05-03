@@ -200,7 +200,7 @@ function addUser($conn) {
             <body>
                 <div class="group_info_box" id="group_info_box">
                     <form action="find_group_be.php" method="post" name="group_info_form" class="group_info_form">
-                        <h2 style="text-align: center; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 2.5vw;"><?php echo $_POST["search"]; ?></h2>
+                        <h2 id="Name"><?php echo $_POST["search"]; ?></h2>
 
                         <?php
                             if(isset($current_user)){ // check if user session variable is set
