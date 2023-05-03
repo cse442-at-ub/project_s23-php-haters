@@ -96,6 +96,13 @@ button[class="open-button"] {
     }
 }
 
+h2[id="creategrp"]{
+    text-align: center;
+    font-family: 'Inter', sans-serif; font-style: normal;
+    font-weight: 400;
+    font-size: 2.5vw;
+}
+
 input[id="grpname"]{
     position: absolute;
     right: 28%;
@@ -236,6 +243,14 @@ input[id="grpPass"]{
     font-size: 2vw;
 }
 
+h2[id="Name"]{
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.5vw;
+}
+
 span[class="name"]{
     position: absolute;
     left: 10%;
@@ -247,4 +262,278 @@ span[class="name"]{
     font-size: 2vw;
 
     color: #000000;
+}
+
+@media only screen and (max-width: 600px) {
+    input[id="search"] {
+        width: 60%;
+        height: 6%;
+        right: 18%;
+        top: 10%;
+        border-radius: 10px;
+
+        font-weight: 400;
+        font-size: 4vw;
+    }
+
+    button[id="search_button"] {
+        top: 18%;
+        right: 38%;
+        height: 5%;
+        width: 20%;
+        border-radius: 10px;
+
+        font-weight: 400;
+        font-size: 3.5vw;
+    }
+
+    button[class="open-button"] {
+        padding: 2% 4%;
+        width: 40%;
+        top: 80%;
+        right: 28%;
+        height: 5%;
+        border-radius: 10px;
+
+        font-weight: 400;
+        font-size: 3.5vw;
+    }
+
+    .form-popup {
+        width: 65%;
+        height: 30%;
+        bottom: 40%;
+        left: 50%;
+        border: 2px solid #000000;
+        border-radius: 15px;
+    }
+
+    input[id="grpname"]{
+        right: 15%;
+        top: 35%;
+        border: 2px solid #000000;
+        border-radius: 7px;
+
+        font-size: 4vw;
+    }
+
+    input[id="grppassword"]{
+        right: 15%;
+        top: 55%;
+        border: 2px solid #000000;
+        border-radius: 7px;
+
+        font-size: 4vw;
+    }
+
+    h2[id="creategrp"]{
+        font-size: 4vw
+    }
+
+    button[class="btn"] {
+        width: 20%;
+        height: 10%;
+        right: 10%;
+        top: 80%;
+        border-radius: 7px;
+
+        font-size: 3vw;
+    }
+
+    button[class="btn cancel"] {
+        width: 20%;
+        height: 10%;
+        right: 35%;
+        top: 80%;
+        border-radius: 7px;
+
+        font-size: 3vw;
+    }
+
+    .group_info_box {
+        width: 70%;
+        height: 40%;
+        bottom: 30%;
+        left: 50%;
+        border: 2px solid #000000;
+        border-radius: 15px;
+    }
+
+    button[class="join"] {
+        width: 20%;
+        height: 8%;
+        right: 7%;
+        top: 85%;
+        border-radius: 7px;
+
+        font-size: 3vw;
+    }
+
+    button[class="cancel"] {
+        width: 20%;
+        height: 8%;
+        right: 36%;
+        top: 85%;
+        border-radius: 7px;
+
+        font-size: 3vw;
+    }
+
+    input[id="grpPass"]{
+        right: 7%;
+        height: 7%;
+        top: 73%;
+        border: 2px solid #000000;
+        border-radius: 7px;
+
+        font-size: 3vw;
+    }
+
+    h2[id="Name"]{
+        font-size: 5vw;
+    }
+
+    span[class="name"]{
+        left: 10%;
+        margin-top: 4%;
+
+        font-size: 3.5vw;
+    }
+}
+
+@media only screen and (max-width: 1048px) {
+    input[id="search"] {
+        width: 60%;
+        height: 6%;
+        right: 18%;
+        top: 10%;
+        border-radius: 15px;
+
+        font-weight: 400;
+        font-size: 4vw;
+    }
+
+    button[id="search_button"] {
+        top: 18%;
+        right: 38%;
+        height: 5%;
+        width: 20%;
+        border-radius: 15px;
+
+        font-weight: 400;
+        font-size: 3.5vw;
+    }
+
+    button[class="open-button"] {
+        padding: 2% 4%;
+        width: 40%;
+        top: 80%;
+        right: 28%;
+        height: 5%;
+        border-radius: 15px;
+
+        font-weight: 400;
+        font-size: 3.5vw;
+    }
+
+    .form-popup {
+        width: 65%;
+        height: 30%;
+        bottom: 40%;
+        left: 50%;
+        border: 2px solid #000000;
+        border-radius: 15px;
+    }
+
+    input[id="grpname"]{
+        right: 15%;
+        top: 35%;
+        border: 2px solid #000000;
+        border-radius: 10px;
+
+        font-size: 4vw;
+    }
+
+    input[id="grppassword"]{
+        right: 15%;
+        top: 55%;
+        border: 2px solid #000000;
+        border-radius: 10px;
+
+        font-size: 4vw;
+    }
+
+    h2[id="creategrp"]{
+        font-size: 4vw
+    }
+
+    button[class="btn"] {
+        width: 20%;
+        height: 10%;
+        right: 10%;
+        top: 80%;
+        border-radius: 10px;
+
+        font-size: 3vw;
+    }
+
+    button[class="btn cancel"] {
+        width: 20%;
+        height: 10%;
+        right: 35%;
+        top: 80%;
+        border-radius: 10px;
+
+        font-size: 3vw;
+    }
+
+    .group_info_box {
+        width: 70%;
+        height: 40%;
+        bottom: 30%;
+        left: 50%;
+        border: 2px solid #000000;
+        border-radius: 15px;
+    }
+
+    button[class="join"] {
+        width: 20%;
+        height: 8%;
+        right: 7%;
+        top: 85%;
+        border-radius: 10px;
+
+        font-size: 3vw;
+    }
+
+    button[class="cancel"] {
+        width: 20%;
+        height: 8%;
+        right: 34%;
+        top: 85%;
+        border-radius: 10px;
+
+        font-size: 3vw;
+    }
+
+    input[id="grpPass"]{
+        right: 7%;
+        height: 7%;
+        top: 73%;
+        border: 2px solid #000000;
+        border-radius: 10px;
+
+        font-size: 3vw;
+    }
+
+    h2[id="Name"]{
+        font-size: 5vw;
+    }
+
+    span[class="name"]{
+        left: 10%;
+        margin-top: 4%;
+
+        font-size: 3.5vw;
+    }
 }

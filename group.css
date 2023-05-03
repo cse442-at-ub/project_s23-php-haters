@@ -46,7 +46,6 @@ header li a {
     font-style: normal;
     font-weight: 700;
     font-size: 3vw;
-    align-content: center;
 }
 
 /* Invite Button */
@@ -132,15 +131,6 @@ span[class="name"]{
     color: #000000;
 }
 
-/* profile pic */
-
-img[id="profile"] {
-    position: absolute;
-    left: 5%;
-    top: 5%;
-    width: 8.5%;
-}
-
 .invite-form {
     position: fixed;
     left:26%;
@@ -194,4 +184,144 @@ button[id="invite_submit"] {
     font-size: 1.5vw;
 
     background: #EEE3A4;
+}
+
+@media only screen and (max-width: 600px) {
+    img[class='icon']{
+        width: 3%;
+    }
+
+    img[id='icon-pfp'] {
+        margin-top: 2%;
+        width:10%;
+    }
+
+    header {
+        height: 7%;
+    }
+
+    header li {
+        margin-left: 2%;
+        font-size: 2.5vw;
+    }
+
+    .nav-button {
+        border-radius: 7px;
+    }
+
+    .h3 {
+        font-size: 2vw;
+    }
+
+    button[id="invite"] {
+        width: 30%;
+        height: 5%;
+        left: 10%;
+        top: 90%;
+        border-radius: 10px;
+
+        font-size: 2vw;
+    }
+
+    input[id="leave_group"] {
+        width: 30%;
+        height: 5%;
+        right: 10%;
+        top: 90%;
+        border-radius: 10px;
+
+        font-size: 2vw;
+    }
+
+    div[class="group_box"] {
+        width: 80%;
+        height: 65%;
+        left: 10%;
+        top: 20%;
+        border-radius: 15px;
+    }
+
+    .group_name {
+        left: 40%;
+        top: 10%;
+
+        font-size: 5vw;
+    }
+
+    span[class="name"]{
+        left: 9%;
+        top: 9%;
+
+        font-size: 3.5vw;
+    }
+}
+
+@media only screen and (max-width: 1048px) {
+    img[class='icon']{
+        width: 3%;
+    }
+
+    img[id='icon-pfp'] {
+        margin-top: 2%;
+        width:10%;
+    }
+
+    header {
+        height: 7%;
+    }
+
+    header li {
+        margin-left: 2%;
+        font-size: 2.5vw;
+    }
+
+    .nav-button {
+        border-radius: 7px;
+    }
+
+    .h3 {
+        font-size: 2vw;
+    }
+
+    button[id="invite"] {
+        width: 30%;
+        height: 5%;
+        left: 10%;
+        top: 90%;
+        border-radius: 10px;
+
+        font-size: 2vw;
+    }
+
+    input[id="leave_group"] {
+        width: 30%;
+        height: 5%;
+        right: 10%;
+        top: 90%;
+        border-radius: 10px;
+
+        font-size: 2vw;
+    }
+
+    div[class="group_box"] {
+        width: 80%;
+        height: 65%;
+        left: 10%;
+        top: 20%;
+        border-radius: 15px;
+    }
+
+    .group_name {
+        left: 40%;
+        top: 10%;
+
+        font-size: 5vw;
+    }
+
+    span[class="name"]{
+        left: 9%;
+        top: 9%;
+
+        font-size: 3.5vw;
+    }
 }

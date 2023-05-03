@@ -62,9 +62,6 @@
    }
 ?>
 <div class="group_box">
-    <!--The profile picture and the name will be displayed of the current user if there is just one user in the room.-->
-    <!--This is just for the display purposes we will change it as soon as we are done it with the group formation backend-->
-    <!-- <img src="profile.png" id="profile"> -->
 <?php
 if(isset($_SESSION['username'])){ // check if user session variable is set
     $current_user = $_SESSION['username'];
