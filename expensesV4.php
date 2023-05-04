@@ -29,14 +29,11 @@ $stmt->bind_result($groupName);
 $result_group  = $stmt->fetch();
 
 $_SESSION['groupName'] = $groupName;
-//try to get group members to displays
-if (!$result_group) { ?>
-    <h2 style="font-family: cursive;">Hello <?php echo $_SESSION['username'] ;?>, You must join a group to view expenses!</h2>
-<?php } else { ?>
-    <h2 style="font-family: cursive;">Hello <?php echo $_SESSION['username'] ;?>, Your viewing <?php echo $groupName;?>'s expenses:</h2>
-<?php }
 
-//modifying bensons util funct
+if (!$result_group) { ?>
+    <h2 style="font-family: cursive;">Hello <?php echo $_SESSION['username'] ; header('Location: group.php'); ?>, You must join a group to view expenses!</h2>
+
+<?php }
 function getGroupMembersEXPENSE($groupName, $mysqli) {
     $stmt = $mysqli->prepare("SELECT users.usersUsername
         FROM groupTestV2
@@ -102,12 +99,13 @@ function getGroupMembersEXPENSE($groupName, $mysqli) {
     <button id="add-expense-btn" class="btn" style="background-color: #EEE3A4; color: #000000;" onclick="showAddExpenseBox()">Add Expense</button>
 </div>
 
+
 <div id="add-expense-modal" style="display: none;">
     <form id="add-expense-form" method="post" action="updateExpensesV4.php">
         <label for="expense-name">Name:</label>
         <input type="text" id="expense-name" name="expense-name" required>
         <br>
-        <label for="due-date">Due Date:</label>
+        <label for="due-date">Date:</label>
         <input type="date" id="due-date" name="due-date" required>
         <br>
 
@@ -137,11 +135,12 @@ function getGroupMembersEXPENSE($groupName, $mysqli) {
 
 
 
+<!--//displaying all expenses here.. in 1 file-->
 
 <div class="scroll-box">
     <?php
     if (!$result_group) {
-        echo "$current_user must join a group to view expenses!";
+        echo "IF YOUR SEEING THIS YOU'RE A HACKER";
     } else {
         $sql_expenses = "SELECT * FROM allExpensesV2 WHERE (username = '$current_user' OR user2 = '$current_user' OR user3 = '$current_user' OR user4 = '$current_user')";
         $result_expenses = mysqli_query($conn, $sql_expenses);
@@ -152,12 +151,31 @@ function getGroupMembersEXPENSE($groupName, $mysqli) {
             echo "<div class='expense'>";
             echo "<div class='expense-content'>";
             echo "<span>" . $expense['expenseName'] . "</span>";
-            echo "<span> Due Date: " . $expense['dueDate'] . "</span>";
+            echo "<span> " . $expense['dueDate'] . "</span>";
             echo "<span> Total Amount: $" . $expense['totalAmt'] . "</span>";
+
+            // trying to display breakdown not just total
+            echo "<div class='breakdown'>";
+            echo "<span>{$expense['username']}: $ {$expense['user1amt']}</span>";
+            for ($i = 0; $i <= 4; $i++) {
+                $user_column = "user{$i}";
+                $amount_column = "user{$i}amt";
+                if (!empty($expense[$user_column]) && $expense[$user_column] !== 'NULL' && $expense[$amount_column] > 0) {
+                    echo "<span>{$expense[$user_column]}: $ {$expense[$amount_column]}</span>";
+                }
+            }
+            echo "</div>";
+
+//            Expenses never even had a delete capability before
+            echo "<form method='post' action='updateExpensesV4.php'>";
+            echo "<input type='hidden' name='expense-name' value='" . $expense['expenseName'] . "'>";
+            echo "<input type='hidden' name='action' value='delete'>";
+            echo "<input type='submit' name='delete' value='Delete'>";
+            echo "</form>";
+
             echo "</div>";
             echo "</div>";
         }
-
     }
     $stmt->close();
     ?>

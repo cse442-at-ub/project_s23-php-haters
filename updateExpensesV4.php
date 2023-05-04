@@ -1,73 +1,59 @@
 <?php
 
 session_start();
-$current_user = $_SESSION['username'];
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" ) {     //Check it is coming from a form
-
-    $u_bill = $_POST["expense-name"];                   //set PHP variables like this so we can use them anywhere in code below
-    $u_date = $_POST["due-date"];
-    $u_date = date('Y-m-d', strtotime($u_date));
-
-    $User1 = $current_user;
-    $u_owed1 = $_POST["amount1"];
-
-//    $User2 = $_POST["user2"];
-    $u_owed2 = $_POST["amount2"];
-
-//    $User3 = $_POST["user3"];
-    $u_owed3 = $_POST["amount3"];
-
-    $User4 = $_POST["user4"];
-    $u_owed4 = $_POST["amount4"];
-
-
-
-// get the username selected from the dropdown for user2, user3, and user4
-    $selectedUsernames = $_POST["members"];
-    $User2 = ($selectedUsernames[0] == 'NULL') ? null : $selectedUsernames[0];
-    $u_owed2 = ($User2 !== null) ? $_POST["amount2"] : 0.00;
-
-    $User3 = ($selectedUsernames[1] == 'NULL') ? null : $selectedUsernames[1];
-    $u_owed3 = ($User3 !== null) ? $_POST["amount3"] : 0.00;
-
-    $User4 = ($selectedUsernames[2] == 'NULL') ? null : $selectedUsernames[2];
-    $u_owed4 = ($User4 !== null) ? $_POST["amount4"] : 0.00;
-
-
-}
-
-
 $host = "oceanus.cse.buffalo.edu";
 $user = "accartwr";
 $password = "50432097";
 $database = "cse442_2023_spring_team_ae_db";
-//php 7.3.33
-// Create a new mysqli object to establish a database connection
-$mysqli = mysqli_connect($host, $user, $password, $database);
-
-// Check for any errors when connecting to the database
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
+$conn = mysqli_connect($host, $user, $password, $database);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
 }
 
-$owed1 = ($u_owed1 == '') ? 0.00 : $u_owed1;
-$owed2 = ($u_owed2 == '') ? 0.00 : $u_owed2;
-$owed3 = ($u_owed3 == '') ? 0.00 : $u_owed3;
-$owed4 = ($u_owed4 == '') ? 0.00 : $u_owed4;
+$current_user = $_SESSION['username'];
+$groupName = $_SESSION['groupName'];
 
-$totalAmt = $owed4 + $owed3 + $owed2 + $owed1;
+$expense_name = $_POST['expense-name'];
+$action = $_POST['action'];
 
-$sql = "INSERT INTO allExpensesV2 VALUES ('$u_bill', '$u_date', '$totalAmt', 
-                                '$User1', '$owed1', 
-                                '$User2','$owed2', 
-                                '$User3','$owed3', 
-                                '$User4','$owed4')";
-//print('entered');
-//print($sql);
-mysqli_query($mysqli, $sql);
+if ($action == 'add') {
+    $due_date = $_POST['due-date'];
+    $amounts = array();
+    for ($i = 1; $i <= 4; $i++) {
+        $amounts[$i] = isset($_POST["amount{$i}"]) ? $_POST["amount{$i}"] : 0;
+    }
+    $total_amount = array_sum($amounts);
 
-$mysqli->close();
+    $users = array($current_user);
+    $members = isset($_POST['members']) ? $_POST['members'] : array();
+    foreach ($members as $member) {
+        if ($member !== 'NULL') {
+            $users[] = $member;
+        }
+    }
 
-header('Location: expensesV4.php');
-exit();
+    $sql_add = "INSERT INTO allExpensesV2 (expenseName, dueDate, totalAmt, username, user1amt, user2, user2amt, user3, user3amt, user4, user4amt) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt_add = $conn->prepare($sql_add);
+    $stmt_add->bind_param("ssdsdsdsdsd", $expense_name, $due_date, $total_amount, $users[0], $amounts[1], $users[1], $amounts[2], $users[2], $amounts[3], $users[3], $amounts[4]);
+    $stmt_add->execute();
+
+    if ($stmt_add->error) {
+        echo "Error: " . $stmt_add->error;
+    } else {
+        echo "Expense added successfully";
+    }
+
+    $stmt_add->close();
+    header("Location: expensesV4.php");
+    exit;
+} elseif ($action == 'delete') {
+    $sql_delete = "DELETE FROM allExpensesV2 WHERE expenseName = ? AND (username = ? OR user2 = ? OR user3 = ? OR user4 = ?)";
+    $stmt_delete = $conn->prepare($sql_delete);
+    $stmt_delete->bind_param("sssss", $expense_name, $current_user, $current_user, $current_user, $current_user);
+    $stmt_delete->execute();
+    $stmt_delete->close();
+    header("Location: expensesV4.php");
+    exit;
+}
+
+?>
