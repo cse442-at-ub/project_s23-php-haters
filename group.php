@@ -1,22 +1,16 @@
 <?php
-    session_start();
+session_start();
 
-    $host = "oceanus.cse.buffalo.edu";
-    $user = "arpithir";
-    $pass = "50340819";
-    $database = "cse442_2023_spring_team_ae_db";
+$host = "oceanus.cse.buffalo.edu";
+$user = "arpithir";
+$pass = "50340819";
+$database = "cse442_2023_spring_team_ae_db";
 
-    //make sure we found oceanus
-    $conn = mysqli_connect($host, $user, $pass, $database);
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    if (!isset($_SESSION['username'])) {
-        // Redirect to the login page
-        header('Location: login.php');
-        exit;
-    }
+//make sure we found oceanus
+$conn = mysqli_connect($host, $user, $pass, $database);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
 ?>
 

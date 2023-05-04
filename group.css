@@ -324,4 +324,11 @@ button[id="invite_submit"] {
 
         font-size: 3.5vw;
     }
+/* profile pic */
+
+img[id="profile"] {
+    position: absolute;
+    left: 5%;
+    top: 5%;
+    width: 8.5%;
 }
