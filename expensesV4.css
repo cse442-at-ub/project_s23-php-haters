@@ -2,6 +2,60 @@ body {
     background: #CDB7E9;
 }
 
+img[id='icon-pfp'] {
+    position: fixed;
+    width:5.5%;
+    top: 1%;
+    right: 2%;
+}
+
+/* Nav Bar */
+header {
+    position: fixed;
+    height: 10%;
+    display: flex;
+}
+
+header * {
+    display: flex;
+    align-items: center;
+}
+
+header li {
+    margin: 6.5%;
+    font-size: 2vw;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+}
+
+header li a {
+    color: black;
+    text-decoration: none;
+}
+
+.nav-button {
+    box-sizing: border-box;
+    background: #EEE3A4;
+    padding: 8% 16%;
+    border: 3px solid #000000;
+    border-radius: 12px;
+}
+
+/*.h3 {*/
+/*    font-family: 'Inter', sans-serif;*/
+/*    font-style: normal;*/
+/*    font-weight: 700;*/
+/*    font-size: 3vw;*/
+/*    align-content: center;*/
+/*}*/
+
+/*.title {*/
+/*    text-align: center;*/
+/*    margin-top: 10vh;*/
+/*    height: 20vh;*/
+/*    margin-bottom: 1vh;*/
+/*    font-size: 1vw;*/
+/*}*/
 
 body {
     background-color: #CDB7E9;
