@@ -1,7 +1,6 @@
 <?php
 include 'util.php';
-//include 'header.php';
-
+include 'header.php';
 
 session_start();
 $host = "oceanus.cse.buffalo.edu";
@@ -14,7 +13,6 @@ if (!$conn) {
 }
 
 $current_user = $_SESSION['username'];
-
 if (!$current_user) { ?>
     <h2 style="font-family: 'monospace';">YOU MUST SIGN IN FIRST!!! <?php
         header('Location: login.php'); ?></h2>
@@ -42,11 +40,8 @@ function getGroupMembersEXPENSE($groupName, $mysqli) {
     $stmt->bind_param("s", $groupName);
     $stmt->execute();
     $result = $stmt->get_result();
-
     $dropdown = "<select name='members[]'>"; #save the selctions
-
     $numMembers = $result->num_rows;
-
     // adding "NULL" option if <4members in group
     if ($numMembers < 4) {
         for ($i = 0; $i < (4 - $numMembers); $i++) {
@@ -64,11 +59,6 @@ function getGroupMembersEXPENSE($groupName, $mysqli) {
     return $dropdown;
 }
 
-
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -78,22 +68,22 @@ function getGroupMembersEXPENSE($groupName, $mysqli) {
 </head>
 
 <body>
-<header>
-    <div>
-        <img class='icon' src="Saturn.png" alt="RoomAid">
-        <span class="h3"> RoomAid </span>
-        <nav>
-            <ul>
-                <li><a href="home.php" class="nav-button">Home</a></li>
-                <li><a href="task-schedule.php" class="nav-button">Schedule</a></li>
-                <li><a href="group.php" class="nav-button">Group</a></li>
-                <li><a href="inventory.php" class="nav-button">Inventory</a></li>
-                <li><a href="expensesV4.php" class="nav-button">Expenses</a></li>
-                <li><a href="ppage.php"><img id='icon-pfp' src="profile.png" alt="Profile"></a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+<!--<header>-->
+<!--    <div>-->
+<!--        <img class='icon' src="Saturn.png" alt="RoomAid">-->
+<!--        <span class="h3"> RoomAid </span>-->
+<!--        <nav>-->
+<!--            <ul>-->
+<!--                <li><a href="home.php" class="nav-button">Home</a></li>-->
+<!--                <li><a href="task-schedule.php" class="nav-button">Schedule</a></li>-->
+<!--                <li><a href="group.php" class="nav-button">Group</a></li>-->
+<!--                <li><a href="inventory.php" class="nav-button">Inventory</a></li>-->
+<!--                <li><a href="expensesV4.php" class="nav-button">Expenses</a></li>-->
+<!--                <li><a href="ppage.php"><img id='icon-pfp' src="profile.png" alt="Profile"></a></li>-->
+<!--            </ul>-->
+<!--        </nav>-->
+<!--    </div>-->
+<!--</header>-->
 
 <div>
     <button id="add-expense-btn" class="btn" style="background-color: #EEE3A4; color: #000000;" onclick="showAddExpenseBox()">Add Expense</button>
@@ -153,6 +143,7 @@ function getGroupMembersEXPENSE($groupName, $mysqli) {
             echo "<span>" . $expense['expenseName'] . "</span>";
             echo "<span> " . $expense['dueDate'] . "</span>";
             echo "<span> Total Amount: $" . $expense['totalAmt'] . "</span>";
+//            echo "<button onclick=\"window.open('Display_Expenses.php?expenseName=" . urlencode($expense['expenseName']) . "', '_blank', 'width=600, height=400')\">View Breakdown</button>";
 
             // trying to display breakdown not just total
             echo "<div class='breakdown'>";
