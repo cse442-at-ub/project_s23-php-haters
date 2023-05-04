@@ -99,21 +99,6 @@ button[class="open-button"] {
 input[id="grpname"]{
     position: absolute;
     right: 28%;
-    top: 30%;
-    border: 3px solid #000000;
-    background: #CDB7E9;
-    border-radius: 15px;
-    text-align: center;
-
-    font-family: 'Inter', sans-serif;
-    font-style: normal; font-weight: 400;
-    font-size: 2vw;
-}
-
-input[id="grppassword"]{
-    position: absolute;
-    right: 28%;
-    top: 55%;
     border: 3px solid #000000;
     background: #CDB7E9;
     border-radius: 15px;
@@ -131,7 +116,7 @@ button[class="btn"] {
     width: 13%;
     height: 10%;
     right: 10%;
-    top: 80%;
+    top: 65%;
     border-radius: 12px;
 
     font-family: 'Inter', sans-serif;
@@ -148,7 +133,7 @@ button[class="btn cancel"] {
     width: 13%;
     height: 10%;
     right: 25%;
-    top: 80%;
+    top: 65%;
     border-radius: 12px;
 
     font-family: 'Inter', sans-serif;
@@ -165,9 +150,9 @@ button[class="btn cancel"] {
 .group_info_box {
     display: block;
     position: fixed;
-    width: 60%;
-    height: 70%;
-    bottom: 10%;
+    width: 50%;
+    height: 50%;
+    bottom: 28%;
     left: 50%;
     transform: translateX(-50%);
     box-sizing: border-box;
@@ -209,7 +194,7 @@ button[class="cancel"] {
     position: absolute;
     width: 13%;
     height: 10%;
-    right: 28%;
+    right: 20%;
     top: 83%;
     border-radius: 12px;
 
@@ -219,21 +204,6 @@ button[class="cancel"] {
     font-size: 1.5vw;
 
     background: #EEE3A4;
-}
-
-input[id="grpPass"]{
-    position: absolute;
-    right: 5%;
-    height: 10%;
-    top: 70%;
-    border: 3px solid #000000;
-    background: #CDB7E9;
-    border-radius: 15px;
-    text-align: center;
-
-    font-family: 'Inter', sans-serif;
-    font-style: normal; font-weight: 400;
-    font-size: 2vw;
 }
 
 span[class="name"]{

@@ -1,29 +1,30 @@
 <?php
-//add-bill.php
-//$current_user = $_SESSION['username'];
+
+session_start();
+$current_user = $_SESSION['username'];
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {     //Check it is coming from a form
     $u_bill = $_POST["Bill_Name"];                   //set PHP variables like this so we can use them anywhere in code below
     $u_date = $_POST["Date"];
     $u_date = date('Y-m-d', strtotime($u_date));
 //    print($u_date);
-    $User1 = "hGilmore909";
+    $User1 = $current_user;
     $u_owed1 = $_POST["U1"];
-//    $User2 = $_POST["username2"];
-    $User2 = "arpithir";
+
+    $User2 = $_POST["User2_name"];
     $u_owed2 = $_POST["U2"];
-//    $User3 = $_POST["username3"];
-    $User3 = "Adam";
+
+    $User3 = $_POST["User3_name"];
     $u_owed3 = $_POST["U3"];
-//    $User4 = $_POST["username4"];
-    $User4 = "Ben";
+
+    $User4 = $_POST["User4_name"];
     $u_owed4 = $_POST["U4"];
 }
 
 
 $host = "oceanus.cse.buffalo.edu";              // The hostname of the database server
-$user = "bensonca";                             // The MySQL user
-$password = "50355548";                         // The MySQL user's password
+$user = "accartwr";                             // The MySQL user
+$password = "50432097";                         // The MySQL user's password
 $database = "cse442_2023_spring_team_ae_db";    // The name of the database to connect to
 //php 7.3.33
 // Create a new mysqli object to establish a database connection
@@ -54,4 +55,3 @@ mysqli_query($mysqli, $sql);
 $mysqli->close();
 
 header('Location: Shared_Expenses.php');
-exit();
