@@ -46,7 +46,6 @@ header li a {
     font-style: normal;
     font-weight: 700;
     font-size: 3vw;
-    align-content: center;
 }
 
 /* Invite Button */
@@ -132,6 +131,199 @@ span[class="name"]{
     color: #000000;
 }
 
+.invite-form {
+    position: fixed;
+    left:26%;
+    top: 26%;
+    width: 50%;
+    height: 40%;
+
+    box-sizing: border-box;
+    background: #EEE3A4;
+    border: 3px solid #000000;
+    border-radius: 25px;
+}
+
+h2[id="invite"] {
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.5vw;
+
+    color: #000000;
+}
+
+input[id="username"] {
+    position: absolute;
+    top: 39%;
+    right: 28%;
+    border: 3px solid #000000;
+    background: #CDB7E9;
+    border-radius: 15px;
+    text-align: center;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2vw;
+}
+
+button[id="invite_submit"] {
+    cursor: pointer;
+    position: absolute;
+    width: 13%;
+    height: 10%;
+    right: 43%;
+    top: 70%;
+    border-radius: 12px;
+
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5vw;
+
+    background: #EEE3A4;
+}
+
+@media only screen and (max-width: 600px) {
+    img[class='icon']{
+        width: 3%;
+    }
+
+    img[id='icon-pfp'] {
+        margin-top: 2%;
+        width:10%;
+    }
+
+    header {
+        height: 7%;
+    }
+
+    header li {
+        margin-left: 2%;
+        font-size: 2.5vw;
+    }
+
+    .nav-button {
+        border-radius: 7px;
+    }
+
+    .h3 {
+        font-size: 2vw;
+    }
+
+    button[id="invite"] {
+        width: 30%;
+        height: 5%;
+        left: 10%;
+        top: 90%;
+        border-radius: 10px;
+
+        font-size: 2vw;
+    }
+
+    input[id="leave_group"] {
+        width: 30%;
+        height: 5%;
+        right: 10%;
+        top: 90%;
+        border-radius: 10px;
+
+        font-size: 2vw;
+    }
+
+    div[class="group_box"] {
+        width: 80%;
+        height: 65%;
+        left: 10%;
+        top: 20%;
+        border-radius: 15px;
+    }
+
+    .group_name {
+        left: 40%;
+        top: 10%;
+
+        font-size: 5vw;
+    }
+
+    span[class="name"]{
+        left: 9%;
+        top: 9%;
+
+        font-size: 3.5vw;
+    }
+}
+
+@media only screen and (max-width: 1048px) {
+    img[class='icon']{
+        width: 3%;
+    }
+
+    img[id='icon-pfp'] {
+        margin-top: 2%;
+        width:10%;
+    }
+
+    header {
+        height: 7%;
+    }
+
+    header li {
+        margin-left: 2%;
+        font-size: 2.5vw;
+    }
+
+    .nav-button {
+        border-radius: 7px;
+    }
+
+    .h3 {
+        font-size: 2vw;
+    }
+
+    button[id="invite"] {
+        width: 30%;
+        height: 5%;
+        left: 10%;
+        top: 90%;
+        border-radius: 10px;
+
+        font-size: 2vw;
+    }
+
+    input[id="leave_group"] {
+        width: 30%;
+        height: 5%;
+        right: 10%;
+        top: 90%;
+        border-radius: 10px;
+
+        font-size: 2vw;
+    }
+
+    div[class="group_box"] {
+        width: 80%;
+        height: 65%;
+        left: 10%;
+        top: 20%;
+        border-radius: 15px;
+    }
+
+    .group_name {
+        left: 40%;
+        top: 10%;
+
+        font-size: 5vw;
+    }
+
+    span[class="name"]{
+        left: 9%;
+        top: 9%;
+
+        font-size: 3.5vw;
+    }
 /* profile pic */
 
 img[id="profile"] {

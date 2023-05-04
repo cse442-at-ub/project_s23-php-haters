@@ -56,9 +56,6 @@ if (!$conn) {
    }
 ?>
 <div class="group_box">
-    <!--The profile picture and the name will be displayed of the current user if there is just one user in the room.-->
-    <!--This is just for the display purposes we will change it as soon as we are done it with the group formation backend-->
-    <!-- <img src="profile.png" id="profile"> -->
 <?php
 if(isset($_SESSION['username'])){ // check if user session variable is set
     $current_user = $_SESSION['username'];
@@ -82,25 +79,30 @@ if(isset($_SESSION['username'])){ // check if user session variable is set
 </div>
 
 
-<form method="post" id="grp">
+<form method="post" id="grp" action="leave_group_be.php">
     <input type="submit" id="leave_group" name="leave_group" value="Leave Group">
 </form>
 
-<!--The user will be directed to again finding the roommate page as soon as he leaves the room.-->
+<form method="post" id="usrInvite" action="generate_invite_link.php">
+    <button type="submit" id="invite" name="invite">Invite Link [Click to Copy]</button>
+</form>
+
+<script>
+    function copyToClipboard(text) {
+        // Copy the text to the clipboard
+        navigator.clipboard.writeText(text).then(() => {
+            alert("Copied to Clipboard");
+        })
+    }
+</script>
+
 <?php
-    if(isset($_POST['leave_group'])){ // check if post request is working is set
-        $sql = "DELETE FROM groupTestV2 WHERE username = ? AND groupName = ?";
-        $current_user = $_SESSION['username'];
-        $grpName = $_SESSION['groupName'];
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $current_user, $grpName); // BIND
-        $stmt->execute();
-        $stmt->close();
-        header("location: find_group.php");
+    if (isset($_GET["link"])) {
+        if ($_GET["link"] == "success") {
+            echo '<script>copyToClipboard("'. $_SESSION['url'] .'")</script>';
+        }
     }
 ?>
-
-<button onclick="generateLink()" id="invite">Invite Link [Click to Copy]</button>
 
 </body>
 </html>
