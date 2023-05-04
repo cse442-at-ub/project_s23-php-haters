@@ -13,6 +13,9 @@ if (!$conn) {
 }
 
 $current_user = $_SESSION['username'];
+//$group_name = getGroupName($current_user, connect());
+//$image_src = GetProfileImage($current_user);
+
 if (!$current_user) { ?>
     <h2 style="font-family: 'monospace';">YOU MUST SIGN IN FIRST!!! <?php
         header('Location: login.php'); ?></h2>
@@ -40,8 +43,11 @@ function getGroupMembersEXPENSE($groupName, $mysqli) {
     $stmt->bind_param("s", $groupName);
     $stmt->execute();
     $result = $stmt->get_result();
+
     $dropdown = "<select name='members[]'>"; #save the selctions
+
     $numMembers = $result->num_rows;
+
     // adding "NULL" option if <4members in group
     if ($numMembers < 4) {
         for ($i = 0; $i < (4 - $numMembers); $i++) {
