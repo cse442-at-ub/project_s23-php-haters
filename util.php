@@ -88,7 +88,7 @@ function removeOverdue(){
 }
 
 function validImage($filetype){
-    echo $filetype;
+//    echo $filetype;
     $allowed_extensions = array('png', 'jpeg', 'jpg');
     if (!in_array($filetype, $allowed_extensions)) {
         return false;
