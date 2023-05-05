@@ -1,0 +1,242 @@
+body {
+    background: #CDB7E9;
+}
+/* For screens with a maximum width of 768px */
+@media screen and (max-width: 768px) {
+    img[id='icon-pfp'] {
+        width: 10%;
+    }
+
+    header {
+        height: 15%;
+    }
+
+    header li {
+        margin: 3%;
+        font-size: 4vw;
+    }
+
+    .nav-button {
+        padding: 5% 10%;
+        border-radius: 8px;
+    }
+
+    .h3 {
+        font-size: 5vw;
+    }
+}
+
+/* For screens with a maximum width of 480px */
+@media screen and (max-width: 480px) {
+    img[id='icon-pfp'] {
+        display: none;
+    }
+
+    header {
+        height: 20%;
+        flex-direction: column;
+    }
+
+    header li {
+        margin: 2%;
+        font-size: 6vw;
+    }
+
+    .nav-button {
+        padding: 3% 6%;
+        border-radius: 4px;
+    }
+
+    .h3 {
+        font-size: 7vw;
+    }
+}
+
+img[id='icon-pfp'] {
+    position: fixed;
+    width:5.5%;
+    top: 1%;
+    right: 2%;
+}
+
+/* Nav Bar*/
+header {
+    position: fixed;
+    height: 10%;
+    display: flex;
+}
+
+header * {
+    display: flex;
+    align-items: center;
+}
+
+header li {
+    margin: 6.5%;
+    font-size: 2vw; /* Use viewport width as font size */
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+}
+
+header li a {
+    color: black;
+    text-decoration: none;
+}
+
+.nav-button {
+    box-sizing: border-box;
+    background: #EEE3A4;
+    padding: 8% 16%; /* Use percentage for padding */
+    border: 3px solid #000000;
+    border-radius: 12px;
+}
+
+.h3 {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3vw;
+    line-height: 1.2;
+    align-content: center;
+}
+
+div[class="pfpContainer"]{
+    margin-top: 15%;
+    margin-left: 3%;
+}
+
+.pfp {
+    width: 200px;
+    max-height: 200px;
+    border-radius: 50%;
+    margin-left: 17.5%;
+    border: 3px solid black;
+    border-radius: 50%;
+}
+
+div[class="profileInfo"]{
+    margin-top: 5%;
+}
+
+div[class="profile"]{
+    margin-top: 2%;
+    margin-left: 10%;
+    width: 30%;
+    border: 3px solid black;
+    border-radius: 25px;
+    height: 60px;
+    background-color: white;
+
+}
+
+div[class="profile"] h2{
+    margin-top: 4%;
+    margin-left: 2.5%;
+
+    font-family: Inter, sans-serif;
+    font-size: 1.5vw;
+    font-weight: bold;
+    text-align: center;
+}
+
+div[class="logoutSection"]{
+    width: 30%;
+    max-height: 300px;
+    padding: 40px;
+    margin-left: 7.5%;
+    margin-top: 0.5%;
+    background-color: #CDB7E9;
+}
+
+button[id="logout"]{
+    margin-top: 2%;
+    margin-left: 12%;
+    width: 80%;
+    border: 3px solid black;
+    border-radius: 25px;
+    height: 60px;
+    background-color: #2f4052;
+    color: white;
+    font-family: Inter, sans-serif;
+    font-size: 1.5vw;
+    font-weight: bold;
+    text-align: center;
+}
+
+div[class="deleteSection"]{
+    width: 30%;
+    max-height: 300px;
+    border: 3px solid black;
+    padding: 40px;
+    margin-left: 60%;
+    margin-top: -36%;
+    background-color: rgba(255, 111, 111, 0.55);
+    font-family: Inter, sans-serif;
+    font-size: 1vw;
+    font-weight: bold;
+    text-align: center;
+}
+
+button[id="delete"]{
+    margin-top: 2%;
+    margin-left: 3.5%;
+    width: 80%;
+    border: 3px solid black;
+    border-radius: 25px;
+    height: 60px;
+    background-color: rgba(189, 12, 12, 0.55);
+    font-family: Inter, sans-serif;
+    font-size: 1.5vw;
+    font-weight: bold;
+    text-align: center;
+}
+
+.form-container {
+    display: none;
+    position: fixed;
+    width: 80%;
+    height: 50%;
+    bottom: -5%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    background: #EEE3A4;
+    border: 3px solid #000000;
+    border-radius: 25px;
+    z-index: 9999;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+    font-size: 1vw;
+}
+
+@keyframes form-transition {
+    0% {
+        bottom: -100%;
+    }
+    100% {
+        bottom: 50%;
+    }
+}
+
+button[id="cancelDel"]{
+    width: 20%;
+    height: 80px;
+    margin-left: -5%;
+    margin-top: 5%;
+    border: 3px solid black;
+    border-radius: 25px;
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+
+button[id="deleteAcc"]{
+    width: 20%;
+    height: 80px;
+    margin-left: 27.5%;
+    margin-top: 5%;
+    background-color: indianred;
+    border: 3px solid black;
+    border-radius: 25px;
+    font-size: 1.5vw;
+    font-weight: bold;
+}

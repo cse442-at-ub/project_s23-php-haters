@@ -55,4 +55,3 @@ mysqli_query($mysqli, $sql);
 $mysqli->close();
 
 header('Location: Shared_Expenses.php');
-

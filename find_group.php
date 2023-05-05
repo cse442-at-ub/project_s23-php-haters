@@ -27,12 +27,14 @@
             document.getElementById("groupForm").style.display = "block";
             document.getElementById("search").style.display = "none";
             document.getElementById("search_button").style.display = "none";
+            document.getElementById("groupbtn").style.display = "none";
         }
 
         function closeGroupForm() {
             document.getElementById("groupForm").style.display = "none";
             document.getElementById("search").style.display = "block";
             document.getElementById("search_button").style.display = "block";
+            document.getElementById("groupbtn").style.display = "block";
         }
     </script>
 </head>
@@ -46,10 +48,10 @@
 </div>
 
 
-<button class="open-button" onclick="openGroupForm()">Create A Group</button>
+<button class="open-button" id="groupbtn" onclick="openGroupForm()">Create A Group</button>
 <div class="form-popup" id="groupForm">
     <form action="find_group_be.php" method="post" name="createGRPForm" class="form-container">
-        <h2 style="text-align: center; font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 2.5vw;">Create A Group</h2>
+        <h2 id="creategrp">Create A Group</h2>
 
         <input id="grpname" type="text" placeholder="Enter Group Name" name="group" required>
 

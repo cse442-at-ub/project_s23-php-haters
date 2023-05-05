@@ -1,6 +1,6 @@
 <?php
 
- session_start();
+session_start();
 $current_user = $_SESSION['username'];
 
 
@@ -26,7 +26,7 @@ $graph = mysqli_query($conn, $sql);
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title>Shared Expenses</title>
     <link rel="stylesheet" href="Shared_Expenses.css">
-<!--    <link rel="stylesheet" href="/Shared_Expenses.css">-->
+    <!--    <link rel="stylesheet" href="/Shared_Expenses.css">-->
 
     <!--Using Google Developers Chart API to represent the chart for user expenses.-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -107,7 +107,7 @@ $graph = mysqli_query($conn, $sql);
 
 
 <div class="add_bill">
-<!--    <button class="add_bill" onclick="openBillForm()"><span id="add_bill"> + Add Bill</span></button>-->
+    <!--    <button class="add_bill" onclick="openBillForm()"><span id="add_bill"> + Add Bill</span></button>-->
     <button id="add-bill" class="add_bill" style="background-color: #EEE3A4; color: #000000;" onclick="openBillForm()">Add Bill</button>
 
 </div>
@@ -118,9 +118,9 @@ $graph = mysqli_query($conn, $sql);
         <input type="date" id="Date" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 1.5vw" placeholder="EDate" name="Date" required>
         <!--Here the Placeholder for all the user will change as we have group formation page up and running. This is just for test of the functionality -->
         <input type="number"  id="User_1" min="0.00" max="10000.00" step="0.01" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 1.5vw" placeholder="User 1 Pays" name="U1" required>
-<!--        <input type="number"  id="User_2" min="0.00" max="10000.00" step="0.01" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 1.5vw" placeholder="User 2 Pays" name="U2" required>-->
-<!--        <input type="number"  id="User_3" min="0.00" max="10000.00" step="0.01" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 1.5vw" placeholder="User 3 Pays" name="U3" required>-->
-<!--        <input type="number"  id="User_4" min="0.00" max="10000.00" step="0.01" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 1.5vw" placeholder="User 4 Pays" name="U4" required>-->
+        <!--        <input type="number"  id="User_2" min="0.00" max="10000.00" step="0.01" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 1.5vw" placeholder="User 2 Pays" name="U2" required>-->
+        <!--        <input type="number"  id="User_3" min="0.00" max="10000.00" step="0.01" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 1.5vw" placeholder="User 3 Pays" name="U3" required>-->
+        <!--        <input type="number"  id="User_4" min="0.00" max="10000.00" step="0.01" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 1.5vw" placeholder="User 4 Pays" name="U4" required>-->
         <input type="text" id="User_2_name" placeholder="Enter User 2 Username" name="User2_name">
         <input type="number" id="User_2" min="0.00" max="10000.00" step="0.01" style="font-family: 'Inter', sans-serif; font-style: normal; font-weight: 400; font-size: 1.5vw" placeholder="User 2 Pays" name="U2" >
         <input type="text" id="User_3_name" placeholder="Enter User 3 Username" name="User3_name" >
