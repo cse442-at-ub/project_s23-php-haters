@@ -47,7 +47,8 @@ $items = mysqli_fetch_all($inventory_res, MYSQLI_ASSOC);
             <li><a href="task-schedule.php" class="nav-button">Schedule</a></li>
             <li><a href="group.php" class="nav-button">Group</a></li>
             <li><a href="inventory.php" class="nav-button">Inventory</a></li>
-            <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>
+            <li><a href="expensesV4.php" class="nav-button">Expenses</a></li>
+
             <li><a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a></li>
             </ul>
         </nav>

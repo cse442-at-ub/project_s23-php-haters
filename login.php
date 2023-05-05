@@ -33,7 +33,7 @@ function getUser($conn, $username, $password){
                 // Passwords match, return user info
                 return $row;
             } else {
-                // Passwords don't match 
+                // Passwords don't match
                 return false;
             }
         } else {

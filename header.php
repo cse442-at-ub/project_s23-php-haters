@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 $user_id = $_SESSION["username"];
@@ -33,7 +34,7 @@ if (count($files) > 0 && !isset($_FILES["image"])) { // only display the image i
                 <li><a href="task-schedule.php" class="nav-button">Schedule</a></li>
                 <li><a href="group.php" class="nav-button">Group</a></li>
                 <li><a href="inventory.php" class="nav-button">Inventory</a></li>
-                <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>
+                <li><a href="expensesV4.php" class="nav-button">Expenses</a></li>
                 <li><a href="ppage.php"><img class='nav-icon' id='icon-pfp' src="<?php echo $image_src ?>" alt="Profile"></a></li>
             </ul>
         </nav>
