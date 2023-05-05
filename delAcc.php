@@ -64,5 +64,11 @@ mysqli_query($conn, $sql3);
 
 $conn->close();
 
+// Set $_SESSION to an empty array
+$_SESSION = array();
+
+// Destroy the session
+session_destroy();
+
 header('Location: register.php');
 exit();
