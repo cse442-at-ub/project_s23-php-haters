@@ -105,9 +105,9 @@ if(isset($_POST["invite_submit"])) {
                                         $arr = "INSERT INTO groupTestV2 VALUES ('$user_name', '$tokenGroup')";
                                         $stmt = $conn->prepare($arr);
                                         $stmt->execute();
+                                        getNotification($conn, $user_name, $tokenGroup);
                                         header("Location: login.php?invite=success");
                                         $stmt->close();
-                                        getNotification($conn, $user_name, $tokenGroup);
                                     }
                                 }
                                 else {
