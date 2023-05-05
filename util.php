@@ -79,8 +79,6 @@ function getEmail($member, $mysqli){
     return $row["usersEmail"];
 }
 
-
-
 function removeOverdue(){
     $mysqli = connect();
     $current_datetime = date('Y-m-d H:i:s');
@@ -89,3 +87,13 @@ function removeOverdue(){
     $stmt-> execute();
 }
 
+function validImage($filetype){
+    echo $filetype;
+    $allowed_extensions = array('png', 'jpeg', 'jpg');
+    if (!in_array($filetype, $allowed_extensions)) {
+        return false;
+    } else {
+        return true;
+    }
+//
+}
