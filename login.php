@@ -1,5 +1,4 @@
 <?php
-ini_set('display_errors', 1);
 session_start();
 $host = "oceanus.cse.buffalo.edu";
 $user = "riadmukh";
@@ -34,7 +33,7 @@ function getUser($conn, $username, $password){
                 // Passwords match, return user info
                 return $row;
             } else {
-                // Passwords don't match 
+                // Passwords don't match
                 return false;
             }
         } else {
@@ -129,7 +128,7 @@ if (isset($_POST["username"])){
     }
     if (isset($_GET["invite"])) {
         if ($_GET["invite"] == "success") {
-            echo '<script>alert("You have successfully joined the group.")</script>';
+            echo '<script>alert("You have successfully joined the group.")';
         }
     }
     ?>

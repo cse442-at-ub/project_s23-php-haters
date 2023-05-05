@@ -1,19 +1,69 @@
 <?php
-
 include 'util.php';
 
 session_start();
-$current_user = $_SESSION["username"];
-$user_id = $_SESSION["username"];
-if (!$user_id) { ?>
-    <h2 style="font-family: 'monospace';">YOU MUST SIGN IN FIRST!!!
-        <?php header('Location: login.php'); ?></h2>
-<?php }
+$host = "oceanus.cse.buffalo.edu";
+$user = "riadmukh";
+$password = "50356618";
+$database = "cse442_2023_spring_team_ae_db";
 
+$user_id = $_SESSION['username'];
 $max_size = 8 * 1024 * 1024; // 8MB byte max size automatically set my php
 
 $image_path = "uploads/$user_id/";
-//echo $user_id;
+
+$conn = mysqli_connect($host, $user, $password, $database);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if (!isset($_SESSION['username'])) {
+    // Redirect to the login page
+    header('Location: login.php');
+    exit;
+}
+
+//function getEmail($member, $mysqli){
+//    $stmt = $mysqli->prepare("SELECT usersEmail FROM users WHERE usersUsername = ?");
+//    $stmt->bind_param("s", $member);
+//    $stmt->execute();
+//    $result = $stmt->get_result();
+//    $stmt->close();
+//    $row = $result->fetch_assoc();
+//    return $row["usersEmail"];
+//}
+
+function getName($member, $mysqli){
+    $stmt = $mysqli->prepare("SELECT usersName FROM users WHERE usersUsername = ?");
+    $stmt->bind_param("s", $member);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+    $row = $result->fetch_assoc();
+    return $row["usersName"];
+}
+
+function getUsername($member, $mysqli){
+    $stmt = $mysqli->prepare("SELECT usersUsername FROM users WHERE usersUsername = ?");
+    $stmt->bind_param("s", $member);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+    $row = $result->fetch_assoc();
+    return $row["usersUsername"];
+}
+
+$username1 = "";
+$name = "";
+$email = "";
+
+if(isset($_SESSION['username'])){
+    $username = $_SESSION["username"];
+    $email = getEmail($username,$conn);
+    $name = getName($username,$conn);
+    $username1 = getUsername($username,$conn);
+}
+
 ?>
 <!DOCTYPE html>
 
@@ -54,17 +104,17 @@ $image_path = "uploads/$user_id/";
 <!--username, name, email, image, logout, delete button but make a popup that says-->
 <body>
 <div class="form-container" id="form-container">
-    <form action="register.php" method="post" name="deleteAcc"> <!--change the form action-->
+    <form action="delAcc.php" method="post" name="deleteAcc"> <!--change the form action-->
 
-       <h2>Careful! By clicking 'Delete' you are permanently deleting your account and data from RoomAid.</h2>
+        <h2>Careful! By clicking 'Delete' you are permanently deleting your account and data from RoomAid.</h2>
 
         <button type="button" id="cancelDel" onclick="closeDeleteConfirm()">Cancel</button>
         <button type="submit" id="deleteAcc">Delete</button>
-        </form>
+    </form>
 </div>
 <br>
-<div class="pfpContainer">
-<!--    --><?php
+    <div class="pfpContainer">
+        <?php
     $files = glob($image_path . '*.{jpg,jpeg,png,gif}', GLOB_BRACE); // check if an image is already uploaded
     if (count($files) > 0 && !isset($_FILES["image"])) { // only display the image if a new photo has not been uploaded
         $image_filename = basename($files[0]);
@@ -129,44 +179,56 @@ $image_path = "uploads/$user_id/";
         }
     }
     ?>
-    <form action="" class='pfp' method="POST" enctype="multipart/form-data" name="aForm" id="aForm">
-        <label for="image"></label>
-        <input type="file" id="image" name="image" style="align-content: center" accept="image/jpeg, image/jpg, image/png">
-        <br><br>
-        <input type="submit" value="Upload" id="submitButton" accept="image/jpeg, image/jpg, image/png" style="display:none;">
-    </form>
-    <script>
-        const form = document.getElementById('aForm');
-        const image = document.getElementById('image');
-        image.addEventListener('change', function() {
-            form.submit();
-            form.style.display = 'none';
-        });
-    </script>
-</div>
-<div class="profileInfo">
-<!--    you need to change these variable according to the database and stuff-->
-    <div class="profile">
-        <h2>.$username.</h2>
+        <form action="" class='pfp' method="POST" enctype="multipart/form-data" name="aForm" id="aForm">
+            <label for="image"></label>
+            <input type="file" id="image" name="image" style="align-content: center" accept="image/jpeg, image/jpg, image/png">
+            <br><br>
+            <input type="submit" value="Upload" id="submitButton" accept="image/jpeg, image/jpg, image/png" style="display:none;">
+        </form>
+        <script>
+            const form = document.getElementById('aForm');
+            const image = document.getElementById('image');
+            image.addEventListener('change', function() {
+                form.submit();
+                form.style.display = 'none';
+            });
+        </script>
     </div>
-    <div class="profile">
-        <h2>.$name.</h2>
+    <div class="profileInfo">
+        <!--    you need to change these variable according to the database and stuff-->
+        <div class="profile">
+            <h2>
+                <?php
+                echo $username1;
+                ?>
+            </h2>
+        </div>
+        <div class="profile">
+            <h2>
+                <?php
+                echo $name;
+                ?>
+            </h2>
+        </div>
+        <div class="profile">
+            <h2>
+                <?php
+                echo $email;
+                ?>
+            </h2>
+        </div>
     </div>
-    <div class="profile">
-        <h2>.$email.</h2>
+    <div class="logoutSection">
+        <button type="submit" id="logout" onclick="window.location.href='logout.php';">Logout</button>  <!-- link this button to something -->
     </div>
-</div>
 
-<div class="logoutSection">
-    <form action="logout.php" name="logout">
-        <button type="submit" name="logout" id="logout">Logout</button>
-    </form>
-</div>
 
-<div class="deleteSection">
-    <h2>Deleting your account is a permanent action. You cannot get any data back. </h2>
-    <button type="submit" id="delete" onclick="deleteConfirm()">Delete Account</button>  <!-- link this button to something -->
-</div>
+    <div class="deleteSection">
+        <h2>Deleting your account is a permanent action. You cannot get any data back. </h2>
+        <button type="submit" id="delete" onclick="deleteConfirm()">Delete Account</button>  <!-- link this button to something -->
+    </div>
+
+
 
 </body>
 </html>

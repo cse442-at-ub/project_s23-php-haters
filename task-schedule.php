@@ -1,12 +1,14 @@
 <?php
 include 'util.php';
 include 'header.php';
-
 //session_start();
 $name = $_SESSION["username"];
+//$name = "Ben";
+//$name = "asfd";
+//$name = 'hGilmore909';
+
 
 $group_name = getGroupName($name, connect());
-$image_src = GetProfileImage($name);
 
 // check if any task at all are overdue
 removeOverdue();
@@ -44,7 +46,7 @@ removeOverdue();
 <!--                <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>-->
 <!--            </ul>-->
 <!--        </nav>-->
-<!--        <a href="ppage.php"><img class='icon-pfp' id='icon-pfp' src="--><?php //echo $image_src ?? 'profile.png'; ?><!--" alt="Profile"></a>-->
+<!--        <a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a>-->
 <!--    </div>-->
 <!--</header>-->
 
