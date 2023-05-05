@@ -1,4 +1,5 @@
 <?php
+
 include 'header.php';
 
 $host = "oceanus.cse.buffalo.edu";
@@ -11,6 +12,13 @@ $conn = mysqli_connect($host, $user, $pass, $database);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+
+$current_user = $_SESSION['username'];
+
+if (!$current_user) { ?>
+    <h2 style="font-family: 'monospace';">YOU MUST SIGN IN FIRST!!! <?php
+        header('Location: login.php'); ?></h2>
+<?php }
 
 ?>
 
@@ -40,7 +48,7 @@ if (!$conn) {
 <!--</header>-->
 
 <?php
-   if(isset($_SESSION['username'])){ // check if user session variable is set
+if(isset($_SESSION['username'])){ // check if user session variable is set
     $current_user = $_SESSION['username'];
     $sql = "SELECT groupName FROM groupTestV2 WHERE username = ?";
     //  Block pesky SQL injections with prepared statement ;)
@@ -53,29 +61,29 @@ if (!$conn) {
     $result_group_name = $result_group['groupName'];
     $_SESSION['groupName'] = $result_group_name;
     echo '<b><span class="group_name">'.$result_group_name.'</span></b>';
-   }
-?>
-<div class="group_box">
-<?php
-if(isset($_SESSION['username'])){ // check if user session variable is set
-    $current_user = $_SESSION['username'];
-    $sql = "SELECT username FROM groupTestV2 WHERE groupName = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $result_group_name); // BIND
-    $stmt->execute();
-    $result  = $stmt->get_result();
-    $stmt->close();
-    $top_increment = 12;
-    $i = 1;
-    while ($row = $result->fetch_assoc()) {
-        $userName = $row['username'];
-        $top = $top_increment * $i;
-        $user_name_id = "name".$i;
-        echo '<span class="name" id='.$user_name_id.' style="top:'. $top .'%;">'.$userName.'</span>';
-        $i++;
-    }
 }
 ?>
+<div class="group_box">
+    <?php
+    if(isset($_SESSION['username'])){ // check if user session variable is set
+        $current_user = $_SESSION['username'];
+        $sql = "SELECT username FROM groupTestV2 WHERE groupName = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $result_group_name); // BIND
+        $stmt->execute();
+        $result  = $stmt->get_result();
+        $stmt->close();
+        $top_increment = 12;
+        $i = 1;
+        while ($row = $result->fetch_assoc()) {
+            $userName = $row['username'];
+            $top = $top_increment * $i;
+            $user_name_id = "name".$i;
+            echo '<span class="name" id='.$user_name_id.' style="top:'. $top .'%;">'.$userName.'</span>';
+            $i++;
+        }
+    }
+    ?>
 </div>
 
 
@@ -97,11 +105,11 @@ if(isset($_SESSION['username'])){ // check if user session variable is set
 </script>
 
 <?php
-    if (isset($_GET["link"])) {
-        if ($_GET["link"] == "success") {
-            echo '<script>copyToClipboard("'. $_SESSION['url'] .'")</script>';
-        }
+if (isset($_GET["link"])) {
+    if ($_GET["link"] == "success") {
+        echo '<script>copyToClipboard("'. $_SESSION['url'] .'")</script>';
     }
+}
 ?>
 
 </body>
