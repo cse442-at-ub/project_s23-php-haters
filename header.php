@@ -1,5 +1,6 @@
-
 <?php
+//include 'util.php';
+
 session_start();
 $user_id = $_SESSION["username"];
 if (!$user_id) { ?>
@@ -8,12 +9,25 @@ if (!$user_id) { ?>
 <?php }
 ?>
 <?php
-$image_path = "uploads/$user_id/";
-// display other parts of your application with the uploaded image
-$files = glob($image_path . '*.{jpg,jpeg,png,gif}', GLOB_BRACE); // check if an image is already uploaded
-if (count($files) > 0 && !isset($_FILES["image"])) { // only display the image if a new photo has not been uploaded
-    $image_filename = basename($files[0]);
-    $image_src = $image_path.$image_filename;
+$host = "oceanus.cse.buffalo.edu";              // The hostname of the database server
+$user = "bensonca";                             // The MySQL user
+$password = "50355548";                         // The MySQL user's password
+$database = "cse442_2023_spring_team_ae_db";    // The name of the database to connect to
+
+
+$username = $_SESSION["username"];
+$mysqli = mysqli_connect($host, $user, $password, $database);
+$sql = "SELECT imager FROM homies WHERE user = '$username'";
+$result = mysqli_query($mysqli, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $image_dat = $row['imager'];
+    $image_data = base64_decode($image_dat);
+
+    // Display the image using a data URL
+    $data_url = 'data:image/jpeg;base64,' . base64_encode($image_data);
+    $image_src = $data_url;
 } else {
     $image_src = "profile.png";
 }

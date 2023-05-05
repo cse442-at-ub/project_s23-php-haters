@@ -89,6 +89,15 @@ function removeOverdue(){
     $stmt-> execute();
 }
 
+function validImage($filetype){
+    $allowed_extensions = array('png', 'jpeg', 'jpg');
+    if (!in_array($filetype, $allowed_extensions)) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
 function getNotification($conn, $userid, $group_name){
     $sql = "SELECT * FROM groupTestV2 WHERE groupName =?";
     $prep = mysqli_stmt_init($conn);
@@ -96,8 +105,7 @@ function getNotification($conn, $userid, $group_name){
         $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
         echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "find_group.php";</script>';
         exit();
-    }
-    else {
+    } else {
         // Bind parameters to statement
         mysqli_stmt_bind_param($prep, "s", $group_name);
         // Execute statement

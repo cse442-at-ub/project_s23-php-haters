@@ -2,7 +2,6 @@
 include 'util.php';
 include 'header.php';
 
-session_start();
 $host = "oceanus.cse.buffalo.edu";
 $user = "accartwr";
 $password = "50432097";
