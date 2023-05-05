@@ -12,6 +12,11 @@ if (!$conn) {
 
 //    Find group
 $current_user = $_SESSION['username'];
+if (!$current_user) { ?>
+    <h2 style="font-family: 'monospace';">YOU MUST SIGN IN FIRST!!! <?php
+        header('Location: login.php'); ?></h2>
+<?php }
+
 $sql = "SELECT groupName FROM groupTestV2 WHERE username = ?";
 //  Block pesky SQL injections with prepared statement ;)
 $stmt = $conn->prepare($sql);
