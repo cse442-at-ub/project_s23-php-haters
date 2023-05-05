@@ -12,6 +12,13 @@
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
+
+    $current_user = $_SESSION['username'];
+
+    if (!$current_user) { ?>
+        <h2 style="font-family: 'monospace';">YOU MUST SIGN IN FIRST!!! <?php
+            header('Location: login.php'); ?></h2>
+    <?php }
 ?>
 
 <!DOCTYPE html>
