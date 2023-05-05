@@ -12,8 +12,15 @@
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
-?>
 
+    $current_user = $_SESSION['username'];
+
+    if (!$current_user) { ?>
+        <h2 style="font-family: 'monospace';">YOU MUST SIGN IN FIRST!!! <?php
+            header('Location: login.php'); ?></h2>
+    <?php }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,6 +61,7 @@
         <h2 id="creategrp">Create A Group</h2>
 
         <input id="grpname" type="text" placeholder="Enter Group Name" name="group" required>
+        <input type="password" id="grppassword" name="grppassword" placeholder="Enter Password" required>
 
         <button type="submit" class="btn">Create</button>
         <button type="button" class="btn cancel" onclick="closeGroupForm()">Cancel</button>

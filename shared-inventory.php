@@ -14,7 +14,7 @@
 //    }
 //
 //}
-include 'header.php';
+
 
 $host = "oceanus.cse.buffalo.edu";
 $user = "venkatay";
@@ -57,22 +57,22 @@ $sql = "SELECT * FROM sharedInventory WHERE (username = 'hGilmore909')"; //test 
 </head>
 <body>
 
-<!--<header>-->
-<!--    <div>-->
-<!--        <img class='icon' src="Saturn.png" alt="RoomAid">-->
-<!--        <span class="h3">RoomAid</span>-->
-<!--        <nav>-->
-<!--            <ul>-->
-<!--                <li><a href="home.html" class="nav-button">Home</a></li>-->
-<!--                <li><a href="#" class="nav-button">Schedule</a></li>-->
-<!--                <li><a href="#" class="nav-button">Calendar</a></li>-->
-<!--                <li><a href="shared-inventory.php" class="nav-button">Inventory</a></li>-->
-<!--                <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>-->
-<!--            </ul>-->
-<!--        </nav>-->
-<!--        <a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a>-->
-<!--    </div>-->
-<!--</header>-->
+<header>
+    <div>
+        <img class='icon' src="Saturn.png" alt="RoomAid">
+        <span class="h3">RoomAid</span>
+        <nav>
+            <ul>
+                <li><a href="home.html" class="nav-button">Home</a></li>
+                <li><a href="#" class="nav-button">Schedule</a></li>
+                <li><a href="#" class="nav-button">Calendar</a></li>
+                <li><a href="shared-inventory.php" class="nav-button">Inventory</a></li>
+                <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>
+            </ul>
+        </nav>
+        <a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a>
+    </div>
+</header>
 
 
 <div class="add_item">

@@ -1,5 +1,6 @@
 <?php
 session_start();
+include 'util.php';
 
 ini_set('display_errors', 1);
 
@@ -106,6 +107,7 @@ if(isset($_POST["invite_submit"])) {
                                         $stmt->execute();
                                         header("Location: login.php?invite=success");
                                         $stmt->close();
+                                        getNotification($conn, $user_name, $tokenGroup);
                                     }
                                 }
                                 else {
