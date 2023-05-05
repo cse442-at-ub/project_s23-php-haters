@@ -2,6 +2,7 @@
 
 ini_set('display_errors', 1);
 session_start();
+include 'util.php';
 
 //Database Connection
 $host = "oceanus.cse.buffalo.edu";
@@ -22,7 +23,7 @@ function check_password_strength($password): bool{
     return true;
 }
 
-if (isset($_POST['group'])) { 
+if (isset($_POST['group'])) {
     if(isset($_SESSION['username'])){ // check if user session variable is set
         $current_user = $_SESSION['username'];
         $grpName = $_POST['group'];
@@ -59,54 +60,6 @@ if (isset($_POST['group'])) {
     }
 }
 
-function getNotification($conn, $userid, $group_name){
-    $sql = "SELECT * FROM groupTestV2 WHERE groupName =?";
-    $prep = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($prep, $sql)) {
-        $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
-        echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "find_group.php";</script>';
-        exit();
-    }
-    else {
-        // Bind parameters to statement
-        mysqli_stmt_bind_param($prep, "s", $group_name);
-        // Execute statement
-        mysqli_stmt_execute($prep);
-        // Get result set from statement
-        $result = mysqli_stmt_get_result($prep);
-
-        $to_array = array(); // array to store email addresses
-
-        while($row = mysqli_fetch_assoc($result)) {
-            $sql = "SELECT usersEmail FROM users WHERE usersUsername = ?";
-            $prep_val = mysqli_stmt_init($conn);
-            if (!mysqli_stmt_prepare($prep_val, $sql)) {
-                $_SESSION['error'] = 'Sorry, there was an error. Please try again.';
-                echo '<script>alert("' . $_SESSION['error'] . '"); window.location.href = "find_group.php";</script>';
-                exit();
-            }
-            else {
-                $username = $row["username"];
-                // Bind parameters to statement
-                mysqli_stmt_bind_param($prep_val, "s", $username);
-                // Execute statement
-                mysqli_stmt_execute($prep_val);
-                // Get result set from statement
-                $result_val = mysqli_stmt_get_result($prep_val);
-                $result_email = mysqli_fetch_assoc($result_val);
-                $email = $result_email["usersEmail"];
-                $to_array[] = $email; // add email address to array
-            }
-        }
-
-        // send email to all recipients
-        $to = implode(",", $to_array); // convert array to comma-separated string
-        $subject = "New User joined ".$group_name;
-        $message = '<p>'.$userid.' joined the group</p>';
-        $headers = "Content-type: text/html\r\n";
-        mail($to, $subject, $message, $headers);
-    }
-}
 
 
 function joinGroup($conn){
