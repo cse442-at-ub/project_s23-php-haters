@@ -1,7 +1,7 @@
 <?php
 include 'util.php';
-
-session_start();
+include 'header.php';
+//session_start();
 $name = $_SESSION["username"];
 //$name = "Ben";
 //$name = "asfd";
@@ -33,22 +33,22 @@ removeOverdue();
 </head>
 <body>
 
-<header>
-    <div>
-        <img class='icon' src="Saturn.png" alt="RoomAid">
-        <span class="h3"> RoomAid </span>
-        <nav>
-            <ul>
-                <li><a href="home.php " class="nav-button">Home</a></li>
-                <li><a href="task-schedule.php" class="nav-button">Schedule</a></li>
-                <li><a href="group.php" class="nav-button">Group</a></li>
-                <li><a href="inventory.php" class="nav-button">Inventory</a></li>
-                <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>
-            </ul>
-        </nav>
-        <a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a>
-    </div>
-</header>
+<!--<header>-->
+<!--    <div>-->
+<!--        <img class='icon' src="Saturn.png" alt="RoomAid">-->
+<!--        <span class="h3"> RoomAid </span>-->
+<!--        <nav>-->
+<!--            <ul>-->
+<!--                <li><a href="home.php " class="nav-button">Home</a></li>-->
+<!--                <li><a href="task-schedule.php" class="nav-button">Schedule</a></li>-->
+<!--                <li><a href="group.php" class="nav-button">Group</a></li>-->
+<!--                <li><a href="inventory.php" class="nav-button">Inventory</a></li>-->
+<!--                <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>-->
+<!--            </ul>-->
+<!--        </nav>-->
+<!--        <a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a>-->
+<!--    </div>-->
+<!--</header>-->
 
   <div class="pageTitle">
       Task Schedule
