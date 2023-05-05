@@ -1,22 +1,16 @@
 <?php
-    session_start();
+include 'header.php';
 
-    $host = "oceanus.cse.buffalo.edu";
-    $user = "arpithir";
-    $pass = "50340819";
-    $database = "cse442_2023_spring_team_ae_db";
+$host = "oceanus.cse.buffalo.edu";
+$user = "arpithir";
+$pass = "50340819";
+$database = "cse442_2023_spring_team_ae_db";
 
-    //make sure we found oceanus
-    $conn = mysqli_connect($host, $user, $pass, $database);
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    if (!isset($_SESSION['username'])) {
-        // Redirect to the login page
-        header('Location: login.php');
-        exit;
-    }
+//make sure we found oceanus
+$conn = mysqli_connect($host, $user, $pass, $database);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
 ?>
 
@@ -28,22 +22,22 @@
     <link rel="stylesheet" href="group.css">
 </head>
 <body>
-<header>
-    <div>
-        <img class='icon' src="Saturn.png" alt="RoomAid">
-        <span class="h3"> RoomAid </span>
-        <nav>
-            <ul>
-                <li><a href="home.php " class="nav-button">Home</a></li>
-                <li><a href="task-schedule.php" class="nav-button">Schedule</a></li>
-                <li><a href="group.php" class="nav-button">Group</a></li>
-                <li><a href="inventory.php" class="nav-button">Inventory</a></li>
-                <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>
-            </ul>
-        </nav>
-        <a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a>
-    </div>
-</header>
+<!--<header>-->
+<!--    <div>-->
+<!--        <img class='icon' src="Saturn.png" alt="RoomAid">-->
+<!--        <span class="h3"> RoomAid </span>-->
+<!--        <nav>-->
+<!--            <ul>-->
+<!--                <li><a href="home.php " class="nav-button">Home</a></li>-->
+<!--                <li><a href="task-schedule.php" class="nav-button">Schedule</a></li>-->
+<!--                <li><a href="group.php" class="nav-button">Group</a></li>-->
+<!--                <li><a href="inventory.php" class="nav-button">Inventory</a></li>-->
+<!--                <li><a href="Shared_Expenses.php" class="nav-button">Expenses</a></li>-->
+<!--            </ul>-->
+<!--        </nav>-->
+<!--        <a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a>-->
+<!--    </div>-->
+<!--</header>-->
 
 <?php
    if(isset($_SESSION['username'])){ // check if user session variable is set
@@ -62,9 +56,6 @@
    }
 ?>
 <div class="group_box">
-    <!--The profile picture and the name will be displayed of the current user if there is just one user in the room.-->
-    <!--This is just for the display purposes we will change it as soon as we are done it with the group formation backend-->
-    <!-- <img src="profile.png" id="profile"> -->
 <?php
 if(isset($_SESSION['username'])){ // check if user session variable is set
     $current_user = $_SESSION['username'];
@@ -88,37 +79,9 @@ if(isset($_SESSION['username'])){ // check if user session variable is set
 </div>
 
 
-<form method="post" id="grp">
+<form method="post" id="grp" action="leave_group_be.php">
     <input type="submit" id="leave_group" name="leave_group" value="Leave Group">
 </form>
-
-<!--The user will be directed to again finding the roommate page as soon as he leaves the room.-->
-<?php
-    if(isset($_POST['leave_group'])){ // check if post request is working is set
-        $sql = "DELETE FROM groupTestV2 WHERE username = ? AND groupName = ?";
-        $current_user = $_SESSION['username'];
-        $grpName = $_SESSION['groupName'];
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $current_user, $grpName); // BIND
-        $stmt->execute();
-        $stmt->close();
-
-//      Deletes the password for the group that has only one user.
-        $sql2 = "SELECT COUNT(*) AS total FROM groupTestV2 WHERE groupName = '$grpName'";
-        $num = mysqli_query($conn,$sql2);
-        $num_arr = mysqli_fetch_assoc($num);
-        $num_people = $num_arr['total'];
-
-        if ($num_people < 1) {
-            $sql = "DELETE FROM groupPassword WHERE groupName = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("s",$grpName); // BIND
-            $stmt->execute();
-            $stmt->close();
-        }
-        header("location: find_group.php");
-    }
-?>
 
 <form method="post" id="usrInvite" action="generate_invite_link.php">
     <button type="submit" id="invite" name="invite">Invite Link [Click to Copy]</button>
