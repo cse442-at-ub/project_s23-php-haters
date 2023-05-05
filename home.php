@@ -1,6 +1,6 @@
 <?php
 include 'util.php';
-session_start();
+include 'header.php';
 $host = "oceanus.cse.buffalo.edu";
 $user = "venkatay";
 $password = "50337119";
@@ -37,8 +37,8 @@ $items = mysqli_fetch_all($inventory_res, MYSQLI_ASSOC);
 <link rel="stylesheet" type="text/css" href="home.css">
 
 <body>
-<header>
-    <div>
+<!-- <header>
+<!--     <div>
         <img class='icon' src="Saturn.png" alt="RoomAid">
         <span class="h3"> RoomAid </span>
         <nav>
@@ -53,8 +53,8 @@ $items = mysqli_fetch_all($inventory_res, MYSQLI_ASSOC);
             </ul>
         </nav>
         <a href="#"><img id='icon-pfp' src="profile.png" alt="Profile"></a>
-    </div>
-</header>
+    </div> -->
+<!-- </header> -->
 
 <div class="greeting">
     <h2 class="h2 nav-button">Welcome to RoomAid! Your personal roommate solution.</h2>
